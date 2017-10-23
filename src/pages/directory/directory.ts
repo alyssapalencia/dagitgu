@@ -22,4 +22,20 @@ export class DirectoryPage {
     console.log('ionViewDidLoad DirectoryPage');
   }
 
+  openPolice() {
+    this.navCtrl.push('PolicePage');
+  }
+
+  openMedical() {
+    this.navCtrl.push('MedicalPage');
+  }
+
+  openFire() {
+    this.navCtrl.push('FirePage');
+  }
+
+  openTerminals() {
+    this.navCtrl.push('TerminalsPage');
+  }
+
 }

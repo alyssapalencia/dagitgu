@@ -7,12 +7,31 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>directory</ion-title>
+    <ion-title>Directory</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <button ion-button full icon-left (click)="openPolice()">
+    <ion-icon name="hand"></ion-icon>
+    Police
+  </button>
+
+  <button ion-button full icon-left color="secondary" (click)="openMedical()">
+      <ion-icon name="medical"></ion-icon>
+      Medical
+  </button>
+
+  <button ion-button full icon-left color="danger" (click)="openFire()">
+      <ion-icon name="flame"></ion-icon>
+      Fire
+  </button>
+
+  <button ion-button full icon-left color="purp" (click)="openTerminals()">
+      <ion-icon name="bus"></ion-icon>
+      Terminals
+  </button>
 
 </ion-content>
