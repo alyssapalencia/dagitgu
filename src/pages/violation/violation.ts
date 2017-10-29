@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the HelpdeskPage page.
+ * Generated class for the ViolationPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,29 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-helpdesk',
-  templateUrl: 'helpdesk.html',
+  selector: 'page-violation',
+  templateUrl: 'violation.html',
 })
-export class HelpdeskPage {
+export class ViolationPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HelpdeskPage');
+    console.log('ionViewDidLoad ViolationPage');
   }
-
-  openContact() {
-    this.navCtrl.push('ContactPage');
-  }
-
-  openAccident() {
-    this.navCtrl.push('AccidentPage');
-  }
-
-  openViolation() {
-    this.navCtrl.push('ViolationPage');
-  }
-
 
 }
