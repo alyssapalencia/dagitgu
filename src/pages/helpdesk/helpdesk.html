@@ -7,12 +7,26 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>helpdesk</ion-title>
+    <ion-title>Helpdesk</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <button ion-button full icon-left (click)="openContact()">
+    <ion-icon name="mail"></ion-icon>
+    Contact
+  </button>
+    
+  <button ion-button full icon-left color="secondary" (click)="openAccident()">
+    <ion-icon name="warning"></ion-icon>
+    Report Accident
+  </button>
+    
+  <button ion-button full icon-left color="danger" (click)="openViolation()">
+    <ion-icon name="hand"></ion-icon>
+    Report Violation
+  </button>
 
 </ion-content>

@@ -22,4 +22,17 @@ export class HelpdeskPage {
     console.log('ionViewDidLoad HelpdeskPage');
   }
 
+  openContact() {
+    this.navCtrl.push('ContactPage');
+  }
+
+  openAccident() {
+    this.navCtrl.push('AccidentPage');
+  }
+
+  openViolation() {
+    this.navCtrl.push('ViolationPage');
+  }
+
+
 }

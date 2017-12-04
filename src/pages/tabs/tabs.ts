@@ -12,6 +12,7 @@ export class TabsPage {
   tab2Root = 'DirectoryPage';
   tab3Root = 'NotifListPage';
   tab4Root = 'HelpdeskPage';
+  tab5Root = 'ProfilePage';
 
   constructor() {
 

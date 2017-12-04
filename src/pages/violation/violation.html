@@ -1,0 +1,72 @@
+<!--
+  Generated template for the ViolationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Report Violation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label stacked style="font-size:18px;">Location*</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked style="font-size:18px;">Description*</ion-label>
+      <ion-textarea></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Vehicle Type</ion-label>
+      <ion-select [(ngModel)]="vehicleType">
+        <ion-option value="car">Car</ion-option>
+        <ion-option value="jeep">Jeep</ion-option>
+        <ion-option value="motorcycle">Motorcycle</ion-option>
+        <ion-option value="pedicab">Pedicab</ion-option>
+        <ion-option value="truck">Truck</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked style="font-size:18px;">Plate Number*</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked style="font-size:18px;">Color*</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked style="font-size:18px;">Model</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Type of Violation*</ion-label>
+      <ion-select [(ngModel)]="violationType">
+          <ion-option value="Not signaling">Not signaling</ion-option>
+          <ion-option value="Passing in a no entry zone">Passing in a no entry zone</ion-option>
+          <ion-option value="Drunk driving">Drunk driving</ion-option>
+          <ion-option value="Reckless driving">Reckless driving</ion-option>
+          <ion-option value="Driving without license/registration">Driving without license/registration</ion-option>
+        </ion-select>
+    </ion-item>
+  </ion-list>
+    
+  <button ion-button clear>
+    <ion-icon name="cloud-upload"></ion-icon>
+    &nbsp;Upload image*
+  </button>
+    
+  <button ion-button full>SEND</button>
+</ion-content>
