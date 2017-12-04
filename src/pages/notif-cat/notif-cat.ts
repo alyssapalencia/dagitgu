@@ -1,0 +1,41 @@
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {NotifCatlistPage} from '../notif-catlist/notif-catlist';
+
+/**
+ * Generated class for the NotifCatPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
+@Component({
+  selector: 'page-notif-cat',
+  templateUrl: 'notif-cat.html',
+})
+export class NotifCatPage {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad NotifCatPage');
+  }
+
+  btn_anc(){
+    this.navCtrl.push(NotifCatlistPage);
+    console.log('Announcement category button clicked');
+  }
+
+  btn_park(){
+    this.navCtrl.push(NotifCatlistPage);
+    console.log('Parking category button clicked');
+  }
+
+  btn_traffic(){
+    this.navCtrl.push(NotifCatlistPage);
+    console.log('Traffic category button clicked');
+  }
+
+}
