@@ -10,7 +10,7 @@ export class TabsPage {
 
   tab1Root = 'MapPage';
   tab2Root = 'DirectoryPage';
-  tab3Root = 'NotificationsPage';
+  tab3Root = 'NotifListPage';
   tab4Root = 'HelpdeskPage';
   tab5Root = 'ProfilePage';
 
