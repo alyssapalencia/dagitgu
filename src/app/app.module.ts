@@ -3,14 +3,29 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { NotifCatPage } from '../pages/notif-cat/notif-cat';
-import {NotifCatlistPage} from '../pages/notif-catlist/notif-catlist';
+import { NotifCatlistPage} from '../pages/notif-catlist/notif-catlist';
 
-//import { AngularFireModule } from 'angularfire2';
+
 import { firebaseConfig } from '../environment';
-//import { AngularFirestoreModule } from 'angularfire2/firestore';
+
+import { HttpModule } from '@angular/http';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireModule } from 'angularfire2';
+import { FireBaseService } from '../providers/dagit-provider';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ProviderDagitProvider } from '../providers/provider-dagit/provider-dagit';
+
+var config = {
+  apiKey: "AIzaSyDPsMJ-x7W6_U_k3JsNwMNkxL38e8NkQDI",
+  authDomain: "dagit-7cbac.firebaseapp.com",
+  databaseURL: "https://dagit-7cbac.firebaseio.com",
+  projectId: "dagit-7cbac",
+  storageBucket: "dagit-7cbac.appspot.com",
+  messagingSenderId: "902262473533"
+};
 
 @NgModule({
   declarations: [
@@ -20,8 +35,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
-    //AngularFireModule.initializeApp(firebaseConfig)
+    IonicModule.forRoot(MyApp),
+    HttpModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(config)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,7 +49,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    FireBaseService,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ProviderDagitProvider
   ]
 })
 export class AppModule {}
