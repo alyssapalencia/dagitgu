@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FireBaseService } from '../../providers/dagit-provider';
+import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 
 /**
  * Generated class for the ContactPage page.
@@ -19,7 +19,7 @@ export class ContactPage {
   messageObject: any;
   Chat: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: FireBaseService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider) {
     this.Chat = this.firebaseService.getMessage();
     console.log(this.Chat);
   }

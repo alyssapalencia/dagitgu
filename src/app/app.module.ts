@@ -16,6 +16,7 @@ import { FireBaseService } from '../providers/dagit-provider';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ProviderDagitProvider } from '../providers/provider-dagit/provider-dagit';
 
 var config = {
   apiKey: "AIzaSyDPsMJ-x7W6_U_k3JsNwMNkxL38e8NkQDI",
@@ -49,7 +50,8 @@ var config = {
     StatusBar,
     SplashScreen,
     FireBaseService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ProviderDagitProvider
   ]
 })
 export class AppModule {}
