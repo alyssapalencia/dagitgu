@@ -11,11 +11,20 @@ import { firebaseConfig } from '../environment';
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
+import { FireBaseService } from '../providers/dagit-provider';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+var config = {
+  apiKey: "AIzaSyDPsMJ-x7W6_U_k3JsNwMNkxL38e8NkQDI",
+  authDomain: "dagit-7cbac.firebaseapp.com",
+  databaseURL: "https://dagit-7cbac.firebaseio.com",
+  projectId: "dagit-7cbac",
+  storageBucket: "dagit-7cbac.appspot.com",
+  messagingSenderId: "902262473533"
+};
 
 @NgModule({
   declarations: [
@@ -28,7 +37,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IonicModule.forRoot(MyApp),
     HttpModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(config)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -39,6 +48,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    FireBaseService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
