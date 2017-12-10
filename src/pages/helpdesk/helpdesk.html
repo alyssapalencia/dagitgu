@@ -14,19 +14,20 @@
 
 
 <ion-content padding>
-  <button ion-button full icon-left (click)="openContact()">
-    <ion-icon name="mail"></ion-icon>
-    Contact
-  </button>
-    
-  <button ion-button full icon-left color="secondary" (click)="openAccident()">
-    <ion-icon name="warning"></ion-icon>
-    Report Accident
-  </button>
-    
-  <button ion-button full icon-left color="danger" (click)="openViolation()">
-    <ion-icon name="hand"></ion-icon>
-    Report Violation
-  </button>
-
+  <div style="padding-top:25%;">
+    <button ion-button full icon-left style="height:100px; font-size:20px;" (click)="openContact()">
+      <ion-icon name="mail"></ion-icon>
+      Contact
+    </button>
+    <br>
+    <button ion-button full icon-left style="height:100px; font-size:20px;" color="secondary" (click)="openAccident()">
+      <ion-icon name="warning"></ion-icon>
+      Report Accident
+    </button>
+    <br>
+    <button ion-button full icon-left style="height:100px; font-size:20px;" color="danger" (click)="openViolation()">
+      <ion-icon name="hand"></ion-icon>
+      Report Violation
+    </button>
+  </div>
 </ion-content>

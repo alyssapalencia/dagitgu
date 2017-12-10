@@ -5,9 +5,9 @@ import { MyApp } from './app.component';
 import { NotifCatPage } from '../pages/notif-cat/notif-cat';
 import {NotifCatlistPage} from '../pages/notif-catlist/notif-catlist';
 
-import { AngularFireModule } from 'angularfire2';
+//import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from '../environment';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+//import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';

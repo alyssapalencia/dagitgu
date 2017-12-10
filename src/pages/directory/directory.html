@@ -14,24 +14,25 @@
 
 
 <ion-content padding>
-  <button ion-button full icon-left (click)="openPolice()">
-    <ion-icon name="hand"></ion-icon>
-    Police
-  </button>
-
-  <button ion-button full icon-left color="secondary" (click)="openMedical()">
+  <div style="padding-top:10%;">
+    <button ion-button full style="height:100px; font-size:20px;" icon-left (click)="openPolice()">
+      <ion-icon name="hand"></ion-icon>
+      Police
+    </button>
+    <br>
+    <button ion-button full style="height:100px; font-size:20px;" icon-left color="secondary" (click)="openMedical()">
       <ion-icon name="medical"></ion-icon>
       Medical
-  </button>
-
-  <button ion-button full icon-left color="danger" (click)="openFire()">
+    </button>
+    <br>
+    <button ion-button full style="height:100px; font-size:20px;" icon-left color="danger" (click)="openFire()">
       <ion-icon name="flame"></ion-icon>
       Fire
-  </button>
-
-  <button ion-button full icon-left color="purp" (click)="openTerminals()">
+    </button>
+    <br>
+    <button ion-button full style="height:100px; font-size:20px;" icon-left color="purp" (click)="openTerminals()">
       <ion-icon name="bus"></ion-icon>
       Terminals
-  </button>
-
+    </button>
+  </div>
 </ion-content>
