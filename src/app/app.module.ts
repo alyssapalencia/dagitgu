@@ -11,7 +11,6 @@ import { firebaseConfig } from '../environment';
 import { HttpModule } from '@angular/http';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
-import { FireBaseService } from '../providers/dagit-provider';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -49,7 +48,6 @@ var config = {
   providers: [
     StatusBar,
     SplashScreen,
-    FireBaseService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProviderDagitProvider
   ]

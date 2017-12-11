@@ -23,18 +23,18 @@ export class NotifCatPage {
     console.log('ionViewDidLoad NotifCatPage');
   }
 
-  btn_anc(){
-    this.navCtrl.push(NotifCatlistPage);
+  btn_anc(filter){
+    this.navCtrl.push(NotifCatlistPage, {param1: filter});
     console.log('Announcement category button clicked');
   }
 
-  btn_park(){
-    this.navCtrl.push(NotifCatlistPage);
+  btn_park(filter){
+    this.navCtrl.push(NotifCatlistPage, {param1: filter});
     console.log('Parking category button clicked');
   }
 
-  btn_traffic(){
-    this.navCtrl.push(NotifCatlistPage);
+  btn_traffic(filter){
+    this.navCtrl.push(NotifCatlistPage, {param1: filter});
     console.log('Traffic category button clicked');
   }
 

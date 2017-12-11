@@ -13,17 +13,28 @@ import 'firebase/storage';
 */
 @Injectable()
 export class ProviderDagitProvider {
+  user: any;
 
   constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp) {
     console.log('Hello ProviderDagitProvider Provider');
+
+    this.user = "Justin Malana";
   }
 
   addMessage(message){
-    this.dagit.list('/chat/').push(message);
+    this.dagit.list('/chat/' + this.user).push(message);
   }
 
   getMessage(){
-      return this.dagit.list('/chat/');
+    return this.dagit.list('/chat/' + this.user);
+  }
+
+  getUser(){
+    return this.user;
+  }
+
+  getTNotif(){
+    return this.dagit.list('/notification');
   }
 
 }
