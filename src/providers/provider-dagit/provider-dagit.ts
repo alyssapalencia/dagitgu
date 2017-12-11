@@ -32,4 +32,8 @@ export class ProviderDagitProvider {
     return this.user;
   }
 
+  getTNotif(){
+    return this.dagit.list('/notification');
+  }
+
 }
