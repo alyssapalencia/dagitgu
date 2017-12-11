@@ -15,6 +15,7 @@ import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-d
   templateUrl: 'contact.html',
 })
 export class ContactPage {
+  user: any;
   message: any;
   messageObject: any;
   Chat: any;
@@ -22,6 +23,7 @@ export class ContactPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider) {
     this.Chat = this.firebaseService.getMessage();
     console.log(this.Chat);
+    this.user = this.firebaseService.getUser();
   }
 
   ionViewDidLoad() {
@@ -32,7 +34,7 @@ export class ContactPage {
     console.log(this.message);
     this.messageObject = {
       message: this.message,
-      user: 'ling'
+      user: this.user
     }
     this.firebaseService.addMessage(this.messageObject);
   }
