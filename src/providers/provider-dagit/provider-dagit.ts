@@ -23,7 +23,7 @@ export class ProviderDagitProvider {
   }
 
   getUserDetail(){
-    return 
+    return this.dagit.list('/ACCOUNTS/GENERAL');
   }
 
   getMessage(){
@@ -35,7 +35,7 @@ export class ProviderDagitProvider {
   }
 
   getTNotif(){
-    return this.dagit.list('/notification');
+    return this.dagit.list('/NOTIFICATIONS');
   }
 
 }

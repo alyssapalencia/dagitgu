@@ -11,19 +11,19 @@
 <ion-content padding>
 
     <ion-list>
-        <div *ngFor = 'let notif of notifInfo | async'>
-          <ion-item text-wrap *ngIf = 'notif.type == Filter'>
-            <div *ngIf = 'Filter == "traffic"'>
+        <div *ngFor = 'let notif of (notifInfo | async)?.reverse()'>
+          <ion-item text-wrap *ngIf = 'notif.category == Filter'>
+            <div *ngIf = 'Filter == "Traffic"'>
               <ion-icon name ="alert" item-start></ion-icon>
-              <b>{{ notif.rating }} Traffic</b> at {{ notif.location }}
+              {{ notif.notifDetail }}
             </div>
-            <div *ngIf = 'Filter == "parking"'>
+            <div *ngIf = 'Filter == "Parking"'>
               <ion-icon name ="flag" item-start></ion-icon>
-              <b>{{ notif.rating }} Traffic</b> at {{ notif.location }}
+              {{ notif.notifDetail }}
             </div>
-            <div *ngIf = 'Filter == "announcement"'>
+            <div *ngIf = 'Filter == "Announcement"'>
               <ion-icon name ="megaphone" item-start></ion-icon>
-              {{ notif.details }}
+              {{ notif.notifDetail }}
             </div>
           </ion-item>
         </div>
