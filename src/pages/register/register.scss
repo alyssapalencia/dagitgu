@@ -2,7 +2,6 @@ page-register {
     .alignLogo{
         width:50%;
         padding-top:20%;
-        padding-bottom:10%;
         transform:translateX(50%);
     }
 
@@ -13,5 +12,10 @@ page-register {
     .footerStyle{
         text-align:center;
         padding:20px;
+    }
+
+    .login{
+        text-transform:uppercase;
+        font-weight:bold;
     }
 }

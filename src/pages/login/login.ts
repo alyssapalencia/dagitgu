@@ -27,5 +27,8 @@ export class LoginPage {
       console.log(this.temp);
     }
   }
+  openRegister() {
+    this.navCtrl.push('RegisterPage');
+  }
 
 }
