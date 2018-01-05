@@ -37,6 +37,7 @@ export class RegisterPage {
       "password": this.pass
     }
     this.firebaseService.addUser(this.userInfo);
+    this.navCtrl.push('LoginPage');
   }
 
 }
