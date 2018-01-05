@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  userInfo: any;
+  email: any;
+  fname: any;
+  lname: any;
+  pass: any;
+  conPass: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+
+  addUser(){
+    this.userInfo = {
+      "emailAddress": this.email,
+      "fName": this.fname,
+      "lName": this.lname,
+      "password": this.pass
+    }
+    this.firebaseService.addUser(this.userInfo);
   }
 
 }
