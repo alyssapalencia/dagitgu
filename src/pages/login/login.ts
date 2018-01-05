@@ -18,4 +18,10 @@ export class LoginPage {
   openRegister() {
     this.navCtrl.push('RegisterPage');
   }
+
+  //Redirect to main menu after logging in
+  MainMenu() {
+    this.navCtrl.setRoot('TabsPage');
+    this.navCtrl.popToRoot();
+  }
 }
