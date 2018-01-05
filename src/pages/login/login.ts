@@ -23,10 +23,11 @@ export class LoginPage {
 
   checkAuth(){
     for(var info in this.userInfo){
-      this.temp = this.userInfo[info].fName;
+      this.temp = this.userInfo.fName;
       console.log(this.temp);
     }
   }
+
   openRegister() {
     this.navCtrl.push('RegisterPage');
   }

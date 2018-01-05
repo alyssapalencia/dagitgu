@@ -18,18 +18,18 @@
             <b>Checkpoint</b> at Aldecoa Road, Laguna
         </ion-item>-->
   
-        <ion-item text-wrap *ngFor = 'let notif of notifInfo | async'>
-          <div *ngIf = 'notif.type == "traffic"'>
+        <ion-item text-wrap *ngFor = 'let notif of (notifInfo | async)?.reverse()'>
+          <div *ngIf = 'notif.category == "Traffic"'>
             <ion-icon name = "alert" item-start></ion-icon>
-            <b>{{ notif.rating }} Traffic</b> at {{ notif.location }}
+            {{ notif.notifDetail }}
           </div>
-          <div *ngIf = 'notif.type == "parking"'>
+          <div *ngIf = 'notif.category == "Parking"'>
             <ion-icon name = "flag" item-start></ion-icon>
-            <b>{{ notif.rating }} Parking</b> at {{ notif.location }}
+            {{ notif.notifDetail }}
           </div>
-          <div *ngIf = 'notif.type == "announcement"'>
+          <div *ngIf = 'notif.category == "announcement"'>
             <ion-icon name = "megaphone" item-start></ion-icon>
-            {{ notif.details }}
+            {{ notif.notifDetail }}
           </div>
         </ion-item>
   
