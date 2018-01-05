@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 
 @IonicPage()
 @Component({
@@ -7,12 +8,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+  tempuser: any;
+  temppass: any;
+  temp: any;
+  userInfo: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider) {
+    this.userInfo = this.firebaseService.getUserDetail();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  checkAuth(){
+    for(var info in this.userInfo){
+      this.temp = this.userInfo[info].fName;
+      console.log(this.temp);
+    }
   }
 
 }

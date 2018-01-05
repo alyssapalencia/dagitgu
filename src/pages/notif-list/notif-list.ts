@@ -3,12 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { NotifCatPage } from '../notif-cat/notif-cat';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 
-/**
- * Generated class for the NotifListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
