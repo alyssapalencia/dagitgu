@@ -23,7 +23,9 @@ export class ProviderDagitProvider {
   }
 
   getUserDetail(){
-    return this.dagit.list('/ACCOUNTS/GENERAL');
+    return this.dagit.list('/ACCOUNTS/GENERAL', {
+      preserveSnapshot: true
+    });
   }
 
   getMessage(){
