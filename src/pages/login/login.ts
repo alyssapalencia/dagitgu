@@ -15,4 +15,8 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  openRegister() {
+    this.navCtrl.push('RegisterPage');
+  }
+
 }

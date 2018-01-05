@@ -6,6 +6,10 @@
     <ion-item>
       <ion-input type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
     </ion-item>
+
+    <ion-item>
+      <ion-input type="text" placeholder="Username" [(ngModel)]="user"></ion-input>
+    </ion-item>
     
     <ion-item>
       <ion-input type="text" placeholder="First Name" [(ngModel)]="fname"></ion-input>
@@ -27,7 +31,7 @@
   </ion-list>
 
     <ion-footer class="footerStyle">
-      Already have an account? Login.
+      Already have an account? <span (click)="openLogin()" class="login">Login.</span>
     </ion-footer>
 
 </ion-content>

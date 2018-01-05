@@ -11,6 +11,7 @@ export class RegisterPage {
 
   userInfo: any;
   email: any;
+  user: any;
   fname: any;
   lname: any;
   pass: any;
@@ -23,9 +24,14 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
 
+  openLogin() {
+    this.navCtrl.push('LoginPage');
+  }
+
   addUser(){
     this.userInfo = {
       "emailAddress": this.email,
+      "username": this.user,
       "fName": this.fname,
       "lName": this.lname,
       "password": this.pass
