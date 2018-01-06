@@ -15,17 +15,17 @@
 
 <ion-content padding>
   <ion-card>
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="/assets/imgs/avatar.jpg">
-      </ion-avatar>
-      <h2>Alyssa Palencia</h2>
-      <p>Member since January 6, 2017</p>
-    </ion-item>
+    <img src="/assets/imgs/avatar.jpg">
+    <ion-card-content>
+      <ion-card-title>
+       Alyssa Palencia
+      </ion-card-title>
+      <p><ion-icon name="star"></ion-icon> Member since January 6, 2017</p>
+    </ion-card-content>
   </ion-card>
 
-  <button ion-button full round icon-left color="danger" style="height:50px; font-size:medium;">
-    <ion-icon name="unlock"></ion-icon>
+  <button ion-button full round icon-left color="danger" style="height:50px; font-size:medium;" (click)="showConfirm()">
+    <ion-icon name="unlock"></ion-icon> 
     LOGOUT
   </button>
 </ion-content>
