@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
+import { LoginPage } from '../login/login';
+import { ToastController } from 'ionic-angular';
+
 
 /**
  * Generated class for the ProfilePage page.
@@ -16,7 +19,7 @@ import { AlertController } from 'ionic-angular';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private app: App, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -38,6 +41,14 @@ export class ProfilePage {
           text: 'Logout',
           handler: () => {
             console.log('Logout clicked');
+            this.app.getRootNav().setRoot(LoginPage);
+            let toast = this.toastCtrl.create({
+              message: 'You have successfully logged out.',
+              duration: 2000
+            });
+            toast.present();
+            /* let nav = this.app.getRootNav();
+            nav.push(LoginPage); */
           }
         }
       ]
