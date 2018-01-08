@@ -23,7 +23,7 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
   }
 
-  showConfirm() {
+  showLogout() {
     let confirm = this.alertCtrl.create({
       title: 'Logout',
       message: 'Are you sure you want to logout?',

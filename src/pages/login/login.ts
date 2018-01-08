@@ -43,6 +43,12 @@ export class LoginPage {
             console.log("logged in");
             this.navCtrl.setRoot('TabsPage');
             this.navCtrl.popToRoot();
+
+            let toast = this.toastCtrl.create({
+              message: 'Login successful.',
+              duration: 2000,
+            });
+            toast.present();
           }
         }
       }
@@ -51,7 +57,7 @@ export class LoginPage {
     if(!check){
       let toast = this.toastCtrl.create({
         message: 'Incorrect credentials. Try again.',
-        duration: 3000
+        duration: 2000
       });
       toast.present();
     }
