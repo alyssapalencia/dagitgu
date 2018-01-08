@@ -53,8 +53,8 @@ export class LoginPage {
         }
       }
     }
-    console.log("incorrect credentials");
     if(!check){
+      console.log("incorrect credentials");
       let toast = this.toastCtrl.create({
         message: 'Incorrect credentials. Try again.',
         duration: 2000
