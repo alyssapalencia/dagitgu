@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
+import { AlertController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -17,7 +18,7 @@ export class RegisterPage {
   pass: any;
   conPass: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -38,6 +39,12 @@ export class RegisterPage {
     }
     this.firebaseService.addUser(this.userInfo);
     this.navCtrl.push('LoginPage');
-  }
 
+    let alert = this.alertCtrl.create({
+      title: 'Account Created',
+      subTitle: 'Your account was successfully created. Login to begin.',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }

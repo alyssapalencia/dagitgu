@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
+import { ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -15,7 +16,7 @@ export class LoginPage {
   confirmUser: any[] = [];
   confirmPass: any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public toastCtrl: ToastController) {
     this.userInfo = this.firebaseService.getUserDetail();
     var i = 0;
     this.userInfo.subscribe(snapshots => {
@@ -23,7 +24,6 @@ export class LoginPage {
         this.confirmUser[i] = snapshot.val().username;
         this.confirmPass[i] = snapshot.val().password;
         i++;
-        //console.log(snapshot.key, snapshot.val());
       });
     });
   }
@@ -33,21 +33,37 @@ export class LoginPage {
   }
 
   checkAuth(){
+    var check=false;
+
     for(var i=0; i<this.confirmUser.length; i++){
       for(var j=0; j<this.confirmPass.length; j++){
         if(this.tempuser == this.confirmUser[i]){
           if(this.temppass == this.confirmPass[j]){
+            check=true;
             console.log("logged in");
-            //replace console.log with navcontrol to main root page
+            this.navCtrl.setRoot('TabsPage');
+            this.navCtrl.popToRoot();
+
+            let toast = this.toastCtrl.create({
+              message: 'Login successful.',
+              duration: 2000,
+            });
+            toast.present();
           }
         }
       }
     }
-    console.log("not logged in");
+    if(!check){
+      console.log("incorrect credentials");
+      let toast = this.toastCtrl.create({
+        message: 'Incorrect credentials. Try again.',
+        duration: 2000
+      });
+      toast.present();
+    }
   }
 
   openRegister() {
     this.navCtrl.push('RegisterPage');
   }
-
 }
