@@ -13,11 +13,6 @@
   <ion-content padding>
   
       <ion-list>
-        <!--<ion-item text-wrap>
-          <ion-icon name="megaphone" item-start></ion-icon>
-            <b>Checkpoint</b> at Aldecoa Road, Laguna
-        </ion-item>-->
-  
         <ion-item text-wrap *ngFor = 'let notif of (notifInfo | async)?.reverse()'>
           <div *ngIf = 'notif.category == "Traffic"'>
             <ion-icon name = "alert" item-start></ion-icon>
@@ -32,11 +27,6 @@
             {{ notif.notifDetail }}
           </div>
         </ion-item>
-  
-        <!--<ion-item text-wrap>
-          <ion-icon name="flag" item-start></ion-icon>
-            <b>Parking Available</b> at 7 Silliman Avenue
-        </ion-item>-->
       </ion-list>
        
   </ion-content>
