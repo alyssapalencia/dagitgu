@@ -1,0 +1,97 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Directory</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-card *ngFor = 'let dir of dirInfo | async'>
+      <ion-card-content *ngIf = 'dir.category == Filter'>
+        <!-- START POLICE -->
+        <div *ngIf = 'Filter == "Police"'>
+          <ion-card-title>{{ dir.directoryName }}</ion-card-title>
+          <ion-item>
+            <h2>Address</h2>
+            <ion-icon name="pin" item-start large></ion-icon>
+            <p>{{ dir.address }}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Contact</h2>
+            <ion-icon name="call" item-start large></ion-icon>
+            <p>{{ dir.contactNumber }}</p>
+          </ion-item>
+          <ion-item>
+            <h2>Operating Hours</h2>
+            <ion-icon name="time" item-start large></ion-icon>
+            <p>{{ dir.operatingHours }}</p>
+          </ion-item>
+        </div>
+        <!-- END POLICE -->
+        <!-- START MEDICAL -->
+        <div *ngIf = 'Filter == "Medical"'>
+            <ion-card-title>{{ dir.directoryName }}</ion-card-title>
+            <ion-item>
+              <h2>Address</h2>
+              <ion-icon name="pin" item-start large></ion-icon>
+              <p>{{ dir.address }}</p>
+            </ion-item>
+            <ion-item>
+              <h2>Contact</h2>
+              <ion-icon name="call" item-start large></ion-icon>
+              <p>{{ dir.contactNumber }}</p>
+            </ion-item>
+            <ion-item>
+              <h2>Operating Hours</h2>
+              <ion-icon name="time" item-start large></ion-icon>
+              <p>{{ dir.operatingHours }}</p>
+            </ion-item>
+          </div>
+          <!-- END MEDICAL -->
+          <!-- START FIRE -->
+          <div *ngIf = 'Filter == "Fire"'>
+            <ion-card-title>{{ dir.directoryName }}</ion-card-title>
+             <ion-item>
+              <h2>Address</h2>
+              <ion-icon name="pin" item-start large></ion-icon>
+              <p>{{ dir.address }}</p>
+             </ion-item>
+             <ion-item>
+              <h2>Contact</h2>
+              <ion-icon name="call" item-start large></ion-icon>
+              <p>{{ dir.contactNumber }}</p>
+            </ion-item>
+            <ion-item>
+              <h2>Operating Hours</h2>
+              <ion-icon name="time" item-start large></ion-icon>
+              <p>{{ dir.operatingHours }}</p>
+            </ion-item>
+          </div>
+          <!-- END FIRE -->
+          <!-- START TERMINALS -->
+          <div *ngIf = 'Filter == "Terminal"'>
+            <ion-card-title>{{ dir.directoryName }}</ion-card-title>
+             <ion-item>
+              <h2>Address</h2>
+              <ion-icon name="pin" item-start large></ion-icon>
+              <p>{{ dir.address }}</p>
+            </ion-item>
+            <ion-item>
+              <h2>Contact</h2>
+              <ion-icon name="call" item-start large></ion-icon>
+              <p>{{ dir.contactNumber }}</p>
+            </ion-item>
+            <ion-item>
+              <h2>Operating Hours</h2>
+              <ion-icon name="time" item-start large></ion-icon>
+              <p>{{ dir.operatingHours }}</p>
+            </ion-item>
+          </div>
+          <!-- END TERMINALS -->
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>
+

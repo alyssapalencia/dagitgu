@@ -16,6 +16,7 @@ import { AngularFireModule } from 'angularfire2';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProviderDagitProvider } from '../providers/provider-dagit/provider-dagit';
+import { DirDispPage } from '../pages/dir-disp/dir-disp';
 
 var config = {
   apiKey: "AIzaSyDPsMJ-x7W6_U_k3JsNwMNkxL38e8NkQDI",
@@ -30,7 +31,8 @@ var config = {
   declarations: [
     MyApp,
     NotifCatPage,
-    NotifCatlistPage
+    NotifCatlistPage,
+    DirDispPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ var config = {
   entryComponents: [
     MyApp,
     NotifCatPage,
-    NotifCatlistPage
+    NotifCatlistPage, 
+    DirDispPage
   ],
   providers: [
     StatusBar,

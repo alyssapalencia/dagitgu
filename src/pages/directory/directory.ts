@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the DirectoryPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { DirDispPage } from '../dir-disp/dir-disp';
 
 @IonicPage()
 @Component({
@@ -22,20 +16,24 @@ export class DirectoryPage {
     console.log('ionViewDidLoad DirectoryPage');
   }
 
-  openPolice() {
-    this.navCtrl.push('PolicePage');
+  btnPolice(filter) {
+    this.navCtrl.push(DirDispPage, {param1: filter});
+    console.log('Police button clicked');
   }
 
-  openMedical() {
-    this.navCtrl.push('MedicalPage');
+  btnMedical(filter) {
+    this.navCtrl.push(DirDispPage, {param1: filter});
+    console.log('Medical button clicked');
   }
 
-  openFire() {
-    this.navCtrl.push('FirePage');
+  btnFire(filter) {
+    this.navCtrl.push(DirDispPage, {param1: filter});
+    console.log('Fire button clicked');
   }
 
-  openTerminals() {
-    this.navCtrl.push('TerminalsPage');
+  btnTerminal(filter) {
+    this.navCtrl.push(DirDispPage, {param1: filter});
+    console.log('Terminal button clicked');
   }
 
 }

@@ -40,4 +40,8 @@ export class ProviderDagitProvider {
     return this.dagit.list('/NOTIFICATIONS');
   }
 
+  getDirectory() {
+    return this.dagit.list('/DIRECTORY');
+  }
+
 }

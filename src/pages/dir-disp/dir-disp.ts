@@ -4,20 +4,20 @@ import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-d
 
 @IonicPage()
 @Component({
-  selector: 'page-medical',
-  templateUrl: 'medical.html',
+  selector: 'page-dir-disp',
+  templateUrl: 'dir-disp.html',
 })
-export class MedicalPage {
+export class DirDispPage {
   Filter: any;
-  directory: any;
+  dirInfo: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider) {
     this.Filter = navParams.get('param1');
-    this.directory = this.firebaseService.getDirectory();
+    this.dirInfo = this.firebaseService.getDirectory();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MedicalPage');
+    console.log('ionViewDidLoad DirDispPage');
   }
 
 }
