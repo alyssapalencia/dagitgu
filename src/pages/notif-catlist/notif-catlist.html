@@ -15,15 +15,15 @@
           <ion-item text-wrap *ngIf = 'notif.category == Filter'>
             <div *ngIf = 'Filter == "Traffic"'>
               <ion-icon name ="alert" item-start></ion-icon>
-              {{ notif.notifDetail }}
+              {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
             </div>
             <div *ngIf = 'Filter == "Parking"'>
               <ion-icon name ="flag" item-start></ion-icon>
-              {{ notif.notifDetail }}
+              {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
             </div>
             <div *ngIf = 'Filter == "Announcement"'>
               <ion-icon name ="megaphone" item-start></ion-icon>
-              {{ notif.notifDetail }}
+              {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
             </div>
           </ion-item>
         </div>

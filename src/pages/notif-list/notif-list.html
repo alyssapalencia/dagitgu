@@ -16,15 +16,15 @@
         <ion-item text-wrap *ngFor = 'let notif of (notifInfo | async)?.reverse()'>
           <div *ngIf = 'notif.category == "Traffic"'>
             <ion-icon name = "alert" item-start></ion-icon>
-            {{ notif.notifDetail }}
+            {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
           </div>
           <div *ngIf = 'notif.category == "Parking"'>
             <ion-icon name = "flag" item-start></ion-icon>
-            {{ notif.notifDetail }}
+            {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
           </div>
           <div *ngIf = 'notif.category == "Announcement"'>
             <ion-icon name = "megaphone" item-start></ion-icon>
-            {{ notif.notifDetail }}
+            {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
           </div>
         </ion-item>
       </ion-list>
