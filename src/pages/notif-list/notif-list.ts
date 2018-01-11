@@ -10,7 +10,6 @@ import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-d
   templateUrl: 'notif-list.html',
 })
 export class NotifListPage {
-
   notifInfo: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider) {
