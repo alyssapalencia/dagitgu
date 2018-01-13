@@ -48,6 +48,7 @@ export class RegisterPage {
       }
       else{
         this.dupEmail = true;
+        break;
       }
     }
 
@@ -57,6 +58,7 @@ export class RegisterPage {
       }
       else{
         this.dupUser = true;
+        break;
       }
     }
 
@@ -64,21 +66,28 @@ export class RegisterPage {
       this.wrongPass = false;
     }
 
-    if(!this.dupEmail){
-      if(!this.dupUser){
-        if(!this.wrongPass){
-          this.addUser();
+    if(this.checkInput()){
+      if(this.checkEmail()){
+        if(!this.dupEmail){
+          if(!this.dupUser){
+            if(!this.wrongPass){
+              this.addUser();
+            }
+            else{
+              console.log("wrong password");
+            }
+          }
+          else{
+            console.log("username already exists");
+          }
         }
         else{
-          console.log("wrong password");
+          console.log("email already used");
         }
-      }
-      else{
-        console.log("username already exists");
       }
     }
     else{
-      console.log("email already used");
+      console.log("one or more field/s lacks input")
     }
   }
 
@@ -103,5 +112,39 @@ export class RegisterPage {
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  checkInput(){
+    var input = false;
+
+    if(!this.isBlank(this.email)){
+      if(!this.isBlank(this.user)){
+        if(!this.isBlank(this.fname)){
+          if(!this.isBlank(this.lname)){
+            if(!this.isBlank(this.pass)){
+              if(!this.isBlank(this.conPass)){
+                input = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return input;
+  }
+
+  checkEmail(){
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email))  
+  {  
+    return (true)  
+  }  
+    console.log("You have entered an invalid email address!");  
+    return (false)  
+  }
+
+  isBlank(str){
+    if(!str || 0 === str.length){
+      return true;
+    }
   }
 }
