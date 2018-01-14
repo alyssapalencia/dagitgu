@@ -46,6 +46,8 @@ export class LoginPage {
 
             let toast = this.toastCtrl.create({
               message: 'Login successful.',
+              showCloseButton: true,
+              closeButtonText: 'OK',
               duration: 2000,
             });
             toast.present();
@@ -57,6 +59,8 @@ export class LoginPage {
       console.log("incorrect credentials");
       let toast = this.toastCtrl.create({
         message: 'Incorrect credentials. Try again.',
+        showCloseButton: true,
+        closeButtonText: 'OK',
         duration: 2000
       });
       toast.present();

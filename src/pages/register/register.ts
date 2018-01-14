@@ -76,7 +76,9 @@ export class RegisterPage {
         else{
           console.log("wrong password");
           let toast = this.toastCtrl.create({
-            message: 'Passwords do not match! Try again.',
+            message: 'The passwords you have entered do not match! Try again.',
+            showCloseButton: true,
+            closeButtonText: 'OK',
             duration: 2000
           });
           toast.present();
@@ -86,6 +88,8 @@ export class RegisterPage {
         console.log("username already exists");
         let toast = this.toastCtrl.create({
           message: 'Username is already taken! Try again.',
+          showCloseButton: true,
+          closeButtonText: 'OK',
           duration: 2000
         });
         toast.present();
@@ -95,6 +99,8 @@ export class RegisterPage {
       console.log("email already used");
       let toast = this.toastCtrl.create({
         message: 'Email is already taken! Try again.',
+        showCloseButton: true,
+        closeButtonText: 'OK',
         duration: 2000
       });
       toast.present();
@@ -105,6 +111,8 @@ export class RegisterPage {
       console.log("one or more field/s lacks input")
       let toast = this.toastCtrl.create({
         message: 'Fill up all fields and try again.',
+        showCloseButton: true,
+        closeButtonText: 'OK',
         duration: 2000
       });
       toast.present();
@@ -160,7 +168,9 @@ export class RegisterPage {
   }  
     console.log("You have entered an invalid email address!");
     let toast = this.toastCtrl.create({
-      message: 'You have entered an invalid email address!',
+      message: 'You have entered an invalid email address! Try again.',
+      showCloseButton: true,
+      closeButtonText: 'OK',
       duration: 2000
     });
     toast.present();  
