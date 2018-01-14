@@ -13,7 +13,7 @@
   <ion-content padding>
   
       <ion-list>
-        <ion-item text-wrap *ngFor = 'let notif of (notifInfo | async)?.reverse()'>
+        <ion-item text-wrap *ngFor = 'let notif of notifInfo | async'>
           <div *ngIf = 'notif.category == "Traffic"'>
             <ion-icon name = "alert" item-start></ion-icon>
             {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}

@@ -37,7 +37,11 @@ export class ProviderDagitProvider {
   }
 
   getTNotif(){
-    return this.dagit.list('/NOTIFICATIONS');
+    return this.dagit.list('/NOTIFICATIONS', {
+      query:{
+        orderByChild: 'sort'
+      }
+    });
   }
 
   getDirectory() {
