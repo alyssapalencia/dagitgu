@@ -73,31 +73,31 @@ export class RegisterPage {
             if(!this.wrongPass){
               this.addUser();
             }
+            else{
+            console.log("wrong password");
+            let toast = this.toastCtrl.create({
+              message: 'Passwords do not match! Try again.',
+              duration: 2000
+            });
+            toast.present();
+          }
+        }
         else{
-          console.log("wrong password");
+          console.log("username already exists");
           let toast = this.toastCtrl.create({
-            message: 'Passwords do not match! Try again.',
+            message: 'Username is already taken! Try again.',
             duration: 2000
           });
           toast.present();
         }
       }
       else{
-        console.log("username already exists");
+        console.log("email already used");
         let toast = this.toastCtrl.create({
-          message: 'Username is already taken! Try again.',
+          message: 'Email is already taken! Try again.',
           duration: 2000
         });
         toast.present();
-      }
-    }
-    else{
-      console.log("email already used");
-      let toast = this.toastCtrl.create({
-        message: 'Email is already taken! Try again.',
-        duration: 2000
-      });
-      toast.present();
         }
       }
     }
