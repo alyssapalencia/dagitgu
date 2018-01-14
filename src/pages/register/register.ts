@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
-import { AlertController } from 'ionic-angular';
+import { AlertController, ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -25,7 +25,7 @@ export class RegisterPage {
   dupEmail = true;
   dupUser = true;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.userInfo = this.firebaseService.getUserDetail();
     var i = 0;
     this.userInfo.subscribe(snapshots => {
@@ -71,14 +71,29 @@ export class RegisterPage {
         }
         else{
           console.log("wrong password");
+          let toast = this.toastCtrl.create({
+            message: 'Passwords do not match! Try again.',
+            duration: 2000
+          });
+          toast.present();
         }
       }
       else{
         console.log("username already exists");
+        let toast = this.toastCtrl.create({
+          message: 'Username is already taken! Try again.',
+          duration: 2000
+        });
+        toast.present();
       }
     }
     else{
       console.log("email already used");
+      let toast = this.toastCtrl.create({
+        message: 'Email is already taken! Try again.',
+        duration: 2000
+      });
+      toast.present();
     }
   }
 
