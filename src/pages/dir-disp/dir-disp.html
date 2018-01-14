@@ -11,7 +11,7 @@
     <ion-card *ngFor = 'let dir of dirInfo | async'>
       <ion-card-content *ngIf = 'dir.category == Filter'>
         <!-- START POLICE -->
-        <div *ngIf = 'Filter == "Police"'>
+        <div text-wrap *ngIf = 'Filter == "Police"'>
           <ion-card-title>{{ dir.directoryName }}</ion-card-title>
           <ion-item>
             <h2>Address</h2>
@@ -28,7 +28,7 @@
             <ion-icon name="time" item-start large></ion-icon>
             <p>{{ dir.operatingHours }}</p>
           </ion-item>
-          <ion-item>
+          <ion-item *ngIf = "dir.otherInformation != null">
             <h2>Other Information</h2>
             <ion-icon name="help-circle" item-start large></ion-icon>
             <p>{{ dir.otherInformation }}</p>
@@ -36,7 +36,7 @@
         </div>
         <!-- END POLICE -->
         <!-- START MEDICAL -->
-        <div *ngIf = 'Filter == "Medical"'>
+        <div text-wrap *ngIf = 'Filter == "Medical"'>
             <ion-card-title>{{ dir.directoryName }}</ion-card-title>
             <ion-item>
               <h2>Address</h2>
@@ -53,7 +53,7 @@
               <ion-icon name="time" item-start large></ion-icon>
               <p>{{ dir.operatingHours }}</p>
             </ion-item>
-            <ion-item>
+            <ion-item *ngIf = "dir.otherInformation != null">
               <h2>Other Information</h2>
               <ion-icon name="help-circle" item-start large></ion-icon>
               <p>{{ dir.otherInformation }}</p>
@@ -61,7 +61,7 @@
           </div>
           <!-- END MEDICAL -->
           <!-- START FIRE -->
-          <div *ngIf = 'Filter == "Fire"'>
+          <div text-wrap *ngIf = 'Filter == "Fire"'>
             <ion-card-title>{{ dir.directoryName }}</ion-card-title>
              <ion-item>
               <h2>Address</h2>
@@ -78,7 +78,7 @@
               <ion-icon name="time" item-start large></ion-icon>
               <p>{{ dir.operatingHours }}</p>
             </ion-item>
-            <ion-item>
+            <ion-item *ngIf = "dir.otherInformation != null">
               <h2>Other Information</h2>
               <ion-icon name="help-circle" item-start large></ion-icon>
               <p>{{ dir.otherInformation }}</p>
@@ -86,7 +86,7 @@
           </div>
           <!-- END FIRE -->
           <!-- START TERMINALS -->
-          <div *ngIf = 'Filter == "Terminal"'>
+          <div text-wrap *ngIf = 'Filter == "Terminal"'>
             <ion-card-title>{{ dir.directoryName }}</ion-card-title>
              <ion-item>
               <h2>Address</h2>
@@ -103,7 +103,7 @@
               <ion-icon name="time" item-start large></ion-icon>
               <p>{{ dir.operatingHours }}</p>
             </ion-item>
-            <ion-item>
+            <ion-item *ngIf = "dir.otherInformation != null">
               <h2>Other Information</h2>
               <ion-icon name="help-circle" item-start large></ion-icon>
               <p>{{ dir.otherInformation }}</p>

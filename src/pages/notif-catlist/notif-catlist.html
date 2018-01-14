@@ -21,9 +21,9 @@
               <ion-icon name ="flag" item-start></ion-icon>
               {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
             </div>
-            <div *ngIf = 'Filter == "Announcement"'>
+            <div *ngIf = 'Filter == "Announcement"' (click)="dispDetails(notif)">
               <ion-icon name ="megaphone" item-start></ion-icon>
-              {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
+              {{ notif.title }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
             </div>
           </ion-item>
         </div>

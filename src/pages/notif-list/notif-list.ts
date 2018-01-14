@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { NotifCatPage } from '../notif-cat/notif-cat';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 
@@ -12,7 +12,7 @@ import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-d
 export class NotifListPage {
   notifInfo: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController) {
     this.notifInfo = this.firebaseService.getTNotif();
   }
 
@@ -24,4 +24,15 @@ export class NotifListPage {
     this.navCtrl.push(NotifCatPage);
     console.log ("Category button clicked");
   }
+
+  dispDetails(notif) {
+    console.log('Clicked');
+    let alert = this.alertCtrl.create({
+      title: notif.title,
+      subTitle: notif.notifDetail,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 }
+
