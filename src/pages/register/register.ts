@@ -98,12 +98,16 @@ export class RegisterPage {
         duration: 2000
       });
       toast.present();
-          console.log("email already used");
         }
       }
     }
     else{
       console.log("one or more field/s lacks input")
+      let toast = this.toastCtrl.create({
+        message: 'Fill up all fields and try again.',
+        duration: 2000
+      });
+      toast.present();
     }
   }
 
@@ -154,7 +158,12 @@ export class RegisterPage {
   {  
     return (true)  
   }  
-    console.log("You have entered an invalid email address!");  
+    console.log("You have entered an invalid email address!");
+    let toast = this.toastCtrl.create({
+      message: 'You have entered an invalid email address!',
+      duration: 2000
+    });
+    toast.present();  
     return (false)  
   }
 
