@@ -1,0 +1,50 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>More</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content no-bounce padding>
+    <div padding>
+      <ion-segment [(ngModel)]="more">
+        <ion-segment-button value="profile">
+          Profile
+        </ion-segment-button>
+        <ion-segment-button value="help">
+          Help
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  
+    <div [ngSwitch]="more">
+      <ion-list *ngSwitchCase="'profile'">
+        <ion-card>
+          <img src="/assets/imgs/placeholder.png">
+          <ion-card-content>
+            <ion-card-title>
+              Your Name
+            </ion-card-title>
+            <p><ion-icon name="star"></ion-icon> Member since January 9, 2018</p>
+          </ion-card-content>
+        </ion-card>
+          
+        <button ion-button full round icon-left color="secondary" style="height:50px; font-size:medium; margin-bottom:10px;">
+          <ion-icon name="settings"></ion-icon>
+          EDIT PROFILE
+        </button>
+        <button ion-button full round icon-left color="danger" style="height:50px; font-size:medium;" (click)="showLogout()">
+          <ion-icon name="unlock"></ion-icon> 
+          LOGOUT
+        </button>
+      </ion-list>
+  
+      <ion-list *ngSwitchCase="'help'">
+      filler text
+      </ion-list>
+    </div>
+    
+  </ion-content>
+  

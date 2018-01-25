@@ -1,35 +1,34 @@
 
 <ion-content no-bounce padding>
-  <ion-list>
-    <img src="/assets/imgs/LogoDagit.png" class="alignLogo">
+  <ion-list inset>
+    <img src="/assets/imgs/dagitLogo.png" class="alignLogo">
 
     <ion-item>
-      <ion-input type="email" placeholder="Email" [(ngModel)]="email"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-input type="text" placeholder="Username" [(ngModel)]="user"></ion-input>
-    </ion-item>
-    
-    <ion-item>
-      <ion-input type="text" placeholder="First Name" [(ngModel)]="fname"></ion-input>
+      <ion-input type="email" placeholder="EMAIL ADDRESS" class="pholder" [(ngModel)]="email"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="text" placeholder="Last Name" [(ngModel)]="lname"></ion-input>
+      <ion-input type="text" placeholder="USERNAME" class="pholder" [(ngModel)]="user"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="pass"></ion-input>
+      <ion-input type="text" placeholder="FIRST NAME" class="pholder" [(ngModel)]="fname"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="password" placeholder="Confirm Password" [(ngModel)]="conPass"></ion-input>
+      <ion-input type="text" placeholder="LAST NAME" class="pholder" [(ngModel)]="lname"></ion-input>
     </ion-item>
-    
-    <br><button ion-button full large class="btnLogin" (click)="check()">REGISTER</button>
+
+    <ion-item>
+      <ion-input type="password" placeholder="PASSWORD" class="pholder" [(ngModel)]="pass"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" placeholder="CONFIRM PASSWORD" class="pholder" [(ngModel)]="conPass"></ion-input>
+    </ion-item>
+
+    <br><button ion-button block large class="btnLogin" (click)="check()">REGISTER</button>
+
+    <p align="center">Already have an account? <span (click)="openLogin()" class="login">Login.</span></p>
   </ion-list>
-
-  <p align="center">Already have an account? <span (click)="openLogin()" class="login">Login.</span></p>
-
 </ion-content>

@@ -1,12 +1,13 @@
 page-register {
     .alignLogo{
-        width:50%;
+        width:60%;
         padding-top:20%;
-        transform:translateX(50%);
+        transform:translateX(30%);
     }
 
     .btnLogin{
-        color:white;
+        color:#333333;
+        font-family:"Lato";
     }
 
     .footerStyle{
@@ -17,5 +18,10 @@ page-register {
     .login{
         text-transform:uppercase;
         font-weight:bold;
+    }
+
+    .pholder
+    {
+        font-size:small;
     }
 }

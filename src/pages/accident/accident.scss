@@ -1,6 +1,13 @@
 page-accident {
-    #rounded {
-        border: solid 1px #ddd;
-        border-radius:5px;
+    .label
+    {
+        font-size:small;
+        text-transform:uppercase;
+    }
+
+    .btnSend
+    {
+        font-family:"Lato";
+        color:#333333;
     }
 }

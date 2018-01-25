@@ -34,5 +34,7 @@ export class HelpdeskPage {
     this.navCtrl.push('ViolationPage');
   }
 
-
+  openPedicab() {
+    this.navCtrl.push('PedicabPage');
+  }
 }

@@ -1,20 +1,21 @@
 
 <ion-content no-bounce padding>
   <ion-list inset>
-    <img src="/assets/imgs/LogoDagit.png" class="alignLogo">
+    <img src="/assets/imgs/dagitLogo.png" class="alignLogo">
 
     <ion-item>
-      <ion-input type="text" placeholder="Username" [(ngModel)]="tempuser"></ion-input>
+      <ion-label stacked>USERNAME</ion-label>
+      <ion-input type="text" [(ngModel)]="tempuser"></ion-input>
     </ion-item>
-    
+
     <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="temppass"></ion-input>
+      <ion-label stacked>PASSWORD</ion-label>
+      <ion-input type="password" [(ngModel)]="temppass"></ion-input>
     </ion-item>
-    
-    <br><button ion-button full large class="btnLogin" (click)="checkAuth()">LOGIN</button>
+
+    <br><button ion-button block large class="btnLogin" (click)="checkAuth()">LOGIN</button>
 
     <p align="center">Forgot password?</p>
+    <p align="center">Don't have an account? <span (click)="openRegister()" class="signUp">Sign up.</span></p>
   </ion-list>
-
-  <p align="center">Don't have an account? <span (click)="openRegister()" class="signUp">Sign up.</span></p>
 </ion-content>
