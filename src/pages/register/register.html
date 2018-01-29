@@ -12,7 +12,7 @@
     </ion-item>
     
     <ion-item>
-      <ion-input type="text" placeholder="First Name" [(ngModel)]="fname"></ion-input>
+      <ion-input type="text" placeholder="First Name" [(ngModel)]="name"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -20,14 +20,14 @@
     </ion-item>
 
     <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="pass"></ion-input>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-input type="password" placeholder="Confirm Password" [(ngModel)]="conPass"></ion-input>
     </ion-item>
     
-    <br><button ion-button full large class="btnLogin" (click)="check()">REGISTER</button>
+    <br><button ion-button full large class="btnLogin" (click)="register(email, password)">REGISTER</button>
   </ion-list>
 
   <p align="center">Already have an account? <span (click)="openLogin()" class="login">Login.</span></p>

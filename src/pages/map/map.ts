@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the MapPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MapPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MapPage');
+    var user = this.angularFireAuth.auth.currentUser;
   }
 
 }
