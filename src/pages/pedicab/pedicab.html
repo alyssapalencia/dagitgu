@@ -8,20 +8,18 @@
 
 
 <ion-content padding>
-  <ion-list inset>
-    <ion-item>
-      <ion-label stacked>PEDICAB NUMBER</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+  <ion-item>
+    <ion-label stacked>PEDICAB NUMBER</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
 
     <ion-item>
-      <ion-label style="font-size:small;">REPORT FOR</ion-label>
-      <ion-select ([ngModel])="violationType">
-        <ion-option value="ride refusal">Ride refusal</ion-option>
-        <ion-option value="fare overcharging">Fare overcharging</ion-option>
-      </ion-select>
-    </ion-item>
+    <ion-label style="font-size:small;">REPORT FOR</ion-label>
+    <ion-select ([ngModel])="violationType">
+      <ion-option value="ride refusal">Ride refusal</ion-option>
+      <ion-option value="fare overcharging">Fare overcharging</ion-option>
+    </ion-select>
+  </ion-item>
 
-    <br><button ion-button block large class="btnSend">SEND</button>
-  </ion-list>
+  <br><button ion-button block large class="btnSend">SEND</button>
 </ion-content>

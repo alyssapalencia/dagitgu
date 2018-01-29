@@ -36,7 +36,7 @@ export class MorePage {
             this.app.getRootNav().setRoot(LoginPage);
             let toast = this.toastCtrl.create({
               message: 'You have successfully logged out.',
-              duration: 2000
+              duration: 1500
             });
             toast.present();
             /* let nav = this.app.getRootNav();
