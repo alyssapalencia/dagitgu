@@ -13,8 +13,8 @@
         <ion-segment-button value="profile">
           Profile
         </ion-segment-button>
-        <ion-segment-button value="help">
-          Help
+        <ion-segment-button value="faqs">
+          FAQs
         </ion-segment-button>
       </ion-segment>
     </div>
@@ -41,8 +41,30 @@
         </button>
       </ion-list>
   
-      <ion-list *ngSwitchCase="'help'">
-      filler text
+      <!-- -->
+      <ion-list *ngSwitchCase="'faqs'">
+      <ion-card>
+        <ion-card-header text-wrap>What is the current pedicab rate?</ion-card-header>
+        <ion-card-content>
+            The current pedicab rate is ₱8.00 with an additional ₱0.50 per kilometer per person.
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+          <ion-card-header text-wrap>What if I'm alone and an empty pedicab won't let me ride?</ion-card-header>
+          <ion-card-content>
+              Report the pedicab immediately through our Report Pedicab form.
+              Enter the pedicab number, select "Ride refusal" and press SEND.
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card>
+            <ion-card-header text-wrap>What if a pedicab driver overcharges my fare?</ion-card-header>
+            <ion-card-content>
+                Report the pedicab immediately through our Report Pedicab form.
+                Enter the pedicab number, select "Fare overcharging" and press SEND.
+            </ion-card-content>
+          </ion-card>
       </ion-list>
     </div>
     

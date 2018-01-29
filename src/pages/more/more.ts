@@ -8,8 +8,10 @@ import { LoginPage } from '../login/login';
   templateUrl: 'more.html',
 })
 export class MorePage {
+  more: string = "profile"; //sets profile as default segment
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private app: App, public toastCtrl: ToastController) {
+    
   }
 
   ionViewDidLoad() {
