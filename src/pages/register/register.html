@@ -7,12 +7,12 @@
       <ion-input type="email" placeholder="EMAIL ADDRESS" class="pholder" [(ngModel)]="email"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-input type="text" placeholder="USERNAME" class="pholder" [(ngModel)]="user"></ion-input>
-    </ion-item>
+    <!--<ion-item>
+      <ion-input type="text" placeholder="DISPLAY NAME" class="pholder" [(ngModel)]="name"></ion-input>
+    </ion-item>-->
 
     <ion-item>
-      <ion-input type="text" placeholder="First Name" [(ngModel)]="name"></ion-input>
+      <ion-input type="text" placeholder="FIRST NAME" class="pholder" [(ngModel)]="fname"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -20,7 +20,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" placeholder="PASSWORD" class="pholder" [(ngModel)]="password"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -28,9 +28,6 @@
     </ion-item>
     
     <br><button ion-button full large class="btnLogin" (click)="register(email, password)">REGISTER</button>
-  </ion-list>
-
-    <br><button ion-button block large class="btnLogin" (click)="check()">REGISTER</button>
 
     <p align="center">Already have an account? <span (click)="openLogin()" class="login">Login.</span></p>
   </ion-list>

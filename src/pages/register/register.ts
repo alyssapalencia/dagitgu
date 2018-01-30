@@ -47,6 +47,12 @@ export class RegisterPage {
         user.sendEmailVerification()
         .then(() => {
           console.log('email sent');
+          let alert = this.alertCtrl.create({
+            title: 'Email sent!',
+            subTitle: 'A verification link has been sent to your email. Check your email and follow the link to finish creating your DAGIT account.',
+            buttons: ['OK']
+          });
+          alert.present();
         })
       });
   }
@@ -60,14 +66,32 @@ export class RegisterPage {
       if(errorCode === 'auth/email-already-in-use'){
         console.log(errorCode);
         noError = false;
+        let alert = this.alertCtrl.create({
+          title: 'Email Already In Use',
+          subTitle: 'The email you entered is already used by someone else. Please enter another email and try again.',
+          buttons: ['OK']
+        });
+        alert.present();
       }
       else if(errorCode === 'auth/invalid-email'){
         console.log(errorCode);
         noError = false;
+        let alert = this.alertCtrl.create({
+          title: 'Invalid Email',
+          subTitle: 'The email you entered is invalid. Please enter a valid email address and try again.',
+          buttons: ['OK']
+        });
+        alert.present();
       }
       else if(errorCode === 'auth/weak-password'){
         console.log(errorCode);
         noError = false;
+        let alert = this.alertCtrl.create({
+          title: 'Weak Password',
+          subTitle: 'The password you entered is weak. Please use a combination of letters and numbers and try again.',
+          buttons: ['OK']
+        });
+        alert.present();
       }
     })
     .then((res) => {
@@ -116,47 +140,52 @@ export class RegisterPage {
             }
             else{
             console.log("wrong password");
-            let toast = this.toastCtrl.create({
-              message: 'Passwords do not match. Try again.',
-              duration: 1500
+            let alert = this.alertCtrl.create({
+              title: 'Incorrect Password',
+              subTitle: 'The passwords you entered do not match. Please retype your password and try again.',
+              buttons: ['OK']
             });
-            toast.present();
+            alert.present();
             }
           }
           else{
             console.log("username already exists");
-            let toast = this.toastCtrl.create({
-              message: 'Username already taken. Try again.',
-              duration: 1500
+            let alert = this.alertCtrl.create({
+              title: 'Username Taken',
+              subTitle: 'The username you entered already exists. Please enter another username and try again.',
+              buttons: ['OK']
             });
-            toast.present();
+            alert.present();
           }
         }
         else{
           console.log("email already used");
-          let toast = this.toastCtrl.create({
-            message: 'Email already used. Try again.',
-            duration: 1500
+          let alert = this.alertCtrl.create({
+            title: 'Email Already In Use',
+            subTitle: 'The email you entered belongs to an existing account. Please enter another email address and try again.',
+            buttons: ['OK']
           });
-          toast.present();
+          alert.present();
         }
       }
       else{
         console.log("email invalid");
-        let toast = this.toastCtrl.create({
-          message: 'Email address invalid. Try again.',
-          duration: 1500
+        let alert = this.alertCtrl.create({
+          title: 'Invalid Email',
+          subTitle: 'The email you entered is invalid. Please enter a valid email address and try again.',
+          buttons: ['OK']
         });
-        toast.present();
+        alert.present();
       }
     }
     else{
       console.log("one or more field/s lacks input")
-      let toast = this.toastCtrl.create({
-        message: 'Fill up all fields and try again.',
-        duration: 1500
+      let alert = this.alertCtrl.create({
+        title: 'Missing Information',
+        subTitle: 'Please fill up the form and try again.',
+        buttons: ['OK']
       });
-      toast.present();
+      alert.present();
     }
   }
   

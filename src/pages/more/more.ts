@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController, App } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ChangePasswordPage } from '../change-password/change-password';
+import { EditProfilePage } from '../edit-profile/edit-profile';
 
 @IonicPage()
 @Component({
@@ -78,5 +80,13 @@ export class MorePage {
       ]
     });
     confirm.present();
+  }
+
+  openChangePassword() {
+    this.navCtrl.push(ChangePasswordPage);
+  }
+
+  openEditProfile() {
+    this.navCtrl.push(EditProfilePage);
   }
 }

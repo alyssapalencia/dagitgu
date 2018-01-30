@@ -30,13 +30,19 @@
             <p><ion-icon name="star"></ion-icon> Member since January 9, 2018</p>
           </ion-card-content>
         </ion-card>
-          
-        <button ion-button full round icon-left color="secondary" style="height:50px; font-size:medium; margin-bottom:10px;">
+
+        <button ion-button block icon-left medium class="btn" color="secondary" (click)="openEditProfile()">
           <ion-icon name="settings"></ion-icon>
           EDIT PROFILE
         </button>
-        <button ion-button full round icon-left color="danger" style="height:50px; font-size:medium;" (click)="showLogout()">
-          <ion-icon name="unlock"></ion-icon> 
+        
+        <button ion-button block icon-left medium class="btn" color="primary" (click)="openChangePassword()">
+          <ion-icon name="key"></ion-icon>
+          CHANGE PASSWORD
+        </button>
+        
+        <button ion-button block icon-left medium class="btn" color="danger" (click)="showLogout()">
+          <ion-icon name="unlock"></ion-icon>
           LOGOUT
         </button>
       </ion-list>

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
-import { ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
@@ -18,7 +17,7 @@ export class LoginPage {
   confirmUser: any[] = [];
   confirmPass: any[] = [];
 
-  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public toastCtrl: ToastController) {
+  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public toastCtrl: ToastController, public alertCtrl: AlertController) {
     this.userInfo = this.firebaseService.getUserDetail();
     var i = 0;
     this.userInfo.subscribe(snapshots => {
@@ -50,14 +49,32 @@ export class LoginPage {
       if(errorCode === 'auth/invalid-email'){
         console.log('invalid email');
         noError = false;
+        let alert = this.alertCtrl.create({
+          title: 'Invalid Email',
+          subTitle: 'The email you entered is invalid. Please enter a valid email address and try again.',
+          buttons: ['OK']
+        });
+        alert.present();
       }
       else if(errorCode === 'auth/user-not-found'){
         console.log('user not found');
         noError = false;
+        let alert = this.alertCtrl.create({
+          title: 'User Not Found',
+          subTitle: 'The user does not exist. Please retype your username and try again.',
+          buttons: ['OK']
+        });
+        alert.present();
       }
       else if(errorCode === 'auth/wrong-password'){
         console.log('wrong password');
         noError = false;
+        let alert = this.alertCtrl.create({
+          title: 'Wrong Password',
+          subTitle: 'The password you entered is incorrect. Please retype your password and try again.',
+          buttons: ['OK']
+        });
+        alert.present();
       }
     })
     .then((user) => {
@@ -73,6 +90,12 @@ export class LoginPage {
           console.log('check email');
           this.sendEmailVerification();
           // Tell the user to have a look at his/her email
+          let alert = this.alertCtrl.create({
+            title: 'Check Email',
+            subTitle: 'A verification link was sent to your email. Check your email and follow the link to finish creating your DAGIT account.',
+            buttons: ['OK']
+          });
+          alert.present();
         }
       }
     })

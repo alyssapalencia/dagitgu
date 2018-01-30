@@ -4,11 +4,11 @@
     <img src="/assets/imgs/dagitLogo.png" class="alignLogo">
 
     <ion-item>
-      <ion-input type="text" placeholder="Username" [(ngModel)]="email"></ion-input>
+      <ion-input type="text" placeholder="EMAIL" class="pholder" [(ngModel)]="email"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+      <ion-input type="password" placeholder="PASSWORD" class="pholder" [(ngModel)]="password"></ion-input>
     </ion-item>
     
     <br><button ion-button full large class="btnLogin" (click)="login(email, password)">LOGIN</button>
