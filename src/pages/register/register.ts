@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AlertController, ToastController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,7 @@ export class RegisterPage {
   userInfo: any;
   email: any;
   user: any;
-  fname: any;
+  name: any;
   lname: any;
   pass: any;
   conPass: any;
@@ -25,7 +26,7 @@ export class RegisterPage {
   dupEmail = true;
   dupUser = true;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController, public toastCtrl: ToastController) {
+  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController, public toastCtrl: ToastController) {
     this.userInfo = this.firebaseService.getUserDetail();
     var i = 0;
     this.userInfo.subscribe(snapshots => {
@@ -39,6 +40,46 @@ export class RegisterPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
+  }
+
+  sendEmailVerification() {
+    this.angularFireAuth.authState.subscribe(user => {
+        user.sendEmailVerification()
+        .then(() => {
+          console.log('email sent');
+        })
+      });
+  }
+
+  register(email, password) {
+    var noError = true;
+    this.angularFireAuth.auth.createUserWithEmailAndPassword(email, password)
+    .catch((err)=> {
+      var errorCode = err.code;
+
+      if(errorCode === 'auth/email-already-in-use'){
+        console.log(errorCode);
+        noError = false;
+      }
+      else if(errorCode === 'auth/invalid-email'){
+        console.log(errorCode);
+        noError = false;
+      }
+      else if(errorCode === 'auth/weak-password'){
+        console.log(errorCode);
+        noError = false;
+      }
+    })
+    .then((res) => {
+      if(noError){
+        res.updateProfile({
+        displayName: this.name,
+        photoURL: ''
+        })
+        this.sendEmailVerification();
+        console.log(res);
+      }  
+    });
   }
 
   check(){
@@ -128,7 +169,7 @@ export class RegisterPage {
     this.userInfo = {
       "emailAddress": this.email,
       "username": this.user,
-      "fName": this.fname,
+      "fName": this.name,
       "lName": this.lname,
       "password": this.pass
     }
@@ -148,7 +189,7 @@ export class RegisterPage {
 
     if(!this.isBlank(this.email)){
       if(!this.isBlank(this.user)){
-        if(!this.isBlank(this.fname)){
+        if(!this.isBlank(this.name)){
           if(!this.isBlank(this.lname)){
             if(!this.isBlank(this.pass)){
               if(!this.isBlank(this.conPass)){

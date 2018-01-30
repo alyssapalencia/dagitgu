@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { ToastController } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
@@ -9,6 +10,7 @@ import { ToastController } from 'ionic-angular';
   templateUrl: 'login.html',
 })
 export class LoginPage {
+
   tempuser: any;
   temppass: any;
   temp: any;
@@ -16,7 +18,7 @@ export class LoginPage {
   confirmUser: any[] = [];
   confirmPass: any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public toastCtrl: ToastController) {
+  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public toastCtrl: ToastController) {
     this.userInfo = this.firebaseService.getUserDetail();
     var i = 0;
     this.userInfo.subscribe(snapshots => {
@@ -28,40 +30,56 @@ export class LoginPage {
     });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  sendEmailVerification() {
+    this.angularFireAuth.authState.subscribe(user => {
+        user.sendEmailVerification()
+        .then(() => {
+          console.log('email sent');
+        })
+      });
   }
 
-  checkAuth(){
-    var check=false;
+  login(username, password) {
+    var noError = true;
 
-    for(var i=0; i<this.confirmUser.length; i++){
-      for(var j=0; j<this.confirmPass.length; j++){
-        if(this.tempuser == this.confirmUser[i]){
-          if(this.temppass == this.confirmPass[j]){
-            check=true;
-            console.log("logged in");
-            this.navCtrl.setRoot('TabsPage');
-            this.navCtrl.popToRoot();
-
-            let toast = this.toastCtrl.create({
-              message: 'Login successful.',
-              position: "top",
-              duration: 1500,
-            });
-            toast.present();
-          }
+    console.log(username, password);
+    this.angularFireAuth.auth.signInWithEmailAndPassword(username, password)
+    .catch(function(error){
+      var errorCode = error.code;
+      console.log(errorCode);
+      if(errorCode === 'auth/invalid-email'){
+        console.log('invalid email');
+        noError = false;
+      }
+      else if(errorCode === 'auth/user-not-found'){
+        console.log('user not found');
+        noError = false;
+      }
+      else if(errorCode === 'auth/wrong-password'){
+        console.log('wrong password');
+        noError = false;
+      }
+    })
+    .then((user) => {
+      console.log(user);
+      if(noError){
+        if(user.emailVerified) {
+          console.log("logged in");
+          this.navCtrl.setRoot('TabsPage');
+          this.navCtrl.popToRoot();
+          // Redirect the user here 
+        }
+        else {
+          console.log('check email');
+          this.sendEmailVerification();
+          // Tell the user to have a look at his/her email
         }
       }
-    }
-    if(!check){
-      console.log("incorrect credentials");
-      let toast = this.toastCtrl.create({
-        message: 'Incorrect credentials. Try again.',
-        duration: 1500
-      });
-      toast.present();
-    }
+    })
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
   }
 
   openRegister() {
