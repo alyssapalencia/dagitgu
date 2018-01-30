@@ -29,14 +29,18 @@
             </ion-card-title>
             <p><ion-icon name="star"></ion-icon> Member since January 9, 2018</p>
           </ion-card-content>
+
+          <ion-row no-padding>
+            <ion-col>
+              <button ion-button clear small color="primary" icon-start>
+                <ion-icon name="settings"></ion-icon>
+                EDIT IMAGE
+              </button>
+            </ion-col>
+          </ion-row>
         </ion-card>
 
-        <button ion-button block icon-left medium class="btn" color="secondary" (click)="openEditProfile()">
-          <ion-icon name="settings"></ion-icon>
-          EDIT PROFILE
-        </button>
-        
-        <button ion-button block icon-left medium class="btn" color="primary" (click)="openChangePassword()">
+        <button ion-button block icon-left medium class="btn" color="secondary" (click)="openChangePassword()">
           <ion-icon name="key"></ion-icon>
           CHANGE PASSWORD
         </button>

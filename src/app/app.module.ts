@@ -20,7 +20,6 @@ import { ProviderDagitProvider } from '../providers/provider-dagit/provider-dagi
 import { DirDispPage } from '../pages/dir-disp/dir-disp';
 import { LoginPage } from '../pages/login/login';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
-import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 
 var config = {
   apiKey: "AIzaSyDPsMJ-x7W6_U_k3JsNwMNkxL38e8NkQDI",
@@ -38,8 +37,7 @@ var config = {
     NotifCatlistPage,
     DirDispPage,
     LoginPage,
-    ChangePasswordPage,
-    EditProfilePage
+    ChangePasswordPage
   ],
   imports: [
     BrowserModule,
@@ -56,8 +54,7 @@ var config = {
     NotifCatlistPage, 
     DirDispPage,
     LoginPage,
-    ChangePasswordPage,
-    EditProfilePage
+    ChangePasswordPage
   ],
   providers: [
     StatusBar,

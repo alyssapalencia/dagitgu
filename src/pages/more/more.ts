@@ -85,8 +85,4 @@ export class MorePage {
   openChangePassword() {
     this.navCtrl.push(ChangePasswordPage);
   }
-
-  openEditProfile() {
-    this.navCtrl.push(EditProfilePage);
-  }
 }
