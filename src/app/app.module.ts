@@ -18,8 +18,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProviderDagitProvider } from '../providers/provider-dagit/provider-dagit';
 import { DirDispPage } from '../pages/dir-disp/dir-disp';
-import { LoginPage } from '../pages/login/login';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
+import { LoginPage } from '../pages/login/login';
 
 var config = {
   apiKey: "AIzaSyDPsMJ-x7W6_U_k3JsNwMNkxL38e8NkQDI",
@@ -36,8 +36,8 @@ var config = {
     NotifCatPage,
     NotifCatlistPage,
     DirDispPage,
-    LoginPage,
-    ChangePasswordPage
+    ChangePasswordPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -53,15 +53,15 @@ var config = {
     NotifCatPage,
     NotifCatlistPage, 
     DirDispPage,
-    LoginPage,
-    ChangePasswordPage
+    ChangePasswordPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProviderDagitProvider,
-    AngularFireAuth
+    AngularFireAuth,
   ]
 })
 export class AppModule {}

@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController, 
 import { LoginPage } from '../login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ChangePasswordPage } from '../change-password/change-password';
-import { EditProfilePage } from '../edit-profile/edit-profile';
 
 @IonicPage()
 @Component({
@@ -70,7 +69,7 @@ export class MorePage {
             this.app.getRootNav().setRoot(LoginPage);
             let toast = this.toastCtrl.create({
               message: 'You have successfully logged out.',
-              duration: 1500
+              duration: 2000
             });
             toast.present();
             /* let nav = this.app.getRootNav();
