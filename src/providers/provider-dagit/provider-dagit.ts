@@ -22,6 +22,20 @@ export class ProviderDagitProvider {
     this.dagit.list('/chat/' + this.user).push(message);
   }
 
+  /*
+  addAccidentReport(accident){
+    this.dagit.list('/CONTACT/ACCIDENT').push(accident);
+  }
+
+  addViolationReport(violation){
+    this.dagit.list('/CONTACT/VIOLATION').push(violation);
+  }
+
+  addPedicabReport(pedicab){
+    this.dagit.list('/CONTACT/PEDICAB').push(pedicab);
+  }
+  */
+
   getUserDetail(){
     return this.dagit.list('/ACCOUNTS/GENERAL', {
       preserveSnapshot: true

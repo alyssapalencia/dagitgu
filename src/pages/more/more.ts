@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController, 
 import { LoginPage } from '../login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { ChangePasswordPage } from '../change-password/change-password';
+import { UpdateProfileImagePage } from '../update-profile-image/update-profile-image';
 
 @IonicPage()
 @Component({
@@ -79,6 +80,10 @@ export class MorePage {
       ]
     });
     confirm.present();
+  }
+
+  openUpdateProfileImage() {
+    this.navCtrl.push(UpdateProfileImagePage);
   }
 
   openChangePassword() {

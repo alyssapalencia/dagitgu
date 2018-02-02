@@ -22,22 +22,17 @@
     <div [ngSwitch]="more">
       <ion-list *ngSwitchCase="'profile'">
         <ion-card>
-          <img src="/assets/imgs/placeholder.png">
           <ion-card-content>
-            <ion-card-title>
-              Your Name
-            </ion-card-title>
-            <p><ion-icon name="star"></ion-icon> Member since January 9, 2018</p>
+            <img src="/assets/imgs/placeholder.png">
           </ion-card-content>
 
-          <ion-row no-padding>
-            <ion-col>
-              <button ion-button clear small color="primary" icon-start>
-                <ion-icon name="settings"></ion-icon>
-                EDIT IMAGE
+          <ion-item>
+            Sample Name
+            <button ion-button outline item-end small color="primary" icon-start (click)="openUpdateProfileImage()">
+              <ion-icon name="settings"></ion-icon>
+              EDIT IMAGE
               </button>
-            </ion-col>
-          </ion-row>
+          </ion-item>
         </ion-card>
 
         <button ion-button block icon-left medium class="btn" color="secondary" (click)="openChangePassword()">
