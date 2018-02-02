@@ -19,7 +19,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProviderDagitProvider } from '../providers/provider-dagit/provider-dagit';
 import { DirDispPage } from '../pages/dir-disp/dir-disp';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
-import { LoginPage } from '../pages/login/login';
+//import { LoginPage } from '../pages/login/login';
 
 var config = {
   apiKey: "AIzaSyDPsMJ-x7W6_U_k3JsNwMNkxL38e8NkQDI",
@@ -37,7 +37,7 @@ var config = {
     NotifCatlistPage,
     DirDispPage,
     ChangePasswordPage,
-    LoginPage
+    //LoginPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +54,7 @@ var config = {
     NotifCatlistPage, 
     DirDispPage,
     ChangePasswordPage,
-    LoginPage
+    //LoginPage
   ],
   providers: [
     StatusBar,

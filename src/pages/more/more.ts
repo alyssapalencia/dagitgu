@@ -12,12 +12,22 @@ import { ChangePasswordPage } from '../change-password/change-password';
 export class MorePage {
   more: string = "profile"; //sets profile as default segment
 
+  currUser: any;
+
   constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private app: App, public toastCtrl: ToastController) {
+    this.currUser = angularFireAuth.auth.currentUser;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
     console.log(this.angularFireAuth.auth.currentUser.email);
+  }
+
+  changePassword(){
+    this.angularFireAuth.auth.sendPasswordResetEmail(this.currUser.email)
+    .then(() => {
+        console.log("email sent");
+    })
   }
 
   logoutUser() {
@@ -66,6 +76,7 @@ export class MorePage {
           text: 'Logout',
           handler: () => {
             console.log('Logout clicked');
+            this.angularFireAuth.auth.signOut();
             this.app.getRootNav().setRoot(LoginPage);
             let toast = this.toastCtrl.create({
               message: 'You have successfully logged out.',

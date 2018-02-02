@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
 
-/**
- * Generated class for the ChangePasswordPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -14,12 +9,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'change-password.html',
 })
 export class ChangePasswordPage {
+  newPass: any;
+  oldPass: any;
+  conPass: any;
+  currUser: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+    this.currUser = angularFireAuth.auth.currentUser;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangePasswordPage');
+  }
+
+  sendEmail(){
+    this.angularFireAuth.auth.sendPasswordResetEmail(this.currUser.email)
+    .then(() => {
+        console.log("email sent");
+    })
   }
 
 }

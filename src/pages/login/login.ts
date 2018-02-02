@@ -29,13 +29,13 @@ export class LoginPage {
     });
   }
 
-  sendEmailVerification() {
+  sendemailVerification() {
     this.angularFireAuth.authState.subscribe(user => {
-        user.sendEmailVerification()
+      user.sendEmailVerification()
         .then(() => {
           console.log('email sent');
-        })
-      });
+      })
+    });
   }
 
   login(username, password) {
@@ -61,7 +61,7 @@ export class LoginPage {
         noError = false;
         let alert = this.alertCtrl.create({
           title: 'User Not Found',
-          subTitle: 'The user does not exist. Please retype your username and try again.',
+          subTitle: 'The user does not exist. Please retype your email and try again.',
           buttons: ['OK']
         });
         alert.present();
@@ -88,7 +88,7 @@ export class LoginPage {
         }
         else {
           console.log('check email');
-          this.sendEmailVerification();
+          this.sendemailVerification();
           // Tell the user to have a look at his/her email
           let alert = this.alertCtrl.create({
             title: 'Check Email',
@@ -107,5 +107,9 @@ export class LoginPage {
 
   openRegister() {
     this.navCtrl.push('RegisterPage');
+  }
+
+  forgotPass(){
+    this.navCtrl.push('ForgotPasswordPage');
   }
 }

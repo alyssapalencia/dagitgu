@@ -27,9 +27,9 @@ export class MyApp {
             unsubscribe();
           }
           else{
+            this.angularFireAuth.auth.signOut();
             this.rootPage = 'LoginPage';
             unsubscribe();
-            this.angularFireAuth.auth.signOut();
           }
         }
       });
