@@ -35,12 +35,12 @@
           </ion-item>
         </ion-card>
 
-        <button ion-button block icon-left medium class="btn" color="secondary" (click)="openChangePassword()">
+        <button ion-button block icon-left large class="btn" color="secondary" (click)="openChangePassword()">
           <ion-icon name="key"></ion-icon>
           CHANGE PASSWORD
         </button>
         
-        <button ion-button block icon-left medium class="btn" color="danger" (click)="showLogout()">
+        <button ion-button block icon-left large class="btn" color="danger" (click)="showLogout()">
           <ion-icon name="unlock"></ion-icon>
           LOGOUT
         </button>
@@ -48,28 +48,12 @@
   
       <!-- -->
       <ion-list *ngSwitchCase="'faqs'">
-      <ion-card>
-        <ion-card-header text-wrap>What is the current pedicab rate?</ion-card-header>
+      <ion-card *ngFor = 'let inf of info | async'>
+        <ion-card-header text-wrap>{{ inf.title }}</ion-card-header>
         <ion-card-content>
-            The current pedicab rate is ₱8.00 with an additional ₱0.50 per kilometer per person.
+            {{ inf.body }}
         </ion-card-content>
       </ion-card>
-
-      <ion-card>
-          <ion-card-header text-wrap>What if I'm alone and an empty pedicab won't let me ride?</ion-card-header>
-          <ion-card-content>
-              Report the pedicab immediately through our Report Pedicab form.
-              Enter the pedicab number, select "Ride refusal" and press SEND.
-          </ion-card-content>
-        </ion-card>
-
-        <ion-card>
-            <ion-card-header text-wrap>What if a pedicab driver overcharges my fare?</ion-card-header>
-            <ion-card-content>
-                Report the pedicab immediately through our Report Pedicab form.
-                Enter the pedicab number, select "Fare overcharging" and press SEND.
-            </ion-card-content>
-          </ion-card>
       </ion-list>
     </div>
     

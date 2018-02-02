@@ -22,19 +22,17 @@ export class ProviderDagitProvider {
     this.dagit.list('/chat/' + this.user).push(message);
   }
 
-  /*
   addAccidentReport(accident){
-    this.dagit.list('/CONTACT/ACCIDENT').push(accident);
+    this.dagit.list('/ACCIDENT').push(accident);
   }
 
   addViolationReport(violation){
-    this.dagit.list('/CONTACT/VIOLATION').push(violation);
+    this.dagit.list('/VIOLATION').push(violation);
   }
 
   addPedicabReport(pedicab){
-    this.dagit.list('/CONTACT/PEDICAB').push(pedicab);
+    this.dagit.list('/PEDICAB').push(pedicab);
   }
-  */
 
   getUserDetail(){
     return this.dagit.list('/ACCOUNTS/GENERAL', {
@@ -60,6 +58,10 @@ export class ProviderDagitProvider {
 
   getDirectory() {
     return this.dagit.list('/DIRECTORY');
+  }
+
+  getInfo() {
+    return this.dagit.list('/INFORMATION');
   }
 
 }
