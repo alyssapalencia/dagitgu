@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AngularFireAuth } from 'angularfire2/auth';
-//import * as moment from 'moment';
+import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -22,6 +22,7 @@ export class AccidentPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccidentPage');
+    console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
   }
 
   addAccidentReport() {
@@ -29,7 +30,7 @@ export class AccidentPage {
       "reportSender": this.user.displayName,
       "location": this.location,
       "accidentDescription": this.accidentDescription,
-      //"timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString()
+      "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString()
     }
     this.firebaseService.addAccidentReport(this.accidentInfo);
     let alert = this.alertCtrl.create({

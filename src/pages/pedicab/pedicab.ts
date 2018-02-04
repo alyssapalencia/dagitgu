@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AngularFireAuth } from 'angularfire2/auth';
-//import * as moment from 'moment';
+import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -22,14 +22,15 @@ export class PedicabPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PedicabPage');
+    console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
   }
 
   addPedicabReport() {
     this.pedicabInfo = {
       "reportSender": this.user.displayName,
       "pedicabNumber": this.pedicabNumber,
-      "violationType": this.violationType
-      //"timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString()
+      "violationType": this.violationType,
+      "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString()
     }
     this.firebaseService.addPedicabReport(this.pedicabInfo);
     let alert = this.alertCtrl.create({

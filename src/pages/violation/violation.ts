@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AngularFireAuth } from 'angularfire2/auth';
-//import * as moment from 'moment';
+import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -22,6 +22,7 @@ export class ViolationPage {
 
   constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
     this.user = this.angularFireAuth.auth.currentUser;
+    console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
   }
 
   ionViewDidLoad() {
@@ -36,8 +37,8 @@ export class ViolationPage {
       "vehicleType": this.vehicleType,
       "plateNumber": this.plateNumber,
       "color": this.color,
-      "model": this.model
-      //"timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString()
+      "model": this.model,
+      "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString()
     }
     this.firebaseService.addViolationReport(this.violationInfo);
     let alert = this.alertCtrl.create({
