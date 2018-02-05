@@ -11,16 +11,13 @@
   <ion-card>
     <ion-card-header>Your Current Profile Image</ion-card-header>
     <ion-card-content>
-      <img src="/assets/imgs/placeholder.png">
+      <img src="{{ user.photoURL }}">
     </ion-card-content>
 
     <ion-item>
-      <button ion-button clear item-start small color="primary" icon-start>
+      <button ion-button clear item-start small color="primary" icon-start (click)="openGallery()">
         <ion-icon name="cloud-upload"></ion-icon>
         UPLOAD IMAGE
-      </button>
-      <button ion-button outline item-end small color="primary" icon-start>
-        SAVE
       </button>
     </ion-item>
   </ion-card>

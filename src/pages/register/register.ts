@@ -32,7 +32,7 @@ export class RegisterPage {
 
   sendemailVerification() {
     this.angularFireAuth.authState.subscribe(user => {
-        user.sendEmailVerification()
+      user.sendEmailVerification()
         .then(() => {
           console.log('email sent');
           let alert = this.alertCtrl.create({
@@ -42,7 +42,7 @@ export class RegisterPage {
           });
           alert.present();
         })
-      });
+    });
   }
 
   register(email, password) {
@@ -100,8 +100,8 @@ export class RegisterPage {
       else{
         console.log("wrong password");
         let alert = this.alertCtrl.create({
-          title: 'Incorrect Password',
-          subTitle: 'The passwords you entered do not match. Please retype your password and try again.',
+          title: 'Passwords Do Not Match',
+          subTitle: 'You must enter the same password twice in order to confirm it.',
           buttons: ['OK']
         });
         alert.present();

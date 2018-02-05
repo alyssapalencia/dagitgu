@@ -23,15 +23,11 @@
       <ion-list *ngSwitchCase="'profile'">
         <ion-card>
           <ion-card-content>
-            <img src="/assets/imgs/placeholder.png">
-            <ion-card-title>
-              {{ currUser.displayName }}
-            </ion-card-title>
-            <p><ion-icon name="star"></ion-icon> Member since January 9, 2018</p>
+            <img src = "{{ currUser.photoURL }}">
           </ion-card-content>
 
           <ion-item>
-            Sample Name
+              {{ currUser.displayName }}
             <button ion-button outline item-end small color="primary" icon-start (click)="openUpdateProfileImage()">
               <ion-icon name="settings"></ion-icon>
               EDIT IMAGE

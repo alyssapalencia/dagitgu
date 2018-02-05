@@ -25,10 +25,7 @@ export class MorePage {
   }
 
   changePassword(){
-    this.angularFireAuth.auth.sendPasswordResetEmail(this.currUser.email)
-    .then(() => {
-        console.log("email sent");
-    })
+    this.navCtrl.push(ChangePasswordPage);
   }
 
   logoutUser() {
