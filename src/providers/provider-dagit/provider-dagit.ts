@@ -60,8 +60,22 @@ export class ProviderDagitProvider {
     return this.dagit.list('/DIRECTORY');
   }
 
-  getInfo() {
-    return this.dagit.list('/INFORMATION');
+  uploadPhoto(image, key){
+    var dlURL;
+    var metadata = {
+      contentType: 'image/jpeg'
+    }
+    const storageRef = this.firebaseApp.storage().ref().child('images/'+key+'.jpg').put(image);
+    //storageRef.putString(image, 'base64', metadata);
+    //dlURL = storageRef.child('some text').getDownloadURL;
+    return storageRef;
+  }
+
+  addImageName(){
+    var key;
+
+    key = this.dagit.list('IMAGE_NAME').push(Date.now());
+    return key;
   }
 
 }

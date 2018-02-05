@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ChangePasswordPage } from './change-password';
+import { ForgotPasswordPage } from './forgot-password';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
-    ChangePasswordPage,
+    ForgotPasswordPage,
   ],
   imports: [
-    IonicPageModule.forChild(ChangePasswordPage),
+    IonicPageModule.forChild(ForgotPasswordPage),
   ],
-  providers: [
+  providers:[
     AngularFireAuth
   ]
 })
-export class ChangePasswordPageModule {}
+export class ForgotPasswordPageModule {}

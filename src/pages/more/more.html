@@ -23,11 +23,11 @@
       <ion-list *ngSwitchCase="'profile'">
         <ion-card>
           <ion-card-content>
-            <img src="/assets/imgs/placeholder.png">
+            <img src = "{{ currUser.photoURL }}">
           </ion-card-content>
 
           <ion-item>
-            Sample Name
+              {{ currUser.displayName }}
             <button ion-button outline item-end small color="primary" icon-start (click)="openUpdateProfileImage()">
               <ion-icon name="settings"></ion-icon>
               EDIT IMAGE
@@ -35,7 +35,7 @@
           </ion-item>
         </ion-card>
 
-        <button ion-button block icon-left large class="btn" color="secondary" (click)="openChangePassword()">
+        <button ion-button block icon-left medium class="btn" color="secondary" (click)="changePassword()">
           <ion-icon name="key"></ion-icon>
           CHANGE PASSWORD
         </button>

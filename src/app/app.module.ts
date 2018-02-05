@@ -20,6 +20,7 @@ import { ProviderDagitProvider } from '../providers/provider-dagit/provider-dagi
 import { DirDispPage } from '../pages/dir-disp/dir-disp';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { UpdateProfileImagePage } from '../pages/update-profile-image/update-profile-image';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 var config = {
   apiKey: "AIzaSyDPsMJ-x7W6_U_k3JsNwMNkxL38e8NkQDI",
@@ -37,6 +38,7 @@ var config = {
     NotifCatlistPage,
     DirDispPage,
     ChangePasswordPage,
+    //LoginPage,
     UpdateProfileImagePage
   ],
   imports: [
@@ -54,6 +56,7 @@ var config = {
     NotifCatlistPage, 
     DirDispPage,
     ChangePasswordPage,
+    //LoginPage,
     UpdateProfileImagePage
   ],
   providers: [
@@ -62,6 +65,7 @@ var config = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProviderDagitProvider,
     AngularFireAuth,
+    Camera
   ]
 })
 export class AppModule {}

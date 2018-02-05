@@ -12,6 +12,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
   ],
   providers: [
     AngularFireAuth
-  ]
+  ],
+  entryComponents: [
+    LoginPage
+]
 })
 export class LoginPageModule {}
