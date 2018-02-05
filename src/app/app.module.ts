@@ -19,7 +19,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProviderDagitProvider } from '../providers/provider-dagit/provider-dagit';
 import { DirDispPage } from '../pages/dir-disp/dir-disp';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
-import { LoginPage } from '../pages/login/login';
 import { UpdateProfileImagePage } from '../pages/update-profile-image/update-profile-image';
 
 var config = {
@@ -38,7 +37,6 @@ var config = {
     NotifCatlistPage,
     DirDispPage,
     ChangePasswordPage,
-    LoginPage,
     UpdateProfileImagePage
   ],
   imports: [
@@ -56,7 +54,6 @@ var config = {
     NotifCatlistPage, 
     DirDispPage,
     ChangePasswordPage,
-    LoginPage,
     UpdateProfileImagePage
   ],
   providers: [

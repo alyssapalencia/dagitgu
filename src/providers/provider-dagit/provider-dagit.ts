@@ -11,7 +11,7 @@ export class ProviderDagitProvider {
 
   constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp) {
     console.log('Hello ProviderDagitProvider Provider');
-    this.user = "Justin Malana";
+    this.user = "Test User";
   }
 
   addUser(userInfo){

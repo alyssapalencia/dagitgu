@@ -49,9 +49,11 @@ export class LoginPage {
       if(errorCode === 'auth/invalid-email'){
         console.log('invalid email');
         noError = false;
+
+        //error popup message
         let alert = this.alertCtrl.create({
           title: 'Invalid Email',
-          subTitle: 'The email you entered is invalid. Please enter a valid email address and try again.',
+          subTitle: 'The email you entered is invalid. Please enter a valid email address and try again',
           buttons: ['OK']
         });
         alert.present();
@@ -59,22 +61,22 @@ export class LoginPage {
       else if(errorCode === 'auth/user-not-found'){
         console.log('user not found');
         noError = false;
-        let alert = this.alertCtrl.create({
+        /*let alert = this.alertCtrl.create({
           title: 'User Not Found',
           subTitle: 'The user does not exist. Please retype your username and try again.',
           buttons: ['OK']
         });
-        alert.present();
+        alert.present();*/
       }
       else if(errorCode === 'auth/wrong-password'){
         console.log('wrong password');
         noError = false;
-        let alert = this.alertCtrl.create({
+        /*let alert = this.alertCtrl.create({
           title: 'Wrong Password',
           subTitle: 'The password you entered is incorrect. Please retype your password and try again.',
           buttons: ['OK']
         });
-        alert.present();
+        alert.present();*/
       }
     })
     .then((user) => {
@@ -90,12 +92,12 @@ export class LoginPage {
           console.log('check email');
           this.sendEmailVerification();
           // Tell the user to have a look at his/her email
-          let alert = this.alertCtrl.create({
+          /*let alert = this.alertCtrl.create({
             title: 'Check Email',
             subTitle: 'A verification link was sent to your email. Check your email and follow the link to finish creating your DAGIT account.',
             buttons: ['OK']
           });
-          alert.present();
+          alert.present();*/
         }
       }
     })
