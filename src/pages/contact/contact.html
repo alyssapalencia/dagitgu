@@ -13,13 +13,13 @@
       <ion-avatar item-start>
         <img src="/assets/imgs/placeholder.png">
       </ion-avatar>
-      <h2>{{ chat.messageSender }}</h2>
-      <!--<div *ngIf = "user == chat.messageSender">
+      <!--<h2>{{ chat.messageSender }}</h2>-->
+      <div *ngIf = "user == chat.messageSender">
         <h2>You</h2>
       </div>
       <div *ngIf = "user != chat.messageSender">
         <h2>{{ chat.messageSender }}</h2>
-      </div>-->
+      </div>
       <p>{{ chat.message }}</p>
       <ion-note class="timestamp">{{ chat.timeStamp }}</ion-note>
     </ion-item>
