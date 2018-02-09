@@ -17,11 +17,14 @@ export class UpdateProfileImagePage {
   selectedPhoto: any;
   photo: any;
   dlURL: any;
-  user: any;
+	user: any;
+	userDb: any;
+	users: any[] = [];
+	userFound: any;
 
   onSuccess = (snapshot) => {
     this.photo = snapshot.downloadURL;
-    this.bindPhoto();
+		this.bindPhoto();
     this.loading.dismiss();
 		this.navCtrl.setRoot('MorePage');
 		this.navCtrl.popToRoot();
@@ -33,7 +36,16 @@ export class UpdateProfileImagePage {
 	}
 
   constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public loadingCtrl: LoadingController, public camera: Camera, public navCtrl: NavController, public navParams: NavParams, public app: App) {
-    this.user = this.angularFireAuth.auth.currentUser;
+		this.user = this.angularFireAuth.auth.currentUser;
+		this.userDb = this.firebaseService.getUserDetail();
+
+		this.userDb.subscribe(snapshot => {
+			var i = 0;
+		 snapshot.forEach(snap => {
+			 	this.users[i] = snap;
+				i++;
+		 	})
+	 	});
   }
 
   ionViewDidLoad() {
@@ -50,7 +62,7 @@ export class UpdateProfileImagePage {
 			sourceType: 0
 		  }
 		  
-		  this.uploadPhoto(options);
+		  //this.uploadPhoto(options);
   }
   
   uploadPhoto(options){
@@ -89,7 +101,13 @@ export class UpdateProfileImagePage {
     this.user.updateProfile({
       displayName: this.user.displayName,
       photoURL: this.photo
-    })
-  }
+		})
 
+		for(var j = 0; j < this.users.length; j++){
+			if(this.users[j].emailAddress == this.user.email){
+				this.userFound = this.users[j]
+			}
+		}
+		this.firebaseService.addDbImage(this.userFound.$key, this.photo);
+	}
 }

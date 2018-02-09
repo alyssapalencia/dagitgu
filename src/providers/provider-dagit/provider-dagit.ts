@@ -37,9 +37,7 @@ export class ProviderDagitProvider {
   */
 
   getUserDetail(){
-    return this.dagit.list('/ACCOUNTS/GENERAL', {
-      preserveSnapshot: true
-    });
+    return this.dagit.list('/ACCOUNTS/GENERAL');
   }
 
   getMessage(){
@@ -78,6 +76,10 @@ export class ProviderDagitProvider {
 
     key = this.dagit.list('IMAGE_NAME').push(Date.now());
     return key;
+  }
+
+  addDbImage(key, imageName){
+    this.dagit.object('/ACCOUNTS/GENERAL/' + key + '/accountPicture').set(imageName);
   }
 
 }
