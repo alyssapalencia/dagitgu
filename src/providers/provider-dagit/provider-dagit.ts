@@ -11,7 +11,7 @@ export class ProviderDagitProvider {
 
   constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp) {
     console.log('Hello ProviderDagitProvider Provider');
-    this.user = "Justin Malana";
+    this.user = "Test User";
   }
 
   addUser(userInfo){
@@ -22,19 +22,17 @@ export class ProviderDagitProvider {
     this.dagit.list('/chat/' + this.user).push(message);
   }
 
-  /*
   addAccidentReport(accident){
-    this.dagit.list('/CONTACT/ACCIDENT').push(accident);
+    this.dagit.list('/ACCIDENT').push(accident);
   }
 
   addViolationReport(violation){
-    this.dagit.list('/CONTACT/VIOLATION').push(violation);
+    this.dagit.list('/VIOLATION').push(violation);
   }
 
   addPedicabReport(pedicab){
-    this.dagit.list('/CONTACT/PEDICAB').push(pedicab);
+    this.dagit.list('/PEDICAB').push(pedicab);
   }
-  */
 
   getUserDetail(){
     return this.dagit.list('/ACCOUNTS/GENERAL');

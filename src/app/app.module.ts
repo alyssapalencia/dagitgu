@@ -19,7 +19,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProviderDagitProvider } from '../providers/provider-dagit/provider-dagit';
 import { DirDispPage } from '../pages/dir-disp/dir-disp';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
-import { LoginPage } from '../pages/login/login';
 import { UpdateProfileImagePage } from '../pages/update-profile-image/update-profile-image';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 

@@ -9,12 +9,18 @@
 <ion-content padding>
   <ion-item>
     <ion-label stacked class="label">Location</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="location"></ion-input>
   </ion-item>
   <br>
   <ion-item>
-    <ion-label stacked class="label">Description</ion-label>
-    <ion-textarea></ion-textarea>>
+    <ion-label class="label">Type of Violation</ion-label>
+    <ion-select [(ngModel)]="reportContent">
+      <ion-option value="Not signaling">Not signaling</ion-option>
+      <ion-option value="Passing in a no entry zone">Passing in a no entry zone</ion-option>
+      <ion-option value="Drunk driving">Drunk driving</ion-option>
+      <ion-option value="Reckless driving">Reckless driving</ion-option>
+      <ion-option value="Driving without license/registration">Driving without license/registration</ion-option>
+    </ion-select>
   </ion-item>
   <br>
   <ion-item>
@@ -30,28 +36,17 @@
   <br>
   <ion-item>
     <ion-label stacked class="label">Plate Number</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="plateNumber"></ion-input>
   </ion-item>
   <br>
   <ion-item>
     <ion-label stacked class="label">Color</ion-label>
-    <ion-input type="text"></ion-input>
+    <ion-input type="text" [(ngModel)]="color"></ion-input>
   </ion-item>
   <br>
   <ion-item>
     <ion-label stacked class="label">Model</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
-  <br>
-  <ion-item>
-    <ion-label class="label">Type of Violation</ion-label>
-    <ion-select [(ngModel)]="violationType">
-      <ion-option value="Not signaling">Not signaling</ion-option>
-      <ion-option value="Passing in a no entry zone">Passing in a no entry zone</ion-option>
-      <ion-option value="Drunk driving">Drunk driving</ion-option>
-      <ion-option value="Reckless driving">Reckless driving</ion-option>
-      <ion-option value="Driving without license/registration">Driving without license/registration</ion-option>
-    </ion-select>
+    <ion-input type="text" [(ngModel)]="model"></ion-input>
   </ion-item>
   <br>
   <button ion-button clear>
@@ -59,5 +54,5 @@
     &nbsp;<span class="label">Upload image</span>
   </button>
 
-  <br><button ion-button block large class="btnSend">SEND</button>
+  <br><button ion-button block large class="btnSend" (click)="addViolationReport()">SEND</button>
 </ion-content>

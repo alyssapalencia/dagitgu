@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController, App } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { ChangePasswordPage } from '../change-password/change-password';
 import { UpdateProfileImagePage } from '../update-profile-image/update-profile-image';
 
@@ -12,6 +13,7 @@ import { UpdateProfileImagePage } from '../update-profile-image/update-profile-i
 })
 export class MorePage {
   more: string = "profile"; //sets profile as default segment
+  info: any; //display information in faqs
 
   currUser: any;
 

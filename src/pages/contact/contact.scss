@@ -1,4 +1,15 @@
 page-contact {
+    .msg {
+        width:100%;
+        height:auto;
+        background-color:white;
+        border:1px solid #cccccc;
+        border-radius:10px;
+    }
 
+    .timestamp {
+        text-transform:uppercase;
+        font-size:small;
+    }
     
 }
