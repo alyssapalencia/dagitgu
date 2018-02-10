@@ -6,6 +6,7 @@ import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-d
 import { ChangePasswordPage } from '../change-password/change-password';
 import { UpdateProfileImagePage } from '../update-profile-image/update-profile-image';
 
+
 @IonicPage()
 @Component({
   selector: 'page-more',
@@ -17,8 +18,9 @@ export class MorePage {
 
   currUser: any;
 
-  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private app: App, public toastCtrl: ToastController) {
+  constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private app: App, public toastCtrl: ToastController) {
     this.currUser = angularFireAuth.auth.currentUser;
+    this.info = this.firebaseService.getInformation();
   }
 
   ionViewDidLoad() {
