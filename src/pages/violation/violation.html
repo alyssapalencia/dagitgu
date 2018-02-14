@@ -49,10 +49,12 @@
     <ion-input type="text" [(ngModel)]="model"></ion-input>
   </ion-item>
   <br>
-  <button ion-button clear>
+  <button ion-button clear (click)="openGallery()">
     <ion-icon name="cloud-upload"></ion-icon>
     &nbsp;<span class="label">Upload image</span>
   </button>
+
+  <img src = "{{ this.photo }}">
 
   <br><button ion-button block large class="btnSend" (click)="addViolationReport()">SEND</button>
 </ion-content>

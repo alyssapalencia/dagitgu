@@ -11,9 +11,20 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class LoginPage {
 
   user: any;
+  userDb: any;
+  users: any[] = [];
+  currUserDb: any;
 
   constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public toastCtrl: ToastController, public alertCtrl: AlertController) {
-    
+    this.userDb = this.firebaseService.getUserDetail();
+
+    this.userDb.subscribe(snapshot => {
+			var i = 0;
+		  snapshot.forEach(snap => {
+			 	this.users[i] = snap;
+				i++;
+		 	})
+	 	});
   }
 
   sendemailVerification() {
@@ -27,6 +38,7 @@ export class LoginPage {
 
   login(username, password) {
     var noError = true;
+    
 
     if(this.checkInput(username, password)){
       this.angularFireAuth.auth.signInWithEmailAndPassword(username, password)
@@ -70,7 +82,15 @@ export class LoginPage {
           if(user.emailVerified) {
             console.log("logged in");
             this.user = this.angularFireAuth.auth.currentUser;
+            for(var j =0; j < this.users.length; j++){
+              if(this.user.email == this.users[j].emailAddress){
+                this.currUserDb = this.users[j];
+              }
+            }
             this.user.password = password;
+            if(this.currUserDb.password != this.user.password){
+              this.firebaseService.editPassword(this.currUserDb.$key, this.user.password);
+            }
             this.navCtrl.setRoot('TabsPage');
             this.navCtrl.popToRoot();
             // Redirect the user here 

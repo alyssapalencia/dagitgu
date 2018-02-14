@@ -62,7 +62,7 @@ export class UpdateProfileImagePage {
 			sourceType: 0
 		  }
 		  
-		  //this.uploadPhoto(options);
+		  this.uploadPhoto(options);
   }
   
   uploadPhoto(options){

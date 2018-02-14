@@ -46,7 +46,8 @@ export class MorePage {
           handler: () => {
             console.log('Logout clicked');
             this.angularFireAuth.auth.signOut();
-            this.app.getRootNav().setRoot('LoginPage');
+            this.navCtrl.setRoot('LoginPage');
+		        this.navCtrl.popToRoot();
             let toast = this.toastCtrl.create({
               message: 'You have successfully logged out.',
               duration: 2000

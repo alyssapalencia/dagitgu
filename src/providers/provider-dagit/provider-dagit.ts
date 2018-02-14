@@ -80,4 +80,8 @@ export class ProviderDagitProvider {
     this.dagit.object('/ACCOUNTS/GENERAL/' + key + '/accountPicture').set(imageName);
   }
 
+  editPassword(key, newPass){
+    this.dagit.object('/ACCOUNTS/GENERAL/' + key + '/password').set(newPass);
+  }
+
 }
