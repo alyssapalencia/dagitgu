@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+
+declare var google;
 
 @IonicPage()
 @Component({
@@ -8,13 +10,18 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'map.html',
 })
 export class MapPage {
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
 
   constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MapPage');
-    var user = this.angularFireAuth.auth.currentUser;
+  ionViewWillEnter() {
+    this.loadMap();
+  }
+
+  loadMap() {
+
   }
 
 }

@@ -23,8 +23,8 @@ export class ProviderDagitProvider {
     this.user = this.angularFireAuth.auth.currentUser;
   }
 
-  addMessage(message){
-    this.dagit.list('/CHAT/' + this.user).push(message);
+  addMessage(message, user){
+    this.dagit.list('/CHAT/' + user).push(message);
   }
 
   addAccidentReport(accident){
@@ -45,8 +45,8 @@ export class ProviderDagitProvider {
     });
   }
 
-  getMessage(){
-      return this.dagit.list('/CHAT/' + this.user);
+  getMessage(user){
+      return this.dagit.list('/CHAT/' + user);
   }
 
   getUser(){

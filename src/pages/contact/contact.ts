@@ -16,12 +16,11 @@ export class ContactPage {
   Chat: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public angularFireAuth: AngularFireAuth) {
-    //this.user = this.angularFireAuth.auth.currentUser.displayName; //comment again
     this.user = this.angularFireAuth.auth.currentUser;
     console.log(this.user.displayName);
-    this.Chat = this.firebaseService.getMessage();
+    this.Chat = this.firebaseService.getMessage(this.user.displayName);
     console.log(this.Chat);
-    //this.user = this.firebaseService.getUser(); //comment again
+    console.log(this.user.accountPicture);
   }
 
   ionViewDidLoad() {
@@ -31,13 +30,12 @@ export class ContactPage {
   sendMessage(){
     console.log(this.message);
     this.messageObject = {
-    "messageSender": this.user.displayName,
-    "timeStamp": moment().format('ddd, hh:mm A'),
-    "timeSent": moment().format('MM/DD/YYYY hh:mm:ss A'),
-    message: this.message
-    //user: this.user
+      "messageSender": this.user.displayName,
+      "timeStamp": moment().format('ddd, hh:mm A'),
+      "timeSent": moment().format('MM/DD/YYYY hh:mm:ss A'),
+      message: this.message
     }
-    this.firebaseService.addMessage(this.messageObject);
+    this.firebaseService.addMessage(this.messageObject, this.user.displayName);
     this.message = '';
   }
 }
