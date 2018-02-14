@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
 import 'firebase/storage';
 
@@ -9,19 +10,18 @@ import 'firebase/storage';
 export class ProviderDagitProvider {
   user: any;
 
-  constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp) {
+  constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp, public angularFireAuth: AngularFireAuth) {
     console.log('Hello ProviderDagitProvider Provider');
-    //this.user = name;
-    this.user = "Test User";
+    this.user = name;
   }
 
   addUser(userInfo){
     this.dagit.list('/ACCOUNTS/GENERAL').push(userInfo);
   }
 
-  /*setUser(name){
-    this.user = name;
-  }*/
+  setUser(name){
+    this.user = this.angularFireAuth.auth.currentUser;
+  }
 
   addMessage(message){
     this.dagit.list('/CHAT/' + this.user).push(message);

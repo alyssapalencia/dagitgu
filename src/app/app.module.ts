@@ -38,7 +38,6 @@ var config = {
     NotifCatlistPage,
     DirDispPage,
     ChangePasswordPage,
-    //LoginPage,
     UpdateProfileImagePage
   ],
   imports: [
@@ -56,7 +55,6 @@ var config = {
     NotifCatlistPage, 
     DirDispPage,
     ChangePasswordPage,
-    //LoginPage,
     UpdateProfileImagePage
   ],
   providers: [

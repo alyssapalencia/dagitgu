@@ -21,7 +21,7 @@ export class ContactPage {
     console.log(this.user.displayName);
     this.Chat = this.firebaseService.getMessage();
     console.log(this.Chat);
-    this.user = this.firebaseService.getUser(); //comment again
+    //this.user = this.firebaseService.getUser(); //comment again
   }
 
   ionViewDidLoad() {
@@ -31,11 +31,11 @@ export class ContactPage {
   sendMessage(){
     console.log(this.message);
     this.messageObject = {
-      "messageSender": this.user.displayName,
-      "timeStamp": moment().format('ddd, hh:mm A'),
-      "timeSent": moment().format('MM/DD/YYYY hh:mm:ss A'),
-      message: this.message,
-      user: this.user //comment again
+    "messageSender": this.user.displayName,
+    "timeStamp": moment().format('ddd, hh:mm A'),
+    "timeSent": moment().format('MM/DD/YYYY hh:mm:ss A'),
+    message: this.message
+    //user: this.user
     }
     this.firebaseService.addMessage(this.messageObject);
     this.message = '';
