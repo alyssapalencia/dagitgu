@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as moment from 'moment';
@@ -16,7 +16,7 @@ export class PedicabPage {
   violationType: any;
   user: any;
 
-  constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl: ViewController) {
     this.user = this.angularFireAuth.auth.currentUser;
   }
 
@@ -39,6 +39,10 @@ export class PedicabPage {
       buttons: ['OK']
     });
     alert.present();
-    this.navCtrl.push('HelpdeskPage');
+    this.viewCtrl.dismiss();
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 }

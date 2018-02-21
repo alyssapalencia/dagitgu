@@ -21,6 +21,7 @@ import { DirDispPage } from '../pages/dir-disp/dir-disp';
 import { ChangePasswordPage } from '../pages/change-password/change-password';
 import { UpdateProfileImagePage } from '../pages/update-profile-image/update-profile-image';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Geolocation } from '@ionic-native/geolocation';
 
 var config = {
   apiKey: "AIzaSyDPsMJ-x7W6_U_k3JsNwMNkxL38e8NkQDI",
@@ -63,7 +64,8 @@ var config = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProviderDagitProvider,
     AngularFireAuth,
-    Camera
+    Camera,
+    Geolocation
   ]
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -7,12 +7,12 @@ declare var google;
 
 @IonicPage()
 @Component({
-  selector: 'page-map',
-  templateUrl: 'map.html',
+  selector: 'page-popover',
+  templateUrl: 'popover.html',
 })
-export class MapPage {
+export class PopoverPage {
   @ViewChild('map') mapElement: ElementRef;
-  @ViewChild('autocomplete') autocomElement: ElementRef;
+  @ViewChild('autocomplete') autocompleteElement: ElementRef;
   autocomplete;
   element: any;
 
@@ -24,14 +24,14 @@ export class MapPage {
   lat: any;
   lng: any;
 
-  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, private geolocation: Geolocation) {
   }
 
   ionViewDidLoad() {
     var options = {
       componentRestrictions: {country: "phl"}
     }
-    this.autocomplete = new google.maps.places.Autocomplete(this.autocomElement.nativeElement, options);
+    this.autocomplete = new google.maps.places.Autocomplete(this.autocompleteElement.nativeElement, options);
   }
 
   searchLocation() {
@@ -64,10 +64,6 @@ export class MapPage {
       }
     });
   }
-
-  ionViewWillEnter() {
-    this.loadMap();
-  }
   
   loadMap() {
     this.geolocation.getCurrentPosition().then((position) => {
@@ -96,4 +92,8 @@ export class MapPage {
       });
     })
   } 
+
+  closePopover() {
+    this.viewCtrl.dismiss();
+  }
 }

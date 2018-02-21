@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the HelpdeskPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -15,7 +8,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HelpdeskPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -27,14 +20,17 @@ export class HelpdeskPage {
   }
 
   openAccident() {
-    this.navCtrl.push('AccidentPage');
+    let modal = this.modalCtrl.create('AccidentPage');
+    modal.present();
   }
 
   openViolation() {
-    this.navCtrl.push('ViolationPage');
+    let modal = this.modalCtrl.create('ViolationPage');
+    modal.present();
   }
 
   openPedicab() {
-    this.navCtrl.push('PedicabPage');
+    let modal = this.modalCtrl.create('PedicabPage');
+    modal.present();
   }
 }

@@ -1,13 +1,23 @@
 page-accident {
     .label
     {
-        font-size:small;
-        text-transform:uppercase;
+        font-size: small;
+        text-transform: uppercase;
+        color: #aaaaaa;
+        margin-bottom: 10px;
     }
 
     .btnSend
     {
         font-family:"Lato";
         color:#333333;
+    }
+
+    .inputBox
+    {
+        border: 0px;
+        width: 100%;
+        font-size: medium;
+        color: black;
     }
 }

@@ -14,6 +14,7 @@ export class ContactPage {
   message: any;
   messageObject: any;
   Chat: any;
+  isEnabled: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public angularFireAuth: AngularFireAuth) {
     this.user = this.angularFireAuth.auth.currentUser;
@@ -27,15 +28,35 @@ export class ContactPage {
     console.log('ionViewDidLoad ContactPage');
   }
 
-  sendMessage(){
+  sendMessage() {
     console.log(this.message);
+
     this.messageObject = {
       "messageSender": this.user.displayName,
-      "timeStamp": moment().format('ddd, hh:mm A'),
-      "timeSent": moment().format('MM/DD/YYYY hh:mm:ss A'),
+      "timeStamp": moment().format('MMMM Do YYYY, hh:mm A'),
       message: this.message
     }
     this.firebaseService.addMessage(this.messageObject, this.user.displayName);
     this.message = '';
   }
+
+  /* disable button if this.message = ''
+  sendMessage(){
+    console.log(this.message);
+
+    if(this.message != '') {
+      this.messageObject = {
+        "messageSender": this.user.displayName,
+        "timeStamp": moment().format('MMMM Do YYYY, hh:mm A'),
+        message: this.message
+      }
+      this.firebaseService.addMessage(this.messageObject, this.user.displayName);
+      this.message = '';
+      this.isEnabled = true;
+    } else {
+      console.log("No message inputted");
+      this.isEnabled = false;
+    }
+  }
+  */
 }

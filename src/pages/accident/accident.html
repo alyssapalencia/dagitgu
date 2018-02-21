@@ -2,6 +2,11 @@
 
   <ion-navbar>
     <ion-title>Report Accident</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only item-end clear (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -9,13 +14,13 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-label stacked class="label">Location</ion-label>
-    <ion-input type="text" [(ngModel)]="location"></ion-input>
+    <div class="label">Location</div>
+    <input #autocomplete id="autocomplete" class="inputBox" type="text" [(ngModel)]="aLocation" />
   </ion-item>
 
   <ion-item>
     <ion-label stacked class="label">Description</ion-label>
-    <ion-textarea [(ngModel)]="accidentDescription"></ion-textarea>
+    <ion-textarea [(ngModel)]="accidentDescription" placeholder="Enter a description"></ion-textarea>
   </ion-item>
 
   <button ion-button clear>

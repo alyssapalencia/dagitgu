@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as moment from 'moment';
+
+declare var google;
 
 @IonicPage()
 @Component({
@@ -10,9 +12,13 @@ import * as moment from 'moment';
   templateUrl: 'violation.html',
 })
 export class ViolationPage {
+  @ViewChild('autocomplete') autocompleteElement: ElementRef;
+  autocomplete;
+  element: any;
+
   today = new Date();
   violationInfo: any;
-  location: any;
+  vLocation: any;
   reportContent: any;
   vehicleType: any;
   plateNumber: any;
@@ -20,19 +26,29 @@ export class ViolationPage {
   model: any;
   user: any;
 
-  constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl: ViewController) {
     this.user = this.angularFireAuth.auth.currentUser;
-    console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
+    this.vLocation = '';
+    console.log(this.vLocation);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViolationPage');
+    console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
+
+    var options = {
+      componentRestrictions: {country: "phl"}
+    }
+
+    this.autocomplete = new google.maps.places.Autocomplete(this.autocompleteElement.nativeElement, options);
   }
 
   addViolationReport() {
+    this.vLocation = document.getElementById('autocomplete')["value"];
+
     this.violationInfo = {
       "reportSender": this.user.displayName,
-      "location": this.location,
+      "location": this.vLocation,
       "reportContent": this.reportContent,
       "vehicleType": this.vehicleType,
       "plateNumber": this.plateNumber,
@@ -47,6 +63,10 @@ export class ViolationPage {
       buttons: ['OK']
     });
     alert.present();
-    this.navCtrl.push('HelpdeskPage');
+    this.viewCtrl.dismiss();
+  }
+
+  dismiss() {
+    this.viewCtrl.dismiss();
   }
 }

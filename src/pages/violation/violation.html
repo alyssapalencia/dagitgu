@@ -2,19 +2,24 @@
 
   <ion-navbar>
     <ion-title>Report Violation</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only item-end clear (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
   <ion-item>
-    <ion-label stacked class="label">Location</ion-label>
-    <ion-input type="text" [(ngModel)]="location"></ion-input>
+    <div class="label">Location</div>
+    <input #autocomplete id="autocomplete" class="inputBox" type="text" [(ngModel)]="vLocation" />
   </ion-item>
   <br>
   <ion-item>
     <ion-label class="label">Type of Violation</ion-label>
-    <ion-select [(ngModel)]="reportContent">
+    <ion-select [(ngModel)]="reportContent" placeholder="Select">
       <ion-option value="Not signaling">Not signaling</ion-option>
       <ion-option value="Passing in a no entry zone">Passing in a no entry zone</ion-option>
       <ion-option value="Drunk driving">Drunk driving</ion-option>
@@ -25,7 +30,7 @@
   <br>
   <ion-item>
     <ion-label class="label">Vehicle Type</ion-label>
-    <ion-select [(ngModel)]="vehicleType">
+    <ion-select [(ngModel)]="vehicleType" placeholder="Select">
       <ion-option value="car">Car</ion-option>
       <ion-option value="jeep">Jeep</ion-option>
       <ion-option value="motorcycle">Motorcycle</ion-option>
@@ -36,17 +41,17 @@
   <br>
   <ion-item>
     <ion-label stacked class="label">Plate Number</ion-label>
-    <ion-input type="text" [(ngModel)]="plateNumber"></ion-input>
+    <ion-input type="text" [(ngModel)]="plateNumber" placeholder="Enter a plate number"></ion-input>
   </ion-item>
   <br>
   <ion-item>
     <ion-label stacked class="label">Color</ion-label>
-    <ion-input type="text" [(ngModel)]="color"></ion-input>
+    <ion-input type="text" [(ngModel)]="color" placeholder="Enter a color"></ion-input>
   </ion-item>
   <br>
   <ion-item>
     <ion-label stacked class="label">Model</ion-label>
-    <ion-input type="text" [(ngModel)]="model"></ion-input>
+    <ion-input type="text" [(ngModel)]="model" placeholder="Enter a model (optional)"></ion-input>
   </ion-item>
   <br>
   <button ion-button clear>
