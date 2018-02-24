@@ -10,42 +10,14 @@ import * as moment from 'moment';
   templateUrl: 'pedicab.html',
 })
 export class PedicabPage {
-  /*today = new Date();
+  today = new Date();
   pedicabInfo: any;
   pedicabNumber: any;
   violationType: any;
-  user: any;*/
-
-  lname: any;
-  category: any;
-  usersDeskDb: any;
-  usersOfDb: any;
-  usersDesk: any[] = [];
-  usersOf: any[] = [];
-  result: any[] = [];
-  found = false;
-  
+  user: any;
 
   constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
-    //this.user = this.angularFireAuth.auth.currentUser;
-    this.usersDeskDb = this.firebaseService.getDeskTMO();
-    this.usersOfDb = this.firebaseService.getOfTMO();
-
-    this.usersDeskDb.subscribe(snapshot => {
-			var i = 0;
-		 snapshot.forEach(snap => {
-			 	this.usersDesk[i] = snap;
-				i++;
-		 	})
-     });
-     
-     this.usersOfDb.subscribe(snapshot => {
-			var j = 0;
-		 snapshot.forEach(snap => {
-			 	this.usersOf[j] = snap;
-				j++;
-		 	})
-	 	});
+    this.user = this.angularFireAuth.auth.currentUser;
   }
 
   ionViewDidLoad() {
@@ -53,7 +25,7 @@ export class PedicabPage {
     console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
   }
 
-  /*addPedicabReport() {
+  addPedicabReport() {
     this.pedicabInfo = {
       "reportSender": this.user.displayName,
       "pedicabNumber": this.pedicabNumber,
@@ -68,47 +40,5 @@ export class PedicabPage {
     });
     alert.present();
     this.navCtrl.push('HelpdeskPage');
-  }*/
-
-  search(){
-    this.result.length = 0;
-    this.found = false;
-    if(this.category == 'desk'){
-      this.searchDesk();
-    }
-    else{
-      this.searchOf();
-    }
-
-    this.show();
-  }
-
-  searchDesk(){
-    for(let i = 0; i < this.usersDesk.length; i++){
-      if(this.usersDesk[i].lName.search(this.lname) != -1){
-        this.result[this.result.length] = this.usersDesk[i];
-        this.found = true;
-      }
-    }
-  }
-
-  searchOf(){
-    for(let i = 0; i < this.usersOf.length; i++){
-      if(this.usersOf[i].lName.search(this.lname) != -1){
-        this.result[this.result.length] = this.usersOf[i];
-        this.found = true;
-      }
-    }
-  }
-
-  show(){
-    if(this.found){
-      for(let i = 0; i < this.result.length; i++){
-      console.log(this.result[i]);
-      }
-    }
-    else{
-      console.log("no user found");
-    }
   }
 }
