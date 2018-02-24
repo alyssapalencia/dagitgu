@@ -30,38 +30,6 @@ export class MorePage {
     this.navCtrl.push(ChangePasswordPage);
   }
 
-  logoutUser() {
-    let confirm = this.alertCtrl.create({
-      title: 'Logout',
-      message: 'Are you sure you want to logout?',
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Logout',
-          handler: () => {
-            console.log('Logout clicked');
-            this.angularFireAuth.auth.signOut();
-            this.navCtrl.setRoot('LoginPage');
-		        this.navCtrl.popToRoot();
-            let toast = this.toastCtrl.create({
-              message: 'You have successfully logged out.',
-              duration: 2000
-            });
-            toast.present();
-            /* let nav = this.app.getRootNav();
-            nav.push(LoginPage); */
-          }
-        }
-      ]
-    });
-    confirm.present();
-  }
-
   showLogout() {
     let confirm = this.alertCtrl.create({
       title: 'Logout',

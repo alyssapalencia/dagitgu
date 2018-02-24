@@ -6,6 +6,7 @@ import { NotifCatPage } from '../pages/notif-cat/notif-cat';
 import { NotifCatlistPage} from '../pages/notif-catlist/notif-catlist';
 import { LoginPageModule } from '../pages/login/login.module';
 
+import { Badge } from '@ionic-native/badge';
 
 import { firebaseConfig } from '../environment';
 
@@ -67,7 +68,8 @@ var config = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ProviderDagitProvider,
     AngularFireAuth,
-    Camera
+    Camera,
+    Badge
   ]
 })
 export class AppModule {}

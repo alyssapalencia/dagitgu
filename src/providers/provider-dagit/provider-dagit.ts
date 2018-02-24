@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Badge } from '@ionic-native/badge';
 import { FirebaseApp } from 'angularfire2';
 import 'rxjs/add/operator/map';
 import 'firebase/storage';
@@ -9,7 +10,7 @@ import 'firebase/storage';
 export class ProviderDagitProvider {
   user: any;
 
-  constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp) {
+  constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp, public badge: Badge) {
     console.log('Hello ProviderDagitProvider Provider');
     this.user = "Test User";
   }
@@ -82,6 +83,14 @@ export class ProviderDagitProvider {
 
   editPassword(key, newPass){
     this.dagit.object('/ACCOUNTS/GENERAL/' + key + '/password').set(newPass);
+  }
+
+  getDeskTMO(){
+    return this.dagit.list('/ACCOUNTS/DESK_TMO/');
+  }
+
+  getOfTMO(){
+    return this.dagit.list('/ACCOUNTS/ON_FIELD_TMO');
   }
 
 }

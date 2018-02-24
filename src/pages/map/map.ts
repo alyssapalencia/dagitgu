@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Badge } from '@ionic-native/badge';
 
 @IonicPage()
 @Component({
@@ -9,7 +10,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class MapPage {
 
-  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public badge: Badge, public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
