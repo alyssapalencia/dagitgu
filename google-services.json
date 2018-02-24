@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "902262473533",
+    "firebase_url": "https://dagit-7cbac.firebaseio.com",
+    "project_id": "dagit-7cbac",
+    "storage_bucket": "dagit-7cbac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902262473533:android:764d2cb7da3280eb",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "902262473533-ll06vcfa12a722mh4v0j0ti1qec7rif8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXfjt2BkedPiRTmWKlnnwwpYQeSGdXqQU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

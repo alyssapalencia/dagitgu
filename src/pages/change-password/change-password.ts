@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController, AlertController }
 import { AngularFireAuth } from 'angularfire2/auth';
 import { App } from 'ionic-angular/components/app/app';
 import { MorePage } from '../more/more';
+import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 
 
 @IonicPage()
@@ -15,9 +16,21 @@ export class ChangePasswordPage {
   oldPass: any;
   conPass: any;
   currUser: any;
+  userDb: any;
+  users: any[] = [];
+  currUserDb: any;
 
-  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public alertCtrl: AlertController, public app: App) {
+  constructor(public firebaseService: ProviderDagitProvider, public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public alertCtrl: AlertController, public app: App) {
     this.currUser = this.angularFireAuth.auth.currentUser;
+    this.userDb = this.firebaseService.getUserDetail();
+
+    this.userDb.subscribe(snapshot => {
+			var i = 0;
+		  snapshot.forEach(snap => {
+			 	this.users[i] = snap;
+				i++;
+		 	})
+	 	});
   }
 
   ionViewDidLoad() {
@@ -25,8 +38,13 @@ export class ChangePasswordPage {
   }
 
   changePass(){
+    for(var j =0; j < this.users.length; j++){
+      if(this.currUser.email == this.users[j].emailAddress){
+        this.currUserDb = this.users[j];
+      }
+    }
     if(this.checkInput()){
-      if(this.oldPass != this.currUser.password){
+      if(this.oldPass != this.currUserDb.password){
         console.log("password incorrect");
         let alert = this.alertCtrl.create({
           title: 'Incorrect Password',
@@ -44,7 +62,7 @@ export class ChangePasswordPage {
         });
         alert.present();
       }
-      else if(this.newPass == this.currUser.password){
+      else if(this.newPass == this.currUserDb.password){
         console.log("new password is the same as old password");
         let alert = this.alertCtrl.create({
           title: 'Password Already Used',
@@ -56,10 +74,11 @@ export class ChangePasswordPage {
       else{
         this.currUser.updatePassword(this.newPass)
         .catch((err) => {
-          
+          console.log(err.code);
         })
         .then(() => {
           this.currUser.password = this.newPass;
+          this.firebaseService.editPassword(this.currUserDb.$key, this.newPass);
           console.log("password changed");
           let alert = this.alertCtrl.create({
             title: 'Password Changed',

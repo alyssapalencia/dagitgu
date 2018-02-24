@@ -4,7 +4,9 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { NotifCatPage } from '../pages/notif-cat/notif-cat';
 import { NotifCatlistPage} from '../pages/notif-catlist/notif-catlist';
+import { LoginPageModule } from '../pages/login/login.module';
 
+import { Badge } from '@ionic-native/badge';
 
 import { firebaseConfig } from '../environment';
 
@@ -47,7 +49,8 @@ var config = {
     HttpModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(config),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    LoginPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -65,7 +68,8 @@ var config = {
     ProviderDagitProvider,
     AngularFireAuth,
     Camera,
-    Geolocation
+    Geolocation,
+    Badge
   ]
 })
 export class AppModule {}

@@ -6,3 +6,5 @@ export const firebaseConfig = {
     storageBucket: "dagit-f9140.appspot.com",
     messagingSenderId: "172681768557"
   };
+
+declare var FCMPlugin: any;

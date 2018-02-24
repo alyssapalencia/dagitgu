@@ -10,11 +10,21 @@ import * as moment from 'moment';
   templateUrl: 'pedicab.html',
 })
 export class PedicabPage {
-  today = new Date();
+  /*today = new Date();
   pedicabInfo: any;
   pedicabNumber: any;
   violationType: any;
-  user: any;
+  user: any;*/
+
+  lname: any;
+  category: any;
+  usersDeskDb: any;
+  usersOfDb: any;
+  usersDesk: any[] = [];
+  usersOf: any[] = [];
+  result: any[] = [];
+  found = false;
+  
 
   constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl: ViewController) {
     this.user = this.angularFireAuth.auth.currentUser;
@@ -25,7 +35,7 @@ export class PedicabPage {
     console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
   }
 
-  addPedicabReport() {
+  /*addPedicabReport() {
     this.pedicabInfo = {
       "reportSender": this.user.displayName,
       "pedicabNumber": this.pedicabNumber,

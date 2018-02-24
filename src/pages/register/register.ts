@@ -23,7 +23,6 @@ export class RegisterPage {
   wrongPass = true;
 
   constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController, public toastCtrl: ToastController) {
-    this.userInfo = this.firebaseService.getUserDetail();
   }
 
   ionViewDidLoad() {
@@ -93,8 +92,9 @@ export class RegisterPage {
             photoURL: ''
             })
             this.sendemailVerification();
+            this.adduser();
             this.openLogin();
-          }  
+          }
         });
       }
       else{
@@ -148,5 +148,16 @@ export class RegisterPage {
     if(!str || 0 === str.length){
       return true;
     }
+  }
+
+  adduser(){
+    this.userInfo = {
+      "accountPicture": "",
+      "emailAddress": this.email,
+      "fName": this.fname,
+      "lName": this.lname,
+      "password": this.pass,
+    }
+    this.firebaseService.addUser(this.userInfo);
   }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Badge } from '@ionic-native/badge';
 import { FirebaseApp } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
@@ -10,7 +11,7 @@ import 'firebase/storage';
 export class ProviderDagitProvider {
   user: any;
 
-  constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp, public angularFireAuth: AngularFireAuth) {
+  constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp, public angularFireAuth: AngularFireAuth, public badge: Badge) {
     console.log('Hello ProviderDagitProvider Provider');
     this.user = name;
   }
@@ -40,9 +41,7 @@ export class ProviderDagitProvider {
   }
 
   getUserDetail(){
-    return this.dagit.list('/ACCOUNTS/GENERAL', {
-      preserveSnapshot: true
-    });
+    return this.dagit.list('/ACCOUNTS/GENERAL');
   }
 
   getMessage(user){
@@ -86,4 +85,21 @@ export class ProviderDagitProvider {
     key = this.dagit.list('IMAGE_NAME').push(Date.now());
     return key;
   }
+
+  addDbImage(key, imageName){
+    this.dagit.object('/ACCOUNTS/GENERAL/' + key + '/accountPicture').set(imageName);
+  }
+
+  editPassword(key, newPass){
+    this.dagit.object('/ACCOUNTS/GENERAL/' + key + '/password').set(newPass);
+  }
+
+  getDeskTMO(){
+    return this.dagit.list('/ACCOUNTS/DESK_TMO/');
+  }
+
+  getOfTMO(){
+    return this.dagit.list('/ACCOUNTS/ON_FIELD_TMO');
+  }
+
 }

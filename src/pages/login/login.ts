@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Badge } from '@ionic-native/badge';
 
 @IonicPage()
 @Component({
@@ -11,9 +12,20 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class LoginPage {
 
   user: any;
+  userDb: any;
+  users: any[] = [];
+  currUserDb: any;
 
-  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public toastCtrl: ToastController, public alertCtrl: AlertController) {
-    
+  constructor(public badge: Badge, public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public toastCtrl: ToastController, public alertCtrl: AlertController) {
+    this.userDb = this.firebaseService.getUserDetail();
+
+    this.userDb.subscribe(snapshot => {
+			var i = 0;
+		  snapshot.forEach(snap => {
+			 	this.users[i] = snap;
+				i++;
+		 	})
+	 	});
   }
 
   sendemailVerification() {
@@ -27,6 +39,7 @@ export class LoginPage {
 
   login(username, password) {
     var noError = true;
+    
 
     if(this.checkInput(username, password)){
       this.angularFireAuth.auth.signInWithEmailAndPassword(username, password)
@@ -70,7 +83,27 @@ export class LoginPage {
           if(user.emailVerified) {
             console.log("logged in");
             this.user = this.angularFireAuth.auth.currentUser;
+            for(var j =0; j < this.users.length; j++){
+              if(this.user.email == this.users[j].emailAddress){
+                this.currUserDb = this.users[j];
+              }
+            }
             this.user.password = password;
+            if(this.currUserDb.password != this.user.password){
+              this.firebaseService.editPassword(this.currUserDb.$key, this.user.password);
+            }
+            //this.requestPermission();
+            //this.setBadges();
+            
+            /*let badge = this.badge.get();
+            if(badge == null){
+              badge = this.badge.set(Number(0));
+            }
+            else{
+              
+            }*/
+            this.getBadges();
+            
             this.navCtrl.setRoot('TabsPage');
             this.navCtrl.popToRoot();
             // Redirect the user here 
@@ -126,6 +159,48 @@ export class LoginPage {
   isBlank(str){
     if(!str || 0 === str.length){
       return true;
+    }
+  }
+  
+  async getBadges(){
+    try{
+      let badgeAmount = await this.badge.get();
+      let alert = this.alertCtrl.create({
+        title: String(badgeAmount),
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+    catch (e){
+      console.error(e);
+    }
+  }
+
+  async setBadges(){
+    try{
+      let badge = await this.badge.set(Number(0));
+      let alert = this.alertCtrl.create({
+        title: badge,
+        buttons: ['OK']
+      });
+      console.log(badge);
+    }
+    catch (e){
+      console.error(e);
+    }
+  }
+
+  async requestPermission(){
+    try{
+      let hasPermission = await this.badge.hasPermission();
+      console.log(hasPermission);
+      if(!hasPermission){
+        let permission = await this.badge.registerPermission();
+        console.log(permission);
+      }
+    }
+    catch (e){
+      console.error(e);
     }
   }
 }

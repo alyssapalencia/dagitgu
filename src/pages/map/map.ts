@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google;
+import { Badge } from '@ionic-native/badge';
 
 @IonicPage()
 @Component({
@@ -30,7 +31,7 @@ export class MapPage {
 
   toggle: any = false;
 
-  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public popoverCtrl: PopoverController) {
+  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public popoverCtrl: PopoverController, public badge: Badge) {
   }
 
   changeToggle() {
