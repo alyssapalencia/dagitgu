@@ -64,7 +64,7 @@
       "cordova-plugin-camera": {},
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
-      }
+      },
       "phonegap-plugin-push": {
         "SENDER_ID": "902262473533",
         "FCM_VERSION": "11.6.2"
