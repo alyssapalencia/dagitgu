@@ -14,7 +14,6 @@
         <div *ngIf = "user.photoURL != undefined"><img src="{{ user.photoURL }}"></div>
         <div *ngIf = "user.photoURL == undefined"><img src="/assets/imgs/placeholder.png"></div>
       </ion-avatar>
-      <!--<h2>{{ chat.messageSender }}</h2>-->
       <div *ngIf = "user == chat.messageSender">
         <h2>You</h2>
       </div>

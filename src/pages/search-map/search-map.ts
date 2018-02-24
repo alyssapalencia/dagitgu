@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -7,10 +7,10 @@ declare var google;
 
 @IonicPage()
 @Component({
-  selector: 'page-map',
-  templateUrl: 'map.html',
+  selector: 'page-search-map',
+  templateUrl: 'search-map.html',
 })
-export class MapPage {
+export class SearchMapPage {
   @ViewChild('map') mapElement: ElementRef;
   @ViewChild('autocomplete') autocomElement: ElementRef;
   @ViewChild('autocomstart') autocomStart: ElementRef;
@@ -28,17 +28,8 @@ export class MapPage {
   lat: any;
   lng: any;
 
-  toggle: any = false;
-
-  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public popoverCtrl: PopoverController) {
-  }
-
-  changeToggle() {
-    if(!this.toggle) {
-      this.toggle = true;
-    } else {
-      this.toggle = false;
-    }
+  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation) {
+  
   }
 
   ionViewDidLoad() {
@@ -48,11 +39,6 @@ export class MapPage {
     this.autocomplete = new google.maps.places.Autocomplete(this.autocomElement.nativeElement, options);
     this.autocomstart = new google.maps.places.Autocomplete(this.autocomStart.nativeElement, options);
     this.autocomend = new google.maps.places.Autocomplete(this.autocomEnd.nativeElement, options);
-  }
-
-  presentPopover(event) {
-    let popover = this.popoverCtrl.create('SearchMapPage');
-    popover.present();
   }
   
   searchLocation() {
@@ -68,7 +54,8 @@ export class MapPage {
     var directionsService = new google.maps.DirectionsService;
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 6
+      zoom: 6,
+      center: {lat: 9.3068, lng: 123.3054}
     });
     directionsDisplay.setMap(map);
 
@@ -95,7 +82,7 @@ export class MapPage {
 
       if(this.lat == null) {
         LatLng = new
-        google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        google.maps.LatLng(9.3068, 123.3054);
       } else {
         LatLng = new
         google.maps.LatLng(this.lat, this.lng);
@@ -104,6 +91,7 @@ export class MapPage {
       let mapOptions = {
         center: LatLng,
         zoom: 15
+        //mapTypeId: google.maps.MayTypeId.ROADMAP
       }
 
       this.map = new

@@ -1,0 +1,16 @@
+<ion-content class="popoverStyle">
+  <div class="searchBarBox">
+    <input #autocomplete id="autocomplete" class="searchBar" type="text" placeholder="Enter a location" />
+    <button ion-button icon-only clear (click)="searchLocation()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </div>
+
+  <div>
+    <input #autocomstart id="autocomplete" type="text" [(ngModel)]="Start" placeholder="Current location" />
+    <input #autocomend id="autocomplete" type="text" [(ngModel)]="End" placeholder="Destination" />
+    <button ion-button icon-only clear (click)="calculateAndDisplayRoute()">
+      <ion-icon name="search"></ion-icon>
+    </button>
+  </div>
+</ion-content>
