@@ -5,13 +5,17 @@ page-map {
         position: fixed;
     }
 
-    .searchBarBox {
-        padding: 10px 0px 10px 10px;
-        background-color: #eee;
+    .searchBar {
+        width: 60%;
+        padding: 10px;
+        font-size: small;
+        border: none;
+        border-radius: 10px;
+        text-overflow: ellipsis;
     }
 
-    .searchBar {
-        width: 80%;
+    .directionsBar {
+        width: 20%;
         padding: 10px;
         font-size: small;
         border: none;
