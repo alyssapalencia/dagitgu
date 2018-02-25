@@ -1,39 +1,42 @@
 <ion-header>
 
   <ion-navbar>
-    <div *ngIf="!toggle">
-      <div class="searchActive">
+    <div>
+      <button ion-button icon-only item-start clear (click)="changeToggle()">
+        <ion-icon name="compass"></ion-icon>
+      </button>
+      <span *ngIf="!toggle">
+        <span class="searchActive">
+          <input #autocomplete id="autocomplete" class="searchBar" type="text" placeholder="Enter location" />
+          <button ion-button icon-only clear item-right end (click)="searchLocation()">
+            <ion-icon name="search"></ion-icon>
+          </button>
+        </span>
+        <span class="directionInactive">
+          <input #autocomstart id="autocomplete" type="text" [(ngModel)]="Start" placeholder="Current location" />
+          <input #autocomend id="autocomplete" type="text" [(ngModel)]="End" placeholder="Destination" />
+          <button ion-button icon-only item-right clear (click)="calculateAndDisplayRoute()">
+            <ion-icon name="search"></ion-icon>
+          </button>
+        </span>
+      </span>
+    </div>
+
+    <span *ngIf="toggle">
+      <span class="searchInactive">
         <input #autocomplete id="autocomplete" type="text" placeholder="Enter location" />
         <button ion-button icon-only clear (click)="searchLocation()">
           <ion-icon name="search"></ion-icon>
         </button>
-      </div>
-      <div class="directionInactive">
-        <input #autocomstart id="autocomplete" type="text" [(ngModel)]="Start" placeholder="Current location" />
+      </span>
+      <span class="directionActive">
+        <input #autocomstart id="autocomplete" class="searchBar" type="text" [(ngModel)]="Start" placeholder="Current Location" />
         <input #autocomend id="autocomplete" type="text" [(ngModel)]="End" placeholder="Destination" />
         <button ion-button icon-only clear (click)="calculateAndDisplayRoute()">
           <ion-icon name="search"></ion-icon>
         </button>
-      </div>
-    </div>
-
-    <div *ngIf="toggle">
-        <div class="searchInactive">
-            <input #autocomplete id="autocomplete" type="text" placeholder="Enter location" />
-            <button ion-button icon-only clear (click)="searchLocation()">
-              <ion-icon name="search"></ion-icon>
-            </button>
-          </div>
-          <div class="directionActive">
-            <input #autocomstart id="autocomplete" type="text" [(ngModel)]="Start" placeholder="Current location" />
-            <input #autocomend id="autocomplete" type="text" [(ngModel)]="End" placeholder="Destination" />
-            <button ion-button icon-only clear (click)="calculateAndDisplayRoute()">
-              <ion-icon name="search"></ion-icon>
-            </button>
-          </div>
-    </div>
-
-    <div (click)="changeToggle()">Get Directions</div>
+      </span>
+    </span>
   </ion-navbar>
 </ion-header>
 
