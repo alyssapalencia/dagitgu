@@ -92,7 +92,7 @@ export class LoginPage {
             if(this.currUserDb.password != this.user.password){
               this.firebaseService.editPassword(this.currUserDb.$key, this.user.password);
             }
-            //this.requestPermission();
+            this.requestPermission();
             //this.setBadges();
             
             /*let badge = this.badge.get();
