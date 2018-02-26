@@ -1,10 +1,13 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
+import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Badge } from '@ionic-native/badge';
+import { Observable } from 'rxjs/Rx';
+import * as moment from 'moment';
 
 declare var google;
-import { Badge } from '@ionic-native/badge';
 
 @IonicPage()
 @Component({
@@ -29,9 +32,31 @@ export class MapPage {
   lat: any;
   lng: any;
 
-  toggle: any = false;
+  Lat: any[] = [];
+  Lng: any[] = [];
+  cat: any[] = [];
+  info: any[] = [];
 
-  constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public popoverCtrl: PopoverController, public badge: Badge) {
+  toggle: any = false;
+  notif: any;
+
+  constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, private geolocation: Geolocation, public popoverCtrl: PopoverController, public badge: Badge) {
+    this.notif = this.firebaseService.getUpdate();
+
+    this.notif.subscribe(snapshot => {
+      this.Lat.length = 0;
+      this.Lng.length = 0;
+      var x = 0;
+      
+      snapshot.forEach(snap => {
+        this.Lat[x] = snap.locLat;
+        this.Lng[x] = snap.locLng;
+        this.cat[x] = snap;
+        this.info[x] = snap.notifDetail;
+        console.log(this.Lat[x]);
+        x++;
+      });
+    });
   }
 
   changeToggle() {
@@ -114,6 +139,30 @@ export class MapPage {
         animation: google.maps.Animation.DROP,
         position: LatLng
       });
-    })
-  } 
+      var eventLocation: any[] = [], iconLink;
+      console.log(this.cat.length);
+      for(var i = 0; i < this.Lat.length; i++) {
+        eventLocation[i] = new google.maps.LatLng(this.Lat[i], this.Lng[i]);
+        if(this.cat[i].category == 'Traffic') {
+          if(this.cat[i].subcategory == 'Light')
+            iconLink = 'http://maps.google.com/mapfiles/ms/icons/green-dot.png';
+          else if(this.cat[i].subcategory == 'Moderate')
+            iconLink = 'http://maps.google.com/mapfiles/ms/icons/yellow-dot.png';
+          else if(this.cat[i].subcategory == 'Heavy')
+            iconLink = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
+        }
+        this.addMarker(eventLocation[i], this.Lat[i], iconLink);
+        console.log("test");
+      }
+    });
+  }
+  
+  addMarker(eventLocation, Lat, iconLink) {
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: eventLocation,
+      icon: iconLink
+    });
+  }
 }

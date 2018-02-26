@@ -52,6 +52,10 @@ export class ProviderDagitProvider {
     return this.user;
   }
 
+  getUpdate() {
+    return this.dagit.list('/MAP');
+  }
+
   getTNotif(){
     return this.dagit.list('/NOTIFICATIONS', {
       query:{
