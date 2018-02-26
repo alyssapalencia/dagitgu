@@ -165,11 +165,6 @@ export class LoginPage {
   async getBadges(){
     try{
       let badgeAmount = await this.badge.get();
-      let alert = this.alertCtrl.create({
-        title: String(badgeAmount),
-        buttons: ['OK']
-      });
-      alert.present();
     }
     catch (e){
       console.error(e);
@@ -179,11 +174,6 @@ export class LoginPage {
   async setBadges(){
     try{
       let badge = await this.badge.set(Number(0));
-      let alert = this.alertCtrl.create({
-        title: badge,
-        buttons: ['OK']
-      });
-      console.log(badge);
     }
     catch (e){
       console.error(e);

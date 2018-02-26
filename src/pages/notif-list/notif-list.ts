@@ -32,12 +32,6 @@ export class NotifListPage {
   async clearBadges(){
     try{
       let badge = await this.badge.clear();
-      let alert = this.alertCtrl.create({
-        title: String(badge),
-        buttons: ['OK']
-      });
-      alert.present();
-      console.log(badge);
     }
     catch(e){
       console.error(e);
