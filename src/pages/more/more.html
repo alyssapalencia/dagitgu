@@ -23,7 +23,8 @@
       <ion-list *ngSwitchCase="'profile'">
         <ion-card>
           <ion-card-content>
-            <img src = "{{ currUser.photoURL }}">
+            <span *ngIf = "currUser.photoURL != null"><img src = "{{ currUser.photoURL }}"></span>
+            <span *ngIf = "currUser.photoURL == null"><img src = "./assets/imgs/placeholder.png"></span>
           </ion-card-content>
 
           <ion-item>
