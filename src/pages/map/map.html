@@ -30,8 +30,8 @@
         </button>
       </span>
       <span class="directionActive">
-        <input #autocomstart id="autocomplete" class="searchBar" type="text" [(ngModel)]="Start" placeholder="Current Location" />
-        <input #autocomend id="autocomplete" type="text" [(ngModel)]="End" placeholder="Destination" />
+        <input #autocomstart id="autocomplete" class="directionsBar" type="text" [(ngModel)]="Start" placeholder="Current Location" />
+        <input #autocomend id="autocomplete" class="directionsBar" type="text" [(ngModel)]="End" placeholder="Destination" />
         <button ion-button icon-only clear (click)="calculateAndDisplayRoute()">
           <ion-icon name="search"></ion-icon>
         </button>

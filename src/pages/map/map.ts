@@ -114,7 +114,40 @@ export class MapPage {
   ionViewWillEnter() {
     this.loadMap();
   }
+
+  /*infoWindow(marker, content, Lat) {
+    var contentString = '';
+    var update: any[] = [];
+    var y = 0;
+
+    for(var i = 0; i < this.markerInfo.length; i++) {
+      if(this.markerInfo[i].locLat = Lat) {
+        contentString = contentString.concat('<div id="'+this.markerInfo[i].$key+'">'+this.markerInfo[i].notifDetail+'</div>');
+        event[y] = this.markerInfo[i].$key;
+        y++;
+      }
+    }
+
+    let infoWindow = new google.maps.InfoWindow({
+      content: contentString
+    });
+
+    google.maps.event.addListener(marker, 'click', () => {
+      infoWindow.open(this.map, marker);
+    })
+  }*/
   
+  /*addMarker(eventLocation, info, Lat, iconLink) {
+    let marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: eventLocation,
+      icon: iconLink
+    });
+    let content = info;
+    this.infoWindow(marker, content, Lat);
+  }*/
+
   loadMap() {
     this.geolocation.getCurrentPosition().then((position) => {
     var LatLng;
@@ -151,18 +184,17 @@ export class MapPage {
           else if(this.cat[i].subcategory == 'Heavy')
             iconLink = 'http://maps.google.com/mapfiles/ms/icons/red-dot.png';
         }
-        this.addMarker(eventLocation[i], this.Lat[i], iconLink);
+        if(this.cat[i].category == 'Parking') {
+          if(this.cat[i].subcategory == 'Available') {
+            iconLink = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+          }
+          else if(this.cat[i].subcategory == 'No Available') {
+            iconLink = 'http://maps.google.com/mapfiles/ms/icons/pink-dot.png'
+          }
+        }
+        //this.addMarker(eventLocation[i], this.markerInfo[i], this.Lat[i], iconLink);
         console.log("test");
       }
-    });
-  }
-  
-  addMarker(eventLocation, Lat, iconLink) {
-    let marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: eventLocation,
-      icon: iconLink
     });
   }
 }
