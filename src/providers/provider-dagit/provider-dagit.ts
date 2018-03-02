@@ -53,7 +53,7 @@ export class ProviderDagitProvider {
   }
 
   getUpdate() {
-    return this.dagit.list('/MAP');
+    return this.dagit.list('/MAP/');
   }
 
   getTNotif(){
@@ -70,6 +70,11 @@ export class ProviderDagitProvider {
 
   getInformation() {
     return this.dagit.list('/INFORMATION');
+  }
+
+  // CONTACT
+  updateStatus(user) {
+    this.dagit.object('/CHAT/' + user.displayName + '/status').set("unread");
   }
 
   uploadPhoto(image, key){

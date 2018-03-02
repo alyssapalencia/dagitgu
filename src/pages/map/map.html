@@ -22,7 +22,7 @@
       </span>
     </div>
 
-    <span *ngIf="toggle">
+    <div *ngIf="toggle">
       <span class="searchInactive">
         <input #autocomplete id="autocomplete" type="text" placeholder="Enter location" />
         <button ion-button icon-only clear (click)="searchLocation()">
@@ -36,8 +36,9 @@
           <ion-icon name="search"></ion-icon>
         </button>
       </span>
-    </span>
+    </div>
   </ion-navbar>
+
 </ion-header>
 
 <ion-content>
