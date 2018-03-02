@@ -70,7 +70,8 @@ export class ViolationPage {
       "plateNumber": this.plateNumber,
       "color": this.color,
       "model": this.model,
-      "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString()
+      "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
+      "status": "unread"
     }
     this.firebaseService.addViolationReport(this.violationInfo);
     this.loading.dismiss();

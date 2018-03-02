@@ -52,6 +52,10 @@ export class ProviderDagitProvider {
     return this.user;
   }
 
+  getUpdate() {
+    return this.dagit.list('/MAP/');
+  }
+
   getTNotif(){
     return this.dagit.list('/NOTIFICATIONS', {
       query:{
@@ -66,6 +70,11 @@ export class ProviderDagitProvider {
 
   getInformation() {
     return this.dagit.list('/INFORMATION');
+  }
+
+  // CONTACT
+  updateStatus(user) {
+    this.dagit.object('/CHAT/' + user.displayName + '/status').set("unread");
   }
 
   uploadPhoto(image, key){

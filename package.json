@@ -73,8 +73,7 @@
       "cordova-plugin-badge": {}
     },
     "platforms": [
-      "ios",
-      "android"
+      "ios"
     ]
   }
 }
