@@ -10,40 +10,21 @@
 <ion-content fullscreen>
   <ion-list no-lines>
     <ion-item *ngFor = 'let chat of Chat | async' text-wrap item-left>
-      <ion-avatar item-start>
+      <!--<ion-avatar item-start>
         <div *ngIf = "user.photoURL != undefined"><img src="{{ user.photoURL }}"></div>
         <div *ngIf = "user.photoURL == undefined"><img src="/assets/imgs/placeholder.png"></div>
-      </ion-avatar>
+      </ion-avatar>-->
 
-      <!--<div *ngIf = "user == chat.messageSender">
-        <h2>You</h2>
+      <div *ngIf = "user.displayName == chat.messageSender">
+        <p class="chatUser">{{ chat.message }}</p>
+        <ion-note class="userTimestamp">{{ chat.timeStamp }}</ion-note>
       </div>
-      <div *ngIf = "user != chat.messageSender">
-        <h2>{{ chat.messageSender }}</h2>
-      </div>-->
-
-      <p class="chatTMO">{{ chat.message }}</p>
-      <p class="chatUser">{{ chat.message }}</p>
-      <ion-note class="timestamp">{{ chat.timeStamp }}</ion-note>
+      <div *ngIf = "user.displayName != chat.messageSender">
+        <p class="chatTMO">{{ chat.message }}</p>
+        <ion-note class="tmoTimestamp">{{ chat.timeStamp }}</ion-note>
+      </div>
     </ion-item>
   </ion-list>
-
-  <!--<ion-list>
-    <ion-item *ngFor = 'let chat of Chat | async' text-wrap>
-      <ion-avatar item-start>
-        <div *ngIf = "user.photoURL != undefined"><img src="{{ user.photoURL }}"></div>
-        <div *ngIf = "user.photoURL == undefined"><img src="/assets/imgs/placeholder.png"></div>
-      </ion-avatar>
-      <div *ngIf = "user == chat.messageSender">
-        <h2>You</h2>
-      </div>
-      <div *ngIf = "user != chat.messageSender">
-        <h2>{{ chat.messageSender }}</h2>
-      </div>
-      <p class="chatTMO">{{ chat.message }}</p>
-      <ion-note class="timestamp">{{ chat.timeStamp }}</ion-note>
-    </ion-item>
-  </ion-list>-->
 </ion-content>
 
 <ion-footer>
