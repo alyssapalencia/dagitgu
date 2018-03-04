@@ -49,12 +49,11 @@ export class LoginPage {
         if(errorCode === 'auth/invalid-email'){
           console.log('invalid email');
           noError = false;
-          /*let alert = this.alertCtrl.create({
+          /*this.alert.create({
             title: 'Invalid Email',
-            subTitle: 'The email you entered is invalid. Please enter a valid email address and try again.',
+            message: 'The email you entered is invalid. Please retype your email and try again.',
             buttons: ['OK']
-          });
-          alert.present();*/
+          }).present();*/
         }
         else if(errorCode === 'auth/user-not-found'){
           console.log('user not found');

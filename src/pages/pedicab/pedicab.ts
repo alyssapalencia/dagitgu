@@ -45,6 +45,5 @@ export class PedicabPage {
 
   dismiss() {
     this.viewCtrl.dismiss();
-    this.navCtrl.push('HelpdeskPage');
   }
 }

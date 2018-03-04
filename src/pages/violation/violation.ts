@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ViewController, LoadingController } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -30,6 +30,7 @@ export class ViolationPage {
   selectedPhoto: any;
   photo: any;
   dlURL: any;
+  place: any; // to check autocomplete
 
   onSuccess = (snapshot) => {
     this.photo = snapshot.downloadURL;
@@ -41,10 +42,8 @@ export class ViolationPage {
 		this.loading.dismiss();
 	}
 
-  constructor(public camera: Camera, public loadingCtrl: LoadingController, public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl: ViewController) {
+  constructor(public camera: Camera, public loadingCtrl: LoadingController, public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl: ViewController, private ngZone: NgZone) {
     this.user = this.angularFireAuth.auth.currentUser;
-    this.vLocation = '';
-    console.log(this.vLocation);
   }
 
   ionViewDidLoad() {
@@ -55,11 +54,23 @@ export class ViolationPage {
       componentRestrictions: {country: "phl"}
     }
 
-    this.autocomplete = new google.maps.places.Autocomplete(this.autocompleteElement.nativeElement, options);
+    // LOAD AUTOCOMPLETE
+    const autocomplete = new google.maps.places.Autocomplete(this.autocompleteElement.nativeElement, options);
+      autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          const place = google.maps.places.PlaceResult = autocomplete.getPlace();
+
+          if(place.geometry == undefined || place.geometry == null) {
+            this.place = place;
+            return;
+          }
+          this.vLocation = place.formatted_address;
+        });
+    });
   }
 
   addViolationReport() {
-    this.vLocation = document.getElementById('autocomplete')["value"];
+    //this.vLocation = document.getElementById('autocomplete')["value"];
 
     this.violationInfo = {
       "image": this.photo,
@@ -74,7 +85,6 @@ export class ViolationPage {
       "status": "unread"
     }
     this.firebaseService.addViolationReport(this.violationInfo);
-    this.loading.dismiss();
     let alert = this.alertCtrl.create({
       title: 'Report Sent',
       subTitle: 'Your report was sent to our Helpdesk. Thank you for your contribution.',
