@@ -43,38 +43,38 @@ export class LoginPage {
 
     if(this.checkInput(username, password)){
       this.angularFireAuth.auth.signInWithEmailAndPassword(username, password)
-      .catch(function(error){
+      .catch((error) => {
         var errorCode = error.code;
         console.log(errorCode);
         if(errorCode === 'auth/invalid-email'){
           console.log('invalid email');
           noError = false;
-          /*let alert = this.alertCtrl.create({
+          let alert = this.alertCtrl.create({
             title: 'Invalid Email',
             subTitle: 'The email you entered is invalid. Please enter a valid email address and try again.',
             buttons: ['OK']
           });
-          alert.present();*/
+          alert.present();
         }
         else if(errorCode === 'auth/user-not-found'){
           console.log('user not found');
           noError = false;
-          /*let alert = this.alertCtrl.create({
+          let alert = this.alertCtrl.create({
             title: 'User Not Found',
             subTitle: 'The user does not exist. Please retype your email and try again.',
             buttons: ['OK']
           });
-          alert.present();*/
+          alert.present();
         }
         else if(errorCode === 'auth/wrong-password'){
           console.log('wrong password');
           noError = false;
-          /*let alert = this.alertCtrl.create({
+          let alert = this.alertCtrl.create({
             title: 'Wrong Password',
             subTitle: 'The password you entered is incorrect. Please retype your password and try again.',
             buttons: ['OK']
           });
-          alert.present();*/
+          alert.present();
         }
       })
       .then((user) => {
@@ -93,15 +93,6 @@ export class LoginPage {
               this.firebaseService.editPassword(this.currUserDb.$key, this.user.password);
             }
             this.requestPermission();
-            //this.setBadges();
-            
-            /*let badge = this.badge.get();
-            if(badge == null){
-              badge = this.badge.set(Number(0));
-            }
-            else{
-              
-            }*/
             this.getBadges();
             
             this.navCtrl.setRoot('TabsPage');
@@ -112,12 +103,12 @@ export class LoginPage {
             console.log('check email');
             this.sendemailVerification();
             // Tell the user to have a look at his/her email
-            /*let alert = this.alertCtrl.create({
+            let alert = this.alertCtrl.create({
               title: 'Check Email',
               subTitle: 'A verification link was sent to your email. Check your email and follow the link to finish creating your DAGIT account.',
               buttons: ['OK']
             });
-            alert.present();*/
+            alert.present();
           }
         }
       })
