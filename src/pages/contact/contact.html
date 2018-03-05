@@ -15,11 +15,11 @@
         <div *ngIf = "user.photoURL == undefined"><img src="/assets/imgs/placeholder.png"></div>
       </ion-avatar>-->
 
-      <div *ngIf = "user.displayName == chat.messageSender">
+      <div *ngIf = "user.displayName == chat.messageSender && chat.$key != 'status'">
         <p class="chatUser">{{ chat.message }}</p>
         <ion-note class="userTimestamp">{{ chat.timeStamp }}</ion-note>
       </div>
-      <div *ngIf = "user.displayName != chat.messageSender">
+      <div *ngIf = "user.displayName != chat.messageSender && chat.$key != 'status'">
         <p class="chatTMO">{{ chat.message }}</p>
         <ion-note class="tmoTimestamp">{{ chat.timeStamp }}</ion-note>
       </div>
