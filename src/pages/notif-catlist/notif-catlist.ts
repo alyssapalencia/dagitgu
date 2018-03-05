@@ -22,7 +22,6 @@ export class NotifCatlistPage {
   }
 
   dispDetails(notif) {
-    console.log('Clicked');
     let alert = this.alertCtrl.create({
       title: notif.title,
       subTitle: notif.notifDetail,

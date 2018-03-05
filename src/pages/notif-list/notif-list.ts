@@ -40,11 +40,9 @@ export class NotifListPage {
 
   btn_cat(){
     this.navCtrl.push(NotifCatPage);
-    console.log ("Category button clicked");
   }
 
   dispDetails(notif) {
-    console.log('Clicked');
     let alert = this.alertCtrl.create({
       title: notif.title,
       subTitle: notif.notifDetail,

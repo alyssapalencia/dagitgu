@@ -53,7 +53,6 @@ export class UpdateProfileImagePage {
   }
 
   openGallery(){
-    console.log('gallery');
 		const options: CameraOptions = {
 			quality: 100,
 			destinationType: this.camera.DestinationType.DATA_URL,

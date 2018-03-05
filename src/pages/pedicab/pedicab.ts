@@ -22,26 +22,43 @@ export class PedicabPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PedicabPage');
-    console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
   }
 
   addPedicabReport() {
-    this.pedicabInfo = {
-      "reportSender": this.user.displayName,
-      "pedicabNumber": this.pedicabNumber,
-      "violationType": this.violationType,
-      "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
-      "status": "unread",
-      "sort": 0 - Date.now()
+    if(!this.isBlank(this.user.displayName) && !this.isBlank(this.pedicabNumber) && !this.isBlank(this.violationType)){
+      this.pedicabInfo = {
+        "reportSender": this.user.displayName,
+        "pedicabNumber": this.pedicabNumber,
+        "violationType": this.violationType,
+        "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
+        "status": "unread",
+        "sort": 0 - Date.now()
+      }
+      this.firebaseService.addPedicabReport(this.pedicabInfo);
+      let alert = this.alertCtrl.create({
+        title: 'Report Sent',
+        subTitle: 'Your report was sent to our Helpdesk. Thank you for your contribution.',
+        buttons: ['OK']
+      });
+      alert.present();
+      this.viewCtrl.dismiss();
     }
-    this.firebaseService.addPedicabReport(this.pedicabInfo);
-    let alert = this.alertCtrl.create({
-      title: 'Report Sent',
-      subTitle: 'Your report was sent to our Helpdesk. Thank you for your contribution.',
-      buttons: ['OK']
-    });
-    alert.present();
-    this.viewCtrl.dismiss();
+    else{
+      let alert = this.alertCtrl.create({
+        title: 'Missing Information',
+        subTitle: 'Please fill up the form and try again.',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+
+    
+  }
+
+  isBlank(str){
+    if(!str || 0 === str.length){
+      return true;
+    }
   }
 
   dismiss() {

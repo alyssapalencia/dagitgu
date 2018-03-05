@@ -33,7 +33,6 @@ export class RegisterPage {
     this.angularFireAuth.authState.subscribe(user => {
       user.sendEmailVerification()
         .then(() => {
-          console.log('email sent');
           let alert = this.alertCtrl.create({
             title: 'Email sent!',
             subTitle: 'A verification link has been sent to your email. Check your email and follow the link to finish creating your DAGIT account.',
@@ -55,7 +54,6 @@ export class RegisterPage {
           var errorCode = err.code;
 
           if(errorCode === 'auth/email-already-in-use'){
-            console.log(errorCode);
             noError = false;
             let alert = this.alertCtrl.create({
               title: 'Email Already In Use',
@@ -65,7 +63,6 @@ export class RegisterPage {
             alert.present();
           }
           else if(errorCode === 'auth/invalid-email'){
-            console.log(errorCode);
             noError = false;
             let alert = this.alertCtrl.create({
               title: 'Invalid Email',
@@ -75,7 +72,6 @@ export class RegisterPage {
             alert.present();
           }
           else if(errorCode === 'auth/weak-password'){
-            console.log(errorCode);
             noError = false;
             let alert = this.alertCtrl.create({
               title: 'Weak Password',
@@ -98,7 +94,6 @@ export class RegisterPage {
         });
       }
       else{
-        console.log("wrong password");
         let alert = this.alertCtrl.create({
           title: 'Passwords Do Not Match',
           subTitle: 'You must enter the same password twice in order to confirm it.',
@@ -108,7 +103,6 @@ export class RegisterPage {
         }
     }
     else{
-      console.log("one or more field/s lacks input")
       let alert = this.alertCtrl.create({
         title: 'Missing Information',
         subTitle: 'Please fill up the form and try again.',

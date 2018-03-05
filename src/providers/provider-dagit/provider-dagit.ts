@@ -12,7 +12,6 @@ export class ProviderDagitProvider {
   user: any;
 
   constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp, public angularFireAuth: AngularFireAuth, public badge: Badge) {
-    console.log('Hello ProviderDagitProvider Provider');
     this.user = name;
   }
 

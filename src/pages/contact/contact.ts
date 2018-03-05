@@ -40,7 +40,6 @@ export class ContactPage {
     });
 
     this.firebaseApp.database().ref("CHAT/" + this.key + "/message").on('value', snapshot => {
-      console.log(this.key);
       setTimeout(() => {
         this.content.scrollToBottom(300);
       });
@@ -54,7 +53,6 @@ export class ContactPage {
   }
 
   sendMessage() {
-    console.log(this.message);
 
     this.messageObject = {
       "messageSender": this.user.displayName,

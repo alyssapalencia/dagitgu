@@ -17,7 +17,6 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       
       const unsubscribe = angularFireAuth.auth.onAuthStateChanged( user => {
-        console.log(user);
         if (!user) {
           this.rootPage = 'LoginPage';
           unsubscribe();

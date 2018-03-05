@@ -24,7 +24,7 @@ export class ViolationPage {
   vehicleType: any;
   plateNumber: any;
   color: any;
-  model: any;
+  model = "";
   user: any;
   loading: any;
   selectedPhoto: any;
@@ -48,7 +48,6 @@ export class ViolationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViolationPage');
-    console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
 
     var options = {
       componentRestrictions: {country: "phl"}
@@ -72,27 +71,56 @@ export class ViolationPage {
   addViolationReport() {
     //this.vLocation = document.getElementById('autocomplete')["value"];
 
-    this.violationInfo = {
-      "image": this.photo,
-      "reportSender": this.user.displayName,
-      "location": this.vLocation,
-      "reportContent": this.reportContent,
-      "vehicleType": this.vehicleType,
-      "plateNumber": this.plateNumber,
-      "color": this.color,
-      "model": this.model,
-      "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
-      "status": "unread",
-      "sort": 0 - Date.now()
+    if(!this.isBlank(this.user.displayName) && !this.isBlank(this.vLocation)
+      && !this.isBlank(this.reportContent) && !this.isBlank(this.vehicleType) && !this.isBlank(this.plateNumber)
+      && !this.isBlank(this.color)){
+        if(!this.isBlank(this.photo)){
+          this.violationInfo = {
+          "image": this.photo,
+          "reportSender": this.user.displayName,
+          "location": this.vLocation,
+          "reportContent": this.reportContent,
+          "vehicleType": this.vehicleType,
+          "plateNumber": this.plateNumber,
+          "color": this.color,
+          "model": this.model,
+          "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
+          "status": "unread",
+          "sort": 0 - Date.now()
+          }
+          this.firebaseService.addViolationReport(this.violationInfo);
+          let alert = this.alertCtrl.create({
+            title: 'Report Sent',
+            subTitle: 'Your report was sent to our Helpdesk. Thank you for your contribution.',
+            buttons: ['OK']
+          });
+          alert.present();
+          this.viewCtrl.dismiss();
+        }
+        else{
+          let alert = this.alertCtrl.create({
+            title: 'Missing Image',
+            subTitle: 'Please upload a photo.',
+            buttons: ['OK']
+          });
+          alert.present();
+        }
     }
-    this.firebaseService.addViolationReport(this.violationInfo);
-    let alert = this.alertCtrl.create({
-      title: 'Report Sent',
-      subTitle: 'Your report was sent to our Helpdesk. Thank you for your contribution.',
-      buttons: ['OK']
-    });
-    alert.present();
-    this.viewCtrl.dismiss();
+    else{
+      let alert = this.alertCtrl.create({
+        title: 'Missing Information',
+        subTitle: 'Please fill up the form and try again.',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+    
+  }
+
+  isBlank(str){
+    if(!str || 0 === str.length){
+      return true;
+    }
   }
 
   dismiss() {
@@ -100,7 +128,6 @@ export class ViolationPage {
   }
 
   openGallery(){
-    console.log('gallery');
 		const options: CameraOptions = {
 			quality: 100,
 			destinationType: this.camera.DestinationType.DATA_URL,
