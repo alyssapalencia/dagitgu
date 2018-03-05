@@ -71,7 +71,8 @@ export class ViolationPage {
       "color": this.color,
       "model": this.model,
       "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
-      "status": "unread"
+      "status": "unread",
+      "sort": 0 - Date.now()
     }
     this.firebaseService.addViolationReport(this.violationInfo);
     this.loading.dismiss();

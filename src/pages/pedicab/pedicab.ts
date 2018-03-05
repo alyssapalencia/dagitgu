@@ -31,7 +31,8 @@ export class PedicabPage {
       "pedicabNumber": this.pedicabNumber,
       "violationType": this.violationType,
       "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
-      "status": "unread"
+      "status": "unread",
+      "sort": 0 - Date.now()
     }
     this.firebaseService.addPedicabReport(this.pedicabInfo);
     let alert = this.alertCtrl.create({
