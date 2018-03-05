@@ -45,8 +45,6 @@ export class SearchMapPage {
     var place = this.autocomplete.getPlace();
     this.lat = place.geometry.location.lat();
     this.lng = place.geometry.location.lng();
-    console.log(place.geometry.location.lat());
-    console.log(place.geometry.location.lng());
     this.loadMap();
   }
 

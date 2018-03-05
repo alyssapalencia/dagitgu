@@ -32,7 +32,6 @@ export class LoginPage {
     this.angularFireAuth.authState.subscribe(user => {
       user.sendEmailVerification()
         .then(() => {
-          console.log('email sent');
       })
     });
   }
@@ -45,9 +44,7 @@ export class LoginPage {
       this.angularFireAuth.auth.signInWithEmailAndPassword(username, password)
       .catch((error) => {
         var errorCode = error.code;
-        console.log(errorCode);
         if(errorCode === 'auth/invalid-email'){
-          console.log('invalid email');
           noError = false;
           let alert = this.alertCtrl.create({
             title: 'Invalid Email',
@@ -57,7 +54,6 @@ export class LoginPage {
           alert.present();
         }
         else if(errorCode === 'auth/user-not-found'){
-          console.log('user not found');
           noError = false;
           let alert = this.alertCtrl.create({
             title: 'User Not Found',
@@ -67,7 +63,6 @@ export class LoginPage {
           alert.present();
         }
         else if(errorCode === 'auth/wrong-password'){
-          console.log('wrong password');
           noError = false;
           let alert = this.alertCtrl.create({
             title: 'Wrong Password',
@@ -78,10 +73,8 @@ export class LoginPage {
         }
       })
       .then((user) => {
-        console.log(user);
         if(noError){
           if(user.emailVerified) {
-            console.log("logged in");
             this.user = this.angularFireAuth.auth.currentUser;
             for(var j =0; j < this.users.length; j++){
               if(this.user.email == this.users[j].emailAddress){
@@ -100,7 +93,6 @@ export class LoginPage {
             // Redirect the user here 
           }
           else {
-            console.log('check email');
             this.sendemailVerification();
             // Tell the user to have a look at his/her email
             let alert = this.alertCtrl.create({
@@ -114,7 +106,6 @@ export class LoginPage {
       })
     }
     else{
-      console.log("one or more field/s lacks input")
       /*let alert = this.alertCtrl.create({
         title: 'Missing Information',
         subTitle: 'Please fill up the form and try again.',
@@ -150,6 +141,8 @@ export class LoginPage {
   isBlank(str){
     if(!str || 0 === str.length){
       return true;
+    }else if(str.trim().length == 0){
+      return true;
     }
   }
   
@@ -174,10 +167,8 @@ export class LoginPage {
   async requestPermission(){
     try{
       let hasPermission = await this.badge.hasPermission();
-      console.log(hasPermission);
       if(!hasPermission){
         let permission = await this.badge.registerPermission();
-        console.log(permission);
       }
     }
     catch (e){

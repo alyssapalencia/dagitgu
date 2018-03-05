@@ -25,7 +25,6 @@ export class MorePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
-    console.log(this.angularFireAuth.auth.currentUser.email);
   }
 
   changePassword(){
@@ -40,13 +39,11 @@ export class MorePage {
         {
           text: 'Cancel',
           handler: () => {
-            console.log('Cancel clicked');
           }
         },
         {
           text: 'Logout',
           handler: () => {
-            console.log('Logout clicked');
             this.angularFireAuth.auth.signOut();
             this.app.getRootNav().setRoot(LoginPage);
             let toast = this.toastCtrl.create({

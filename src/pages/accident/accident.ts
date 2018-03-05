@@ -66,23 +66,51 @@ export class AccidentPage {
   }
 
   addAccidentReport() {
-    this.accidentInfo = {
-      "image": this.photo,
-      "reportSender": this.user.displayName,
-      "location": this.aLocation,
-      "accidentDescription": this.accidentDescription,
-      "timeStamp": moment().format('MMMM Do YYYY, hh:mm:ss A').toString(),
-      "status": "unread",
-      "sort": 0 - Date.now()
+    if(!this.isBlank(this.user.displayName) && !this.isBlank(this.aLocation) && !this.isBlank(this.accidentDescription)){
+      if(!this.isBlank(this.photo)){
+        this.accidentInfo = {
+        "image": this.photo,
+        "reportSender": this.user.displayName,
+        "location": this.aLocation,
+        "accidentDescription": this.accidentDescription,
+        "timeStamp": moment().format('MMMM Do YYYY, hh:mm:ss A').toString(),
+        "status": "unread",
+        "sort": 0 - Date.now()
+        }
+        this.firebaseService.addAccidentReport(this.accidentInfo);
+        let alert = this.alertCtrl.create({
+          title: 'Report Sent',
+          subTitle: 'Your report was sent to our Helpdesk. Thank you for your contribution.',
+          buttons: ['OK']
+        });
+        alert.present();
+        this.viewCtrl.dismiss();
+      }
+      else{
+        let alert = this.alertCtrl.create({
+          title: 'Missing Image',
+          subTitle: 'Please upload a photo.',
+          buttons: ['OK']
+        });
+        alert.present();
+      }
     }
-    this.firebaseService.addAccidentReport(this.accidentInfo);
-    let alert = this.alertCtrl.create({
-      title: 'Report Sent',
-      subTitle: 'Your report was sent to our Helpdesk. Thank you for your contribution.',
-      buttons: ['OK']
-    });
-    alert.present();
-    this.viewCtrl.dismiss();
+    else{
+      let alert = this.alertCtrl.create({
+        title: 'Missing Information',
+        subTitle: 'Please fill up the form and try again.',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
+  }
+
+  isBlank(str){
+    if(!str || 0 === str.length){
+      return true;
+    }else if(str.trim().length == 0){
+      return true;
+    }
   }
 
   dismiss() {
@@ -90,7 +118,6 @@ export class AccidentPage {
   }
 
   openGallery(){
-    console.log('gallery');
 		const options: CameraOptions = {
 			quality: 100,
 			destinationType: this.camera.DestinationType.DATA_URL,

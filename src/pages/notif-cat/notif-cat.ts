@@ -25,17 +25,14 @@ export class NotifCatPage {
 
   btn_anc(filter){
     this.navCtrl.push(NotifCatlistPage, {param1: filter});
-    console.log('Announcement category button clicked');
   }
 
   btn_park(filter){
     this.navCtrl.push(NotifCatlistPage, {param1: filter});
-    console.log('Parking category button clicked');
   }
 
   btn_traffic(filter){
     this.navCtrl.push(NotifCatlistPage, {param1: filter});
-    console.log('Traffic category button clicked');
   }
 
 }

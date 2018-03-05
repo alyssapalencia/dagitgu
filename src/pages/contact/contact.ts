@@ -29,21 +29,8 @@ export class ContactPage {
   }
 
   ionViewDidEnter() {
-    /*var chatKey;
-
-    chatKey = {
-      "key": this.Chat.$key
-    }*/
-
     setTimeout(() => {
       this.content.scrollToBottom(300);
-    });
-
-    this.firebaseApp.database().ref("CHAT/" + this.key + "/message").on('value', snapshot => {
-      console.log(this.key);
-      setTimeout(() => {
-        this.content.scrollToBottom(300);
-      });
     });
   }
 
@@ -54,22 +41,23 @@ export class ContactPage {
   }
 
   sendMessage() {
-    console.log(this.message);
-    var isEnabled: boolean = false;
-
-    this.messageObject = {
-      "messageSender": this.user.displayName,
-      "timeStamp": moment().format('MMM Do YYYY, hh:mm A'),
-      message: this.message
-    }
-
-    if(this.message == null) {
-      isEnabled = false;
-    } else {
-      isEnabled = true;
+    if(!this.isBlank(this.message)){
+      this.messageObject = {
+        "messageSender": this.user.displayName,
+        "timeStamp": moment().format('MMM Do YYYY, hh:mm A'),
+        message: this.message
+      }
       this.firebaseService.updateStatus(this.user);
       this.firebaseService.addMessage(this.messageObject, this.user.displayName);
       this.message = '';
+    }
+  }
+
+  isBlank(str){
+    if(!str || 0 === str.length){
+      return true;
+    }else if(str.trim().length == 0){
+      return true;
     }
   }
 }

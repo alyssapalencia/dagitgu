@@ -22,9 +22,7 @@ export class ForgotPasswordPage {
     this.angularFireAuth.auth.sendPasswordResetEmail(email)
     .catch(function(error){
       var errorCode = error.code;
-      console.log(errorCode);
       if(errorCode === 'auth/invalid-email'){
-        console.log('invalid email');
         noError = false;
         let alert = this.alertCtrl.create({
           title: 'Invalid Email',
@@ -34,7 +32,6 @@ export class ForgotPasswordPage {
         alert.present();
       }
       else if(errorCode === 'auth/user-not-found'){
-        console.log('user not found');
         noError = false;
         let alert = this.alertCtrl.create({
           title: 'User Not Found',
@@ -45,7 +42,6 @@ export class ForgotPasswordPage {
       }
     })
     .then(() => {
-      console.log('email sent');
       let alert = this.alertCtrl.create({
         title: 'Email sent!',
         subTitle: 'A reset password link has been sent to your email. Please check your email and click the link to reset your password.',

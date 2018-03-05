@@ -45,7 +45,6 @@ export class ChangePasswordPage {
     }
     if(this.checkInput()){
       if(this.oldPass != this.currUserDb.password){
-        console.log("password incorrect");
         let alert = this.alertCtrl.create({
           title: 'Incorrect Password',
           subTitle: 'Your password was incorrect.',
@@ -54,7 +53,6 @@ export class ChangePasswordPage {
         alert.present();
       }
       else if(this.newPass != this.conPass){
-        console.log("passwords dont match");
         let alert = this.alertCtrl.create({
           title: 'Passwords Do Not Match',
           subTitle: 'You must enter the same password twice in order to confirm it.',
@@ -63,7 +61,6 @@ export class ChangePasswordPage {
         alert.present();
       }
       else if(this.newPass == this.currUserDb.password){
-        console.log("new password is the same as old password");
         let alert = this.alertCtrl.create({
           title: 'Password Already Used',
           subTitle: 'New password must differ from old password.',
@@ -79,7 +76,6 @@ export class ChangePasswordPage {
         .then(() => {
           this.currUser.password = this.newPass;
           this.firebaseService.editPassword(this.currUserDb.$key, this.newPass);
-          console.log("password changed");
           let alert = this.alertCtrl.create({
             title: 'Password Changed',
             subTitle: 'Password successfully changed.',
@@ -92,7 +88,6 @@ export class ChangePasswordPage {
       }
     }
     else{
-      console.log("one or more field/s lacks input");
       let alert = this.alertCtrl.create({
         title: 'Missing Information',
         subTitle: 'Please fill up the form and try again.',

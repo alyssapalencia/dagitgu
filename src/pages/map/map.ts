@@ -153,7 +153,6 @@ export class MapPage {
     const a = Math.pow(Math.sin(dlat / 2.0), 2.0) + Math.cos(this.originLat * _d2r) * Math.cos(this.destinationLat * _d2r) * Math.pow(Math.sin(dlong / 2.0), 2.0);
     const c = 2.0 * Math.atan2(Math.sqrt(a), Math.sqrt(1.0 - a));
     const d = _eQuatorialEarthRadius * c;
-    console.log(d);
     this.distance = d;
     
   }
@@ -189,7 +188,6 @@ export class MapPage {
       
       var eventLocation: any[] = [], eventpLocation: any[] = [], tIconLink, pIconLink
       this.marker.subscribe(snapshot => {
-        console.log(snapshot);
         var i = 0;
         for(i = 0; i < snapshot.length; i++) {
           this.dbtLatitude[i] = snapshot[i].tlatitude;
