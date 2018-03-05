@@ -75,7 +75,8 @@ export class AccidentPage {
       "location": this.aLocation,
       "accidentDescription": this.accidentDescription,
       "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
-      "status": "unread"
+      "status": "unread",
+      "sort": 0 - Date.now()
     }
     this.firebaseService.addAccidentReport(this.accidentInfo);
     let alert = this.alertCtrl.create({
