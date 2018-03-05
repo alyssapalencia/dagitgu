@@ -53,14 +53,23 @@ export class ContactPage {
   }
 
   sendMessage() {
-
-    this.messageObject = {
-      "messageSender": this.user.displayName,
-      "timeStamp": moment().format('MMM Do YYYY, hh:mm A'),
-      message: this.message
+    if(!this.isBlank(this.message)){
+      this.messageObject = {
+        "messageSender": this.user.displayName,
+        "timeStamp": moment().format('MMM Do YYYY, hh:mm A'),
+        message: this.message
+      }
+      this.firebaseService.updateStatus(this.user);
+      this.firebaseService.addMessage(this.messageObject, this.user.displayName);
+      this.message = '';
     }
-    this.firebaseService.updateStatus(this.user);
-    this.firebaseService.addMessage(this.messageObject, this.user.displayName);
-    this.message = '';
+  }
+
+  isBlank(str){
+    if(!str || 0 === str.length){
+      return true;
+    }else if(str.trim().length == 0){
+      return true;
+    }
   }
 }

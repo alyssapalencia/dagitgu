@@ -58,6 +58,8 @@ export class PedicabPage {
   isBlank(str){
     if(!str || 0 === str.length){
       return true;
+    }else if(str.trim().length == 0){
+      return true;
     }
   }
 
