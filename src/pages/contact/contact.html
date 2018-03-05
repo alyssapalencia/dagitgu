@@ -8,20 +8,21 @@
 
 
 <ion-content fullscreen>
-  <ion-list>
-    <ion-item *ngFor = 'let chat of Chat | async' text-wrap>
-      <ion-avatar item-start>
+  <ion-list no-lines>
+    <ion-item *ngFor = 'let chat of Chat | async' text-wrap item-left>
+      <!--<ion-avatar item-start>
         <div *ngIf = "user.photoURL != undefined"><img src="{{ user.photoURL }}"></div>
         <div *ngIf = "user.photoURL == undefined"><img src="/assets/imgs/placeholder.png"></div>
-      </ion-avatar>
-      <div *ngIf = "user == chat.messageSender">
-        <h2>You</h2>
+      </ion-avatar>-->
+
+      <div *ngIf = "user.displayName == chat.messageSender && chat.$key != 'status'">
+        <p class="chatUser">{{ chat.message }}</p>
+        <ion-note class="userTimestamp">{{ chat.timeStamp }}</ion-note>
       </div>
-      <div *ngIf = "user != chat.messageSender">
-        <h2>{{ chat.messageSender }}</h2>
+      <div *ngIf = "user.displayName != chat.messageSender && chat.$key != 'status'">
+        <p class="chatTMO">{{ chat.message }}</p>
+        <ion-note class="tmoTimestamp">{{ chat.timeStamp }}</ion-note>
       </div>
-      <p>{{ chat.message }}</p>
-      <ion-note class="timestamp">{{ chat.timeStamp }}</ion-note>
     </ion-item>
   </ion-list>
 </ion-content>

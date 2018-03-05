@@ -51,7 +51,7 @@ export class LoginPage {
           noError = false;
           let alert = this.alertCtrl.create({
             title: 'Invalid Email',
-            subTitle: 'The email you entered is invalid. Please enter a valid email address and try again.',
+            message: 'The email you entered is invalid. Please retype your email and try again.',
             buttons: ['OK']
           });
           alert.present();

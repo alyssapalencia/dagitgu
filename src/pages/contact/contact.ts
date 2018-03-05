@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
+import { FirebaseApp } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as moment from 'moment';
 
@@ -10,22 +11,46 @@ import * as moment from 'moment';
   templateUrl: 'contact.html',
 })
 export class ContactPage {
+  @ViewChild (Content) content: Content;
   user: any;
   message: any;
   messageObject: any;
   Chat: any;
+  key: any; // FOR AUTOSCROLL
   isEnabled: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public angularFireAuth: AngularFireAuth) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public angularFireAuth: AngularFireAuth, public firebaseApp: FirebaseApp) {
     this.user = this.angularFireAuth.auth.currentUser;
-    console.log(this.user.displayName);
     this.Chat = this.firebaseService.getMessage(this.user.displayName);
-    console.log(this.Chat);
-    console.log(this.user.accountPicture);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactPage');
+  }
+
+  ionViewDidEnter() {
+    /*var chatKey;
+
+    chatKey = {
+      "key": this.Chat.$key
+    }*/
+
+    setTimeout(() => {
+      this.content.scrollToBottom(300);
+    });
+
+    this.firebaseApp.database().ref("CHAT/" + this.key + "/message").on('value', snapshot => {
+      console.log(this.key);
+      setTimeout(() => {
+        this.content.scrollToBottom(300);
+      });
+    });
+  }
+
+  ionViewWillEnter() {
+    setTimeout(() => {
+      this.content.scrollToBottom(300);
+    });
   }
 
   sendMessage() {
@@ -33,7 +58,7 @@ export class ContactPage {
 
     this.messageObject = {
       "messageSender": this.user.displayName,
-      "timeStamp": moment().format('MMMM Do YYYY, hh:mm A'),
+      "timeStamp": moment().format('MMM Do YYYY, hh:mm A'),
       message: this.message
     }
     this.firebaseService.updateStatus(this.user);

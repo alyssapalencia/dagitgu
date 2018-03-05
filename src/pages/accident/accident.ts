@@ -1,9 +1,10 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ViewController, LoadingController } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import * as moment from 'moment';
+import { } from 'googlemaps';
 
 declare var google;
 
@@ -26,21 +27,20 @@ export class AccidentPage {
   selectedPhoto: any;
   photo: any;
   dlURL: any;
+  place: any; // to check autocomplete
 
   onSuccess = (snapshot) => {
     this.photo = snapshot.downloadURL;
     this.loading.dismiss();
-	}
+	} 
 	
 	onError = (error) => {
 		console.log('error', error);
 		this.loading.dismiss();
 	}
   
-  constructor(public loadingCtrl: LoadingController, public camera: Camera, public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl: ViewController) {
+  constructor(public loadingCtrl: LoadingController, public camera: Camera, public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public viewCtrl: ViewController, private ngZone: NgZone) {
     this.user = this.angularFireAuth.auth.currentUser;
-    this.aLocation = '';
-    console.log(this.aLocation);
   }
 
   ionViewDidLoad() {
@@ -51,12 +51,23 @@ export class AccidentPage {
       componentRestrictions: {country: "phl"}
     }
 
-    this.autocomplete = new google.maps.places.Autocomplete(this.autocompleteElement.nativeElement, options);
+    // LOAD AUTOCOMPLETE
+    const autocomplete = new google.maps.places.Autocomplete(this.autocompleteElement.nativeElement, options);
+      autocomplete.addListener('place_changed', () => {
+      this.ngZone.run(() => {
+        const place = google.maps.places.PlaceResult = autocomplete.getPlace();
+
+        if(place.geometry == undefined || place.geometry == null) {
+          this.place = place;
+          return;
+        }
+        this.aLocation = place.formatted_address;
+      });
+    });
   }
 
   addAccidentReport() {
-    this.aLocation = document.getElementById('autocomplete')["value"];
-    console.log(this.aLocation);
+    //this.aLocation = document.getElementById('autocomplete')["value"];
 
     this.accidentInfo = {
       "image": this.photo,
