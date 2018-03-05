@@ -26,7 +26,7 @@
   <ion-toolbar>
     <ion-textarea placeholder="Enter message" class="msg" [(ngModel)]="message" value=""></ion-textarea>
     <ion-buttons end>
-      <button ion-button icon-right color="primary" [disabled]="!isEnabled" (click)="sendMessage()"> <!--[disabled]="isEnabled"-->
+      <button ion-button icon-right color="primary" (click)="sendMessage()"> <!--[disabled]="isEnabled"-->
         SEND
         <ion-icon name="send"></ion-icon>
       </button>
