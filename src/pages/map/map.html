@@ -2,6 +2,19 @@
 
   <ion-navbar>
     <div>
+          <input #autocomplete id="autocomplete" class="searchBar" type="text" placeholder="Enter location" />
+          <button ion-button icon-only clear item-right end (click)="searchLocation()">
+            <ion-icon name="search"></ion-icon>
+          </button>
+      
+          <input #autocomstart id="autocomplete" type="text" [(ngModel)]="Start" placeholder="Current location" />
+          <input #autocomend id="autocomplete" type="text" [(ngModel)]="End" placeholder="Destination" />
+          <button ion-button icon-only item-right clear (click)="calculateAndDisplayRoute()">
+            <ion-icon name="search"></ion-icon>
+          </button>
+    </div>
+
+    <!--<div>
       <button ion-button icon-only item-start clear (click)="changeToggle()">
         <ion-icon name="compass"></ion-icon>
       </button>
@@ -36,7 +49,7 @@
           <ion-icon name="search"></ion-icon>
         </button>
       </span>
-    </div>
+    </div>-->
   </ion-navbar>
 
 </ion-header>

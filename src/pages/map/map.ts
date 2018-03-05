@@ -39,6 +39,7 @@ export class MapPage {
   toggle: any = false;
   notif: any;
   marker: any;
+  distance: any = 0;
 
   // FETCH TRAFFIC COORDS
   dbtLatitude: any[] = [];
@@ -92,8 +93,8 @@ export class MapPage {
 
     directionsService.route({
       origin: this.Start,
-      destination: this.End,
-      travelMode: 'DRIVING'
+      destination: this.End
+      //travelMode: 'DRIVING'
     }, function(response, status) {
       if (status === 'OK') {
         directionsDisplay.setDirections(response);
