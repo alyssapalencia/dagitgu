@@ -51,12 +51,6 @@ export class TabsPage {
     try{
       let badge = await this.badge.increase(Number(1));
       this.bdge = badge;
-      let alert = this.alertCtrl.create({
-        title: String(this.bdge),
-        buttons: ['OK']
-      });
-      alert.present();
-      console.log(badge);
     }
     catch (e){
       console.error(e);
@@ -66,12 +60,6 @@ export class TabsPage {
   async clearBadges(){
     try{
       let badge = await this.badge.clear();
-      let alert = this.alertCtrl.create({
-        title: String(badge),
-        buttons: ['OK']
-      });
-      alert.present();
-      console.log(badge);
     }
     catch(e){
       console.error(e);

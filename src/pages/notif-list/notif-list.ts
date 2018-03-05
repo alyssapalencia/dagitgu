@@ -14,7 +14,6 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class NotifListPage {
   notifInfo: any;
-  badges: any;
 
   constructor(public tabs: TabsPage, public badge: Badge, public firebaseApp: FirebaseApp, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController) {
     this.notifInfo = this.firebaseService.getTNotif();
@@ -33,12 +32,6 @@ export class NotifListPage {
   async clearBadges(){
     try{
       let badge = await this.badge.clear();
-      let alert = this.alertCtrl.create({
-        title: String(badge),
-        buttons: ['OK']
-      });
-      alert.present();
-      console.log(badge);
     }
     catch(e){
       console.error(e);
