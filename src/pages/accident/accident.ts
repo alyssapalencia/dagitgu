@@ -45,7 +45,6 @@ export class AccidentPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AccidentPage');
-    console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
 
     var options = {
       componentRestrictions: {country: "phl"}
@@ -67,14 +66,12 @@ export class AccidentPage {
   }
 
   addAccidentReport() {
-    //this.aLocation = document.getElementById('autocomplete')["value"];
-
     this.accidentInfo = {
       "image": this.photo,
       "reportSender": this.user.displayName,
       "location": this.aLocation,
       "accidentDescription": this.accidentDescription,
-      "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
+      "timeStamp": moment().format('MMMM Do YYYY, hh:mm:ss A').toString(),
       "status": "unread",
       "sort": 0 - Date.now()
     }

@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
-import { IonicPage, NavController, AlertController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, PopoverController, NavParams, Popover } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -63,7 +63,7 @@ export class MapPage {
 
   now = Date.now();
 
-  constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, private geolocation: Geolocation, public badge: Badge, private ngZone: NgZone) {
+  constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public alertCtrl: AlertController, public popoverCtrl: PopoverController, public navParams: NavParams, private geolocation: Geolocation, public badge: Badge, private ngZone: NgZone) {
     this.marker = this.firebaseService.getUpdate();
   }
 
@@ -117,7 +117,7 @@ export class MapPage {
         });
       });
   }
-  
+
   searchLocation() {
     var place = this.autocomplete.getPlace();
     this.lat = place.geometry.location.lat();

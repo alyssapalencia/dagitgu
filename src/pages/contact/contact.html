@@ -10,11 +10,6 @@
 <ion-content fullscreen>
   <ion-list no-lines>
     <ion-item *ngFor = 'let chat of Chat | async' text-wrap item-left>
-      <!--<ion-avatar item-start>
-        <div *ngIf = "user.photoURL != undefined"><img src="{{ user.photoURL }}"></div>
-        <div *ngIf = "user.photoURL == undefined"><img src="/assets/imgs/placeholder.png"></div>
-      </ion-avatar>-->
-
       <div *ngIf = "user.displayName == chat.messageSender && chat.$key != 'status'">
         <p class="chatUser">{{ chat.message }}</p>
         <ion-note class="userTimestamp">{{ chat.timeStamp }}</ion-note>
@@ -31,7 +26,7 @@
   <ion-toolbar>
     <ion-textarea placeholder="Enter message" class="msg" [(ngModel)]="message" value=""></ion-textarea>
     <ion-buttons end>
-      <button ion-button icon-right color="primary" (click)="sendMessage()"> <!--[disabled]="isEnabled"-->
+      <button ion-button icon-right color="primary" [disabled]="!isEnabled" (click)="sendMessage()"> <!--[disabled]="isEnabled"-->
         SEND
         <ion-icon name="send"></ion-icon>
       </button>

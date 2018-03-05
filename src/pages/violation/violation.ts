@@ -48,7 +48,6 @@ export class ViolationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ViolationPage');
-    console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
 
     var options = {
       componentRestrictions: {country: "phl"}
@@ -81,7 +80,7 @@ export class ViolationPage {
       "plateNumber": this.plateNumber,
       "color": this.color,
       "model": this.model,
-      "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
+      "timeStamp": moment().format('MMMM Do YYYY, hh:mm:ss A').toString(),
       "status": "unread",
       "sort": 0 - Date.now()
     }

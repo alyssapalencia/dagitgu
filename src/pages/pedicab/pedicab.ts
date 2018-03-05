@@ -22,7 +22,6 @@ export class PedicabPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PedicabPage');
-    console.log(moment().format('MM/DD/YYYY hh:mm:ss A').toString()); //to check moment.js
   }
 
   addPedicabReport() {
@@ -30,7 +29,7 @@ export class PedicabPage {
       "reportSender": this.user.displayName,
       "pedicabNumber": this.pedicabNumber,
       "violationType": this.violationType,
-      "timeStamp": moment().format('MM/DD/YYYY hh:mm:ss A').toString(),
+      "timeStamp": moment().format('MMMM Do YYYY, hh:mm:ss A').toString(),
       "status": "unread",
       "sort": 0 - Date.now()
     }

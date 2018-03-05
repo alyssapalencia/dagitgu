@@ -55,14 +55,21 @@ export class ContactPage {
 
   sendMessage() {
     console.log(this.message);
+    var isEnabled: boolean = false;
 
     this.messageObject = {
       "messageSender": this.user.displayName,
       "timeStamp": moment().format('MMM Do YYYY, hh:mm A'),
       message: this.message
     }
-    this.firebaseService.updateStatus(this.user);
-    this.firebaseService.addMessage(this.messageObject, this.user.displayName);
-    this.message = '';
+
+    if(this.message == null) {
+      isEnabled = false;
+    } else {
+      isEnabled = true;
+      this.firebaseService.updateStatus(this.user);
+      this.firebaseService.addMessage(this.messageObject, this.user.displayName);
+      this.message = '';
+    }
   }
 }
