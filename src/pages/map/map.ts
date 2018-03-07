@@ -250,7 +250,7 @@ export class MapPage {
   }
 
   addInfoWindow(marker, content, lat, info){
-    var contentString = info.trafficRating + '<br>' + info.$key;
+    var contentString = '<b>' + info.trafficRating + '</b> at<br>' + info.$key + '<br><b>Last Updated:</b> ' + info.trafficTimeStamp;
     var event: any[] = [];
     var y = 0;
 
@@ -264,7 +264,7 @@ export class MapPage {
   }
 
   addpInfoWindow(marker, content, lat, info){
-    var contentString = info.parkingAvailability + '<br>' + info.$key;
+    var contentString = '<b>' + info.parkingAvailability + '</b> at<br>' + info.$key + '<br><b>Last Updated:</b> ' + info.parkingTimeStamp;
     var event: any[] = [];
     var y = 0;
 
