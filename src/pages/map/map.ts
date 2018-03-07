@@ -250,12 +250,12 @@ export class MapPage {
   }
 
   addInfoWindow(marker, content, lat, info){
-    var contentString = '<b>' + info.trafficRating + '</b> at<br>' + info.$key + '<br><b>Last Updated:</b> ' + info.trafficTimeStamp;
+    var contentString = '<h6>' + info.trafficRating + '</h6>' + info.$key + '<br><br><b>Last Updated:</b> ' + info.trafficTimeStamp;
     var event: any[] = [];
     var y = 0;
 
     let infoWindow = new google.maps.InfoWindow({
-      content: '<div class="scrollFix">'+contentString+'</div>'
+      content: '<div class="infoBox">'+contentString+'</div>'
     });
 
      google.maps.event.addListener(marker, 'click', () => {
@@ -264,12 +264,12 @@ export class MapPage {
   }
 
   addpInfoWindow(marker, content, lat, info){
-    var contentString = '<b>' + info.parkingAvailability + '</b> at<br>' + info.$key + '<br><b>Last Updated:</b> ' + info.parkingTimeStamp;
+    var contentString = '<h6>' + info.parkingAvailability + '</h6>' + info.$key + '<br><br><b>Last Updated:</b> ' + info.parkingTimeStamp;
     var event: any[] = [];
     var y = 0;
 
     let infoWindow = new google.maps.InfoWindow({
-      content: '<div class="scrollFix">'+contentString+'</div>'
+      content: '<div class="infoBox">'+contentString+'</div>'
     });
 
      google.maps.event.addListener(marker, 'click', () => {

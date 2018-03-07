@@ -1,32 +1,29 @@
-
 <ion-header>
-
   <ion-navbar>
     <ion-title>Notifications</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+  <ion-list *ngFor = 'let notif of notifInfo | async'>
+    <div *ngIf = 'notif.category == Filter'>
+      <ion-item text-wrap *ngIf = 'Filter == "Traffic"'>
+        <ion-icon name="alert" style="color:#e6c76c;" item-start large></ion-icon>
+        <p><b>{{ notif.notifDetail }}</b></p>
+        <ion-note class="timestamp">{{ notif.timeStamp }}</ion-note>
+      </ion-item>
 
-    <ion-list>
-        <div *ngFor = 'let notif of notifInfo | async'>
-          <ion-item text-wrap *ngIf = 'notif.category == Filter'>
-            <div *ngIf = 'Filter == "Traffic"'>
-              <ion-icon name ="alert" item-start></ion-icon>
-              {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
-            </div>
-            <div *ngIf = 'Filter == "Parking"'>
-              <ion-icon name ="flag" item-start></ion-icon>
-              {{ notif.notifDetail }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
-            </div>
-            <div *ngIf = 'Filter == "Announcement"' (click)="dispDetails(notif)">
-              <ion-icon name ="megaphone" item-start></ion-icon>
-              {{ notif.title }}<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ notif.timeStamp }}
-            </div>
-          </ion-item>
-        </div>
-      </ion-list>
+      <ion-item text-wrap *ngIf = 'Filter == "Parking"'>
+        <ion-icon name="alert" style="color:#e6c76c;" item-start large></ion-icon>
+        <p><b>{{ notif.notifDetail }}</b></p>
+        <ion-note class="timestamp">{{ notif.timeStamp }}</ion-note>
+      </ion-item>
 
+      <ion-item text-wrap *ngIf = 'Filter == "Announcement"' (click)="dispDetails(notif)">
+        <ion-icon name="alert" style="color:#e6c76c;" item-start large></ion-icon>
+        <p><b>{{ notif.title }}</b></p>
+        <ion-note class="timestamp">{{ notif.timeStamp }}</ion-note>
+      </ion-item>
+    </div>
+  </ion-list>
 </ion-content>

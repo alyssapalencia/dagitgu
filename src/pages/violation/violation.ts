@@ -84,7 +84,7 @@ export class ViolationPage {
           "plateNumber": this.plateNumber,
           "color": this.color,
           "model": this.model,
-          "timeStamp": moment().format('MMMM Do YYYY, hh:mm:ss A').toString(),
+          "timeStamp": moment().format('MMMM Do YYYY, hh:mm A').toString(),
           "status": "unread",
           "sort": 0 - Date.now()
           }

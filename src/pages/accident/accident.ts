@@ -73,7 +73,7 @@ export class AccidentPage {
         "reportSender": this.user.displayName,
         "location": this.aLocation,
         "accidentDescription": this.accidentDescription,
-        "timeStamp": moment().format('MMMM Do YYYY, hh:mm:ss A').toString(),
+        "timeStamp": moment().format('MMMM Do YYYY, hh:mm A').toString(),
         "status": "unread",
         "sort": 0 - Date.now()
         }
