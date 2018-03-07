@@ -16,7 +16,6 @@ export class ContactPage {
   message: any;
   messageObject: any;
   Chat: any;
-  key: any; // FOR AUTOSCROLL
   isEnabled: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public angularFireAuth: AngularFireAuth, public firebaseApp: FirebaseApp) {
