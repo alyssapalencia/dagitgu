@@ -20,7 +20,7 @@ export class ForgotPasswordPage {
   sendEmail(email){
     var noError = true;
     this.angularFireAuth.auth.sendPasswordResetEmail(email)
-    .catch(function(error){
+    .catch((error) => {
       var errorCode = error.code;
       if(errorCode === 'auth/invalid-email'){
         noError = false;
@@ -42,14 +42,15 @@ export class ForgotPasswordPage {
       }
     })
     .then(() => {
-      let alert = this.alertCtrl.create({
-        title: 'Email sent!',
-        subTitle: 'A reset password link has been sent to your email. Please check your email and click the link to reset your password.',
-        buttons: ['OK']
-      });
-      alert.present();
-      this.navCtrl.push('LoginPage');
+      if(noError){
+        let alert = this.alertCtrl.create({
+          title: 'Email sent!',
+          subTitle: 'A reset password link has been sent to your email. Please check your email and click the link to reset your password.',
+          buttons: ['OK']
+        });
+        alert.present();
+        this.navCtrl.push('LoginPage');
+      }
     })
   }
-
 }
