@@ -25,6 +25,8 @@ import { UpdateProfileImagePage } from '../pages/update-profile-image/update-pro
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
 
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+
 var config = {
   apiKey: "AIzaSyDPsMJ-x7W6_U_k3JsNwMNkxL38e8NkQDI",
   authDomain: "dagit-7cbac.firebaseapp.com",

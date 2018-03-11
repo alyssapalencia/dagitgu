@@ -19,14 +19,20 @@
   <br>
   <ion-item>
     <ion-label class="label">Type of Violation</ion-label>
-    <ion-select [(ngModel)]="reportContent" placeholder="Select">
+    <ion-select [(ngModel)]="reportContent" placeholder="Select" (ionChange)="enableOther()">
       <ion-option value="Not signaling">Not signaling</ion-option>
       <ion-option value="Passing in a no entry zone">Passing in a no entry zone</ion-option>
       <ion-option value="Incorrect parking">Incorrect Parking</ion-option>
       <ion-option value="Drunk driving">Drunk driving</ion-option>
       <ion-option value="Reckless driving">Reckless driving</ion-option>
       <ion-option value="Driving without license/registration">Driving without license/registration</ion-option>
+      <ion-option value="Other">Other</ion-option>
     </ion-select>
+  </ion-item>
+  <br *ngIf="!disabled">
+  <ion-item *ngIf="!disabled">
+    <ion-label stacked class="label">Description</ion-label>
+    <ion-input type="text" [(ngModel)]="otherDescription" placeholder="Describe type of violation"></ion-input>
   </ion-item>
   <br>
   <ion-item>
@@ -51,7 +57,7 @@
   </ion-item>
   <br>
   <ion-item>
-    <ion-label stacked class="label">Model</ion-label>
+    <ion-label stacked class="label">Make/Model</ion-label>
     <ion-input type="text" [(ngModel)]="model" placeholder="Enter a model (optional)"></ion-input>
   </ion-item>
   <br>

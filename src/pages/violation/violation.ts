@@ -17,10 +17,13 @@ export class ViolationPage {
   autocomplete;
   element: any;
 
+  disabled = true;
+
   today = new Date();
   violationInfo: any;
   vLocation: any;
   reportContent: any;
+  otherDesciption: any;
   vehicleType: any;
   plateNumber: any;
   color: any;
@@ -80,6 +83,7 @@ export class ViolationPage {
           "reportSender": this.user.displayName,
           "location": this.vLocation,
           "reportContent": this.reportContent,
+          "otherDescription": this.otherDesciption,
           "vehicleType": this.vehicleType,
           "plateNumber": this.plateNumber,
           "color": this.color,
@@ -115,6 +119,15 @@ export class ViolationPage {
       alert.present();
     }
     
+  }
+
+  enableOther(){
+    if(this.reportContent == "Other"){
+      this.disabled = false;
+    }
+    else{
+      this.disabled = true;
+    }
   }
 
   isBlank(str){
