@@ -23,7 +23,7 @@ export class ViolationPage {
   violationInfo: any;
   vLocation: any;
   reportContent: any;
-  otherDesciption: any;
+  otherDesciption = "";
   vehicleType: any;
   plateNumber: any;
   color: any;
