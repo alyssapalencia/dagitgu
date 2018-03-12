@@ -217,7 +217,7 @@ export class MapPage {
           if((this.now - this.dbtTimeUpdated[i]) < 5400000) {
             this.addMarker(eventLocation[i], this.tInfo[i], this.dbtLatitude[i], tIconLink);
           }
-          if(this.pInfo[i] == 'Available Parking')
+          if(this.pInfo[i].parkingAvailability == 'Available Parking')
           {
             this.addpMarker(eventpLocation[i], this.pInfo[i], this.dbpLatitude[i], pIconLink);
           }

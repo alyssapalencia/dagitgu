@@ -23,7 +23,7 @@ export class ViolationPage {
   violationInfo: any;
   vLocation: any;
   reportContent: any;
-  otherDesciption = "";
+  otherDescription = "";
   vehicleType: any;
   plateNumber: any;
   color: any;
@@ -78,12 +78,14 @@ export class ViolationPage {
       && !this.isBlank(this.reportContent) && !this.isBlank(this.vehicleType) && !this.isBlank(this.plateNumber)
       && !this.isBlank(this.color)){
         if(!this.isBlank(this.photo)){
+          if(this.reportContent == 'Other'){
+            this.reportContent = this.otherDescription;
+          }
           this.violationInfo = {
           "image": this.photo,
           "reportSender": this.user.displayName,
           "location": this.vLocation,
           "reportContent": this.reportContent,
-          "otherDescription": this.otherDesciption,
           "vehicleType": this.vehicleType,
           "plateNumber": this.plateNumber,
           "color": this.color,
