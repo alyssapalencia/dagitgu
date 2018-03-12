@@ -117,7 +117,7 @@ export class ProviderDagitProvider {
   }
 
   addMchReportLog(date, report) {
-    this.dagit.list('/MCHLOG/' + date).push(report);
+    this.dagit.list('/PEDICABLOG/' + date).push(report);
   }
 
   addViolationLog(date, violation) {
