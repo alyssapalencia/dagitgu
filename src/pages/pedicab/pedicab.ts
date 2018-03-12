@@ -35,6 +35,9 @@ export class PedicabPage {
         "sort": 0 - Date.now()
       }
       this.firebaseService.addPedicabReport(this.pedicabInfo);
+      const date = moment().format('MMMM D YYYY');
+      this.firebaseService.addMchReportLog(date, this.pedicabInfo);
+      
       let alert = this.alertCtrl.create({
         title: 'Report Sent',
         subTitle: 'Your report was sent to our Helpdesk. Thank you for your contribution.',

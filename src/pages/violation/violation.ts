@@ -93,6 +93,8 @@ export class ViolationPage {
           "sort": 0 - Date.now()
           }
           this.firebaseService.addViolationReport(this.violationInfo);
+          const date = moment().format('MMMM D YYYY');
+          this.firebaseService.addViolationLog(date, this.violationInfo);
           let alert = this.alertCtrl.create({
             title: 'Report Sent',
             subTitle: 'Your report was sent to our Helpdesk. Thank you for your contribution.',

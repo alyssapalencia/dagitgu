@@ -110,4 +110,18 @@ export class ProviderDagitProvider {
     return this.dagit.list('/ACCOUNTS/ON_FIELD_TMO');
   }
 
+  //LOGS
+
+  addAccidentLog(date, accident) {
+    this.dagit.list('/ACCIDENTLOGS/' + date).push(accident);
+  }
+
+  addMchReportLog(date, report) {
+    this.dagit.list('/MCHLOG/' + date).push(report);
+  }
+
+  addViolationLog(date, violation) {
+    this.dagit.list('/VIOLATIONLOGS/' + date).push(violation);
+  }
+
 }

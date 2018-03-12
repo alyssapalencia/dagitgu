@@ -78,6 +78,9 @@ export class AccidentPage {
         "sort": 0 - Date.now()
         }
         this.firebaseService.addAccidentReport(this.accidentInfo);
+        const date = moment().format('MMMM D YYYY');
+        this.firebaseService.addAccidentLog(date, this.accidentInfo);
+        
         let alert = this.alertCtrl.create({
           title: 'Report Sent',
           subTitle: 'Your report was sent to our Helpdesk. Thank you for your contribution.',
