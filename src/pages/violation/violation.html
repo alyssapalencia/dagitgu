@@ -22,10 +22,11 @@
     <ion-select [(ngModel)]="reportContent" placeholder="Select">
       <ion-option value="Not signaling">Not signaling</ion-option>
       <ion-option value="Passing in a no entry zone">Passing in a no entry zone</ion-option>
-      <ion-option value="Incorrect parking">Incorrect Parking</ion-option>
+      <ion-option value="Incorrect parking">Incorrect parking</ion-option>
       <ion-option value="Drunk driving">Drunk driving</ion-option>
       <ion-option value="Reckless driving">Reckless driving</ion-option>
       <ion-option value="Driving without license/registration">Driving without license/registration</ion-option>
+      <ion-option value="Other/s">Others</ion-option>
     </ion-select>
   </ion-item>
   <br>
@@ -51,8 +52,8 @@
   </ion-item>
   <br>
   <ion-item>
-    <ion-label stacked class="label">Model</ion-label>
-    <ion-input type="text" [(ngModel)]="model" placeholder="Enter a model (optional)"></ion-input>
+    <ion-label stacked class="label">Make/Model</ion-label>
+    <ion-input type="text" [(ngModel)]="model" placeholder="Enter a make/model (optional)"></ion-input>
   </ion-item>
   <br>
   <button ion-button clear (click)="openGallery()">

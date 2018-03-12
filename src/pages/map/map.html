@@ -3,7 +3,7 @@
   <ion-navbar>
     <div>
       <span>
-        <input #autocomplete id="autocomplete" class="searchBar" type="text" placeholder="Search location" />
+        <input #autocomplete id="autocomplete" onfocus="this.value=''" value="Search location" class="searchBar" type="text" placeholder="Search location" />
         <button ion-button outline small end (click)="searchLocation()">
           SEARCH
         </button>
@@ -11,8 +11,8 @@
     </div>
 
     <div>
-          <input #autocomstart id="autocomplete" class="directionsBar" type="text" [(ngModel)]="Start" placeholder="Origin" />
-          <input #autocomend id="autocomplete" class="directionsBar" type="text" [(ngModel)]="End" placeholder="Destination" />
+          <input #autocomstart id="autocomplete" onfocus="this.value=''" value="Origin" class="directionsBar" type="text" [(ngModel)]="Start" placeholder="Origin" />
+          <input #autocomend id="autocomplete" onfocus="this.value=''" value="Destination" class="directionsBar" type="text" [(ngModel)]="End" placeholder="Destination" />
           <button ion-button outline small end (click)="calculateAndDisplayRoute()">
             GET
           </button>

@@ -208,8 +208,8 @@ export class MapPage {
 
           if(this.pInfo[i].parkingAvailability == 'Available Parking')
             pIconLink = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
-          else if(this.pInfo[i].parkingAvailability == 'No Available Parking')
-            pIconLink = 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png';
+          /*else if(this.pInfo[i].parkingAvailability == 'No Available Parking')
+            pIconLink = 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png';*/
 
           eventLocation[i] = new google.maps.LatLng(this.dbtLatitude[i], this.dbtLongitude[i]);
           eventpLocation[i] = new google.maps.LatLng(this.dbpLatitude[i], this.dbpLongitude[i]);
