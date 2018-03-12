@@ -80,8 +80,6 @@ export class MapPage {
       componentRestrictions: {country: "phl"}
     }
     this.autocomplete = new google.maps.places.Autocomplete(this.autocomElement.nativeElement, options);
-    //this.autocomstart = new google.maps.places.Autocomplete(this.autocomStart.nativeElement, options);
-    //this.autocomend = new google.maps.places.Autocomplete(this.autocomEnd.nativeElement, options);
 
     // AUTOCOMPLETE FOR ORIGIN
     const autocomstart = new google.maps.places.Autocomplete(this.autocomStart.nativeElement, options);
