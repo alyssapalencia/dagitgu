@@ -9,14 +9,14 @@
 
 <ion-content no-bounce padding>
   <div>
+    <button ion-button full icon-left style="height:80px; font-size:20px; color:white;" color="secondary" (click)="btnMedical('Medical')">
+      <ion-icon name="medical"></ion-icon>
+      Hospitals
+    </button>
+    <br>
     <button ion-button full icon-left style="height:80px; font-size:20px; color:white;" color="primary" (click)="btnPolice('Police')">
       <ion-icon name="hand"></ion-icon> 
       Police Stations
-    </button>
-    <br>
-    <button ion-button full icon-left style="height:80px; font-size:20px; color:white;" color="secondary" (click)="btnMedical('Medical')">
-      <ion-icon name="medical"></ion-icon>
-      Medical
     </button>
     <br>
     <button ion-button full icon-left style="height:80px; font-size:20px; color:white;" color="danger" (click)="btnFire('Fire')">
@@ -26,7 +26,7 @@
     <br>
     <button ion-button full icon-left style="height:80px; font-size:20px; color:white;" color="purp" (click)="btnTerminal('Terminal')">
       <ion-icon name="bus"></ion-icon> 
-      Terminal
+      Terminals
     </button>
   </div>
 </ion-content>
