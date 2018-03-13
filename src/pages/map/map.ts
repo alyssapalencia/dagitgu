@@ -80,8 +80,6 @@ export class MapPage {
       componentRestrictions: {country: "phl"}
     }
     this.autocomplete = new google.maps.places.Autocomplete(this.autocomElement.nativeElement, options);
-    //this.autocomstart = new google.maps.places.Autocomplete(this.autocomStart.nativeElement, options);
-    //this.autocomend = new google.maps.places.Autocomplete(this.autocomEnd.nativeElement, options);
 
     // AUTOCOMPLETE FOR ORIGIN
     const autocomstart = new google.maps.places.Autocomplete(this.autocomStart.nativeElement, options);
@@ -254,7 +252,7 @@ export class MapPage {
   }
 
   addInfoWindow(marker, content, lat, info){
-    var contentString = '<h6>' + info.trafficRating + '</h6>' + info.$key + '<br><br><b>Last Updated:</b> ' + info.trafficTimeStamp;
+    var contentString = '<h6>' + info.trafficRating + '</h6><b>Last Updated:</b> ' + info.trafficTimeStamp;
     var event: any[] = [];
     var y = 0;
 
@@ -268,7 +266,7 @@ export class MapPage {
   }
 
   addpInfoWindow(marker, content, lat, info){
-    var contentString = '<h6>' + info.parkingAvailability + '</h6>' + info.$key + '<br><br><b>Last Updated:</b> ' + info.parkingTimeStamp;
+    var contentString = '<h6>' + info.parkingAvailability + '</h6><b>Last Updated:</b> ' + info.parkingTimeStamp;
     var event: any[] = [];
     var y = 0;
 

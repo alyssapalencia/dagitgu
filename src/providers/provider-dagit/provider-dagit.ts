@@ -52,7 +52,7 @@ export class ProviderDagitProvider {
   }
 
   getUpdate() {
-    return this.dagit.list('/MAP/');
+    return this.dagit.list('/MAPS/');
   }
 
   getTNotif(){
