@@ -31,5 +31,4 @@ export class DirectoryPage {
   btnTerminal(filter) {
     this.navCtrl.push(DirDispPage, {param1: filter});
   }
-
 }

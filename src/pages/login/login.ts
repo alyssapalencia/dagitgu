@@ -39,7 +39,6 @@ export class LoginPage {
   login(username, password) {
     var noError = true;
     
-
     if(this.checkInput(username, password)){
       this.angularFireAuth.auth.signInWithEmailAndPassword(username, password)
       .catch((error) => {
@@ -90,11 +89,9 @@ export class LoginPage {
             
             this.navCtrl.setRoot('TabsPage');
             this.navCtrl.popToRoot();
-            // Redirect the user here 
           }
           else {
             this.sendemailVerification();
-            // Tell the user to have a look at his/her email
             let alert = this.alertCtrl.create({
               title: 'Check Email',
               subTitle: 'A verification link was sent to your email. Check your email and follow the link to finish creating your DAGIT account.',
@@ -104,14 +101,6 @@ export class LoginPage {
           }
         }
       })
-    }
-    else{
-      /*let alert = this.alertCtrl.create({
-        title: 'Missing Information',
-        subTitle: 'Please fill up the form and try again.',
-        buttons: ['OK']
-      });
-      alert.present();*/
     }
   }
 

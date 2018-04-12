@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 
-
 @IonicPage()
 @Component({
   selector: 'page-notif-catlist',
@@ -29,5 +28,4 @@ export class NotifCatlistPage {
     });
     alert.present();
   }
-
 }

@@ -12,7 +12,6 @@ import { App } from 'ionic-angular/components/app/app';
   templateUrl: 'update-profile-image.html',
 })
 export class UpdateProfileImagePage {
-
   loading: any;
   selectedPhoto: any;
   photo: any;

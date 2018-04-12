@@ -1,45 +1,45 @@
 page-contact {
     .msg {
-        width:100%;
-        height:auto;
-        background-color:white;
-        border:1px solid #cccccc;
-        border-radius:10px;
+        width: 100%;
+        height: auto;
+        background-color: white;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
     }
 
     .userName {
-        text-transform:uppercase;
-        font-size:medium;
-        font-weight:bold;
-        color:black;
-        text-align:right;
+        text-transform: uppercase;
+        font-size: medium;
+        font-weight: bold;
+        color: black;
+        text-align: right;
     }
 
     .userTimestamp {
-        text-transform:uppercase;
-        font-size:small;
-        float:right;
+        text-transform: uppercase;
+        font-size: small;
+        float: right;
     }
 
     .tmoTimestamp {
-        text-transform:uppercase;
-        font-size:small;
+        text-transform: uppercase;
+        font-size: small;
     }
 
     .chatUser {
-        width:75%;
-        padding:15px;
-        background-color:#e6c76c;
-        border-radius:15px;
-        color:black;
-        float:right;
+        width: 75%;
+        padding: 15px;
+        background-color: #e6c76c;
+        border-radius: 15px;
+        color: black;
+        float: right;
     }
 
     .chatTMO {
-        width:75%;
-        padding:15px;
-        background-color:#ddd;
-        border-radius:15px;
-        color:black;
+        width: 75%;
+        padding: 15px;
+        background-color: #ddd;
+        border-radius: 15px;
+        color: black;
     }
 }

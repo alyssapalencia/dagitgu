@@ -23,44 +23,33 @@ export class MapPage {
   autocomstart;
   autocomend;
   element: any;
-
   Start: any;
   End: any;
-
   map: any;
   currentLocation: any;
   lat: any;
   lng: any;
-
   Lat: any[] = [];
   Lng: any[] = [];
   cat: any[] = [];
-  
   toggle: any = false;
   notif: any;
   marker: any;
   place: any;
   distance: any = 0;
-
-  // DISTANCE
   originAddress: any;
   originLat: any;
   originLng: any;
   destinationAddress: any;
   destinationLat: any;
   destinationLng: any;
-
-  // FETCH TRAFFIC COORDS
   dbtLatitude: any[] = [];
   dbtLongitude: any[] = [];
   tInfo: any[] = [];
   dbtTimeUpdated: any[] = [];
-
-  // FETCH PARKING COORDS
   dbpLatitude: any[] = [];
   dbpLongitude: any[] = [];
   pInfo: any[] = [];
-
   now = Date.now();
 
   constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public alertCtrl: AlertController, public popoverCtrl: PopoverController, public navParams: NavParams, private geolocation: Geolocation, public badge: Badge, private ngZone: NgZone) {
@@ -80,8 +69,6 @@ export class MapPage {
       componentRestrictions: {country: "phl"}
     }
     this.autocomplete = new google.maps.places.Autocomplete(this.autocomElement.nativeElement, options);
-
-    // AUTOCOMPLETE FOR ORIGIN
     const autocomstart = new google.maps.places.Autocomplete(this.autocomStart.nativeElement, options);
       autocomstart.addListener('place_changed', () => {
         this.ngZone.run(() => {
@@ -98,7 +85,6 @@ export class MapPage {
         });
       });
 
-    // AUTOCOMPLETE FOR DESTINATION
     const autocomend = new google.maps.places.Autocomplete(this.autocomEnd.nativeElement, options);
       autocomend.addListener('place_changed', () => {
         this.ngZone.run(() => {
@@ -206,8 +192,6 @@ export class MapPage {
 
           if(this.pInfo[i].parkingAvailability == 'Available Parking')
             pIconLink = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
-          /*else if(this.pInfo[i].parkingAvailability == 'No Available Parking')
-            pIconLink = 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png';*/
 
           eventLocation[i] = new google.maps.LatLng(this.dbtLatitude[i], this.dbtLongitude[i]);
           eventpLocation[i] = new google.maps.LatLng(this.dbpLatitude[i], this.dbpLongitude[i]);

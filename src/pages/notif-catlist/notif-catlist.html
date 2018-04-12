@@ -12,13 +12,11 @@
         <p><b>{{ notif.notifDetail }}</b></p>
         <ion-note class="timestamp">{{ notif.timeStamp }}</ion-note>
       </ion-item>
-
       <ion-item text-wrap *ngIf = 'Filter == "Parking"'>
         <ion-icon name="flag" style="color:#e6c76c;" item-start large></ion-icon>
         <p><b>{{ notif.notifDetail }}</b></p>
         <ion-note class="timestamp">{{ notif.timeStamp }}</ion-note>
       </ion-item>
-
       <ion-item text-wrap *ngIf = 'Filter == "Announcement"' (click)="dispDetails(notif)">
         <ion-icon name="megaphone" style="color:#e6c76c;" item-start large></ion-icon>
         <p><b>{{ notif.title }}</b></p>
