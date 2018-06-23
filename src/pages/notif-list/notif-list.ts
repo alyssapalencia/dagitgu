@@ -14,9 +14,11 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class NotifListPage {
   notifInfo: any;
+  allNotif: any;
+  counter: any;
 
   constructor(public tabs: TabsPage, public badge: Badge, public firebaseApp: FirebaseApp, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController) {
-    this.notifInfo = this.firebaseService.getTNotif();
+    this.allNotif = this.firebaseService.getTNotif();
   }
   
 
