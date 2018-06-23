@@ -16,12 +16,9 @@ export class ViolationPage {
   @ViewChild('autocomplete') autocompleteElement: ElementRef;
   autocomplete;
   element: any;
-<<<<<<< HEAD
 
   disabled = true;
 
-=======
->>>>>>> a53c632f49d2047f54412e9264a7d39f0fbef27e
   today = new Date();
   violationInfo: any;
   vLocation: any;
