@@ -6,16 +6,14 @@ import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-d
 import { ChangePasswordPage } from '../change-password/change-password';
 import { UpdateProfileImagePage } from '../update-profile-image/update-profile-image';
 
-
 @IonicPage()
 @Component({
   selector: 'page-more',
   templateUrl: 'more.html',
 })
 export class MorePage {
-  more: string = "profile"; //sets profile as default segment
-  info: any; //display information in faqs
-
+  more: string = "profile"; 
+  info: any; 
   currUser: any;
 
   constructor(public angularFireAuth: AngularFireAuth, public firebaseService: ProviderDagitProvider, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, private app: App, public toastCtrl: ToastController) {
@@ -51,8 +49,6 @@ export class MorePage {
               duration: 2000
             });
             toast.present();
-            /* let nav = this.app.getRootNav();
-            nav.push(LoginPage); */
           }
         }
       ]

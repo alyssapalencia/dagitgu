@@ -1,5 +1,4 @@
 <ion-header>
-
   <ion-navbar>
     <div>
       <span>
@@ -9,7 +8,6 @@
         </button>
       </span>
     </div>
-
     <div>
           <input #autocomstart id="autocomplete" onfocus="this.value=''" value="Origin" class="directionsBar" type="text" [(ngModel)]="Start" placeholder="Origin" />
           <input #autocomend id="autocomplete" onfocus="this.value=''" value="Destination" class="directionsBar" type="text" [(ngModel)]="End" placeholder="Destination" />
@@ -19,7 +17,6 @@
           <span *ngIf = "distance != 0">Distance: {{ distance }} KM</span>
     </div>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content>

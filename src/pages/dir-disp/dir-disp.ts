@@ -19,5 +19,4 @@ export class DirDispPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad DirDispPage');
   }
-
 }

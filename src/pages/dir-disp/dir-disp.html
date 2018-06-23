@@ -1,16 +1,13 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Directory</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
   <ion-list>
     <ion-card *ngFor = 'let dir of dirInfo | async'>
       <ion-card-content *ngIf = 'dir.category == Filter'>
-        <!-- START POLICE -->
         <div text-wrap *ngIf = 'Filter == "Police"'>
           <ion-card-title>{{ dir.directoryName }}</ion-card-title>
           <ion-item>
@@ -34,8 +31,6 @@
             <p>{{ dir.otherInformation }}</p>
           </ion-item>
         </div>
-        <!-- END POLICE -->
-        <!-- START MEDICAL -->
         <div text-wrap *ngIf = 'Filter == "Medical"'>
             <ion-card-title>{{ dir.directoryName }}</ion-card-title>
             <ion-item>
@@ -59,8 +54,6 @@
               <p>{{ dir.otherInformation }}</p>
             </ion-item>
           </div>
-          <!-- END MEDICAL -->
-          <!-- START FIRE -->
           <div text-wrap *ngIf = 'Filter == "Fire"'>
             <ion-card-title>{{ dir.directoryName }}</ion-card-title>
              <ion-item>
@@ -84,8 +77,6 @@
               <p>{{ dir.otherInformation }}</p>
             </ion-item>
           </div>
-          <!-- END FIRE -->
-          <!-- START TERMINALS -->
           <div text-wrap *ngIf = 'Filter == "Terminal"'>
             <ion-card-title>{{ dir.directoryName }}</ion-card-title>
              <ion-item>
@@ -109,9 +100,7 @@
               <p>{{ dir.otherInformation }}</p>
             </ion-item>
           </div>
-          <!-- END TERMINALS -->
       </ion-card-content>
     </ion-card>
   </ion-list>
 </ion-content>
-

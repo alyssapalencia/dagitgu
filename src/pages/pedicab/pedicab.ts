@@ -54,8 +54,6 @@ export class PedicabPage {
       });
       alert.present();
     }
-
-    
   }
 
   isBlank(str){

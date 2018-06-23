@@ -16,9 +16,12 @@ export class ViolationPage {
   @ViewChild('autocomplete') autocompleteElement: ElementRef;
   autocomplete;
   element: any;
+<<<<<<< HEAD
 
   disabled = true;
 
+=======
+>>>>>>> a53c632f49d2047f54412e9264a7d39f0fbef27e
   today = new Date();
   violationInfo: any;
   vLocation: any;
@@ -33,7 +36,7 @@ export class ViolationPage {
   selectedPhoto: any;
   photo: any;
   dlURL: any;
-  place: any; // to check autocomplete
+  place: any;
 
   onSuccess = (snapshot) => {
     this.photo = snapshot.downloadURL;
@@ -56,7 +59,6 @@ export class ViolationPage {
       componentRestrictions: {country: "phl"}
     }
 
-    // LOAD AUTOCOMPLETE
     const autocomplete = new google.maps.places.Autocomplete(this.autocompleteElement.nativeElement, options);
       autocomplete.addListener('place_changed', () => {
         this.ngZone.run(() => {
@@ -72,8 +74,6 @@ export class ViolationPage {
   }
 
   addViolationReport() {
-    //this.vLocation = document.getElementById('autocomplete')["value"];
-
     if(!this.isBlank(this.user.displayName) && !this.isBlank(this.vLocation)
       && !this.isBlank(this.reportContent) && !this.isBlank(this.vehicleType) && !this.isBlank(this.plateNumber)
       && !this.isBlank(this.color)){

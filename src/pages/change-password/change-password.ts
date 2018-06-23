@@ -5,7 +5,6 @@ import { App } from 'ionic-angular/components/app/app';
 import { MorePage } from '../more/more';
 import { ProviderDagitProvider } from '../../providers/provider-dagit/provider-dagit';
 
-
 @IonicPage()
 @Component({
   selector: 'page-change-password',

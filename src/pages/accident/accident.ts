@@ -27,7 +27,7 @@ export class AccidentPage {
   selectedPhoto: any;
   photo: any;
   dlURL: any;
-  place: any; // to check autocomplete
+  place: any;
 
   onSuccess = (snapshot) => {
     this.photo = snapshot.downloadURL;
@@ -50,7 +50,6 @@ export class AccidentPage {
       componentRestrictions: {country: "phl"}
     }
 
-    // LOAD AUTOCOMPLETE
     const autocomplete = new google.maps.places.Autocomplete(this.autocompleteElement.nativeElement, options);
       autocomplete.addListener('place_changed', () => {
       this.ngZone.run(() => {
@@ -164,4 +163,3 @@ export class AccidentPage {
 		}
   }
 }
-

@@ -6,7 +6,6 @@ import { FirebaseApp } from 'angularfire2';
 import { Badge } from '@ionic-native/badge';
 import { TabsPage } from '../tabs/tabs';
 
-
 @IonicPage()
 @Component({
   selector: 'page-notif-list',
@@ -21,7 +20,6 @@ export class NotifListPage {
     this.allNotif = this.firebaseService.getTNotif();
   }
   
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotifListPage');
   }
@@ -53,4 +51,3 @@ export class NotifListPage {
     alert.present();
   }
 }
-

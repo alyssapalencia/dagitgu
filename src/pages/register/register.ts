@@ -10,7 +10,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-
   userInfo: any;
   email: any;
   user: any;
@@ -19,7 +18,6 @@ export class RegisterPage {
   lname: any;
   pass: any;
   conPass: any;
-
   wrongPass = true;
 
   constructor(public angularFireAuth: AngularFireAuth, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController, public toastCtrl: ToastController) {
