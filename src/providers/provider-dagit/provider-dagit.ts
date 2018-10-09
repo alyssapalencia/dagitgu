@@ -10,6 +10,8 @@ import 'firebase/storage';
 @Injectable()
 export class ProviderDagitProvider {
   user: any;
+  counter: any;
+  limit = 15;
 
   constructor(public http: Http, public dagit: AngularFireDatabase, public firebaseApp: FirebaseApp, public angularFireAuth: AngularFireAuth, public badge: Badge) {
     this.user = name;
@@ -58,7 +60,8 @@ export class ProviderDagitProvider {
   getTNotif(){
     return this.dagit.list('/NOTIFICATIONS', {
       query:{
-        orderByChild: 'sort'
+        orderByChild: 'sort',
+        limitToFirst:this.limit,
       }
     });
   }

@@ -9,7 +9,7 @@
   
 <ion-content padding>
   <ion-list>
-    <div *ngFor = 'let notif of notifInfo | async'>
+    <div *ngFor = 'let notif of itemList async'>
       <ion-item text-wrap *ngIf = 'notif.category == "Traffic"'>
         <ion-icon name="alert" style="color:#e6c76c;" item-start large></ion-icon>
         <p><b>{{ notif.notifDetail }}</b></p>
@@ -30,7 +30,7 @@
     </div>
   </ion-list>
 
-  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll (ionInfinite)="onInfiniteScroll($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
  

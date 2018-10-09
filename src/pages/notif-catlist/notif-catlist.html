@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list *ngFor = 'let notif of notifInfo | async'>
+  <ion-list *ngFor = 'let notif of notifInfo async'>
     <div *ngIf = 'notif.category == Filter'>
       <ion-item text-wrap *ngIf = 'Filter == "Traffic"'>
         <ion-icon name="alert" style="color:#e6c76c;" item-start large></ion-icon>
@@ -24,4 +24,8 @@
       </ion-item>
     </div>
   </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="onInfiniteScroll($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
