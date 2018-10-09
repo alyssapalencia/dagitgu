@@ -20,6 +20,7 @@ export class NotifListPage {
   loadeditemList:any;
 
   constructor(public tabs: TabsPage, public badge: Badge, public firebaseApp: FirebaseApp, public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController) {
+    this.firebaseService.limit = 15;
     this.allNotif = this.firebaseService.getTNotif();
     this.allNotif.forEach((itemList:any) => {
       let items:any = [];

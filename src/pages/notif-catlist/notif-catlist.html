@@ -5,23 +5,27 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list *ngFor = 'let notif of notifInfo async'>
+  <ion-list> 
+    <div *ngFor = 'let notif of itemList async'>
     <div *ngIf = 'notif.category == Filter'>
       <ion-item text-wrap *ngIf = 'Filter == "Traffic"'>
         <ion-icon name="alert" style="color:#e6c76c;" item-start large></ion-icon>
         <p><b>{{ notif.notifDetail }}</b></p>
         <ion-note class="timestamp">{{ notif.timeStamp }}</ion-note>
       </ion-item>
+
       <ion-item text-wrap *ngIf = 'Filter == "Parking"'>
         <ion-icon name="flag" style="color:#e6c76c;" item-start large></ion-icon>
         <p><b>{{ notif.notifDetail }}</b></p>
         <ion-note class="timestamp">{{ notif.timeStamp }}</ion-note>
       </ion-item>
+
       <ion-item text-wrap *ngIf = 'Filter == "Announcement"' (click)="dispDetails(notif)">
         <ion-icon name="megaphone" style="color:#e6c76c;" item-start large></ion-icon>
         <p><b>{{ notif.title }}</b></p>
         <ion-note class="timestamp">{{ notif.timeStamp }}</ion-note>
       </ion-item>
+      </div>
     </div>
   </ion-list>
 

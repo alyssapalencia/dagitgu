@@ -11,15 +11,16 @@ import { FirebaseListObservable } from 'angularfire2/database';
 export class NotifCatlistPage {
   @ViewChild(Content) content: Content;
   Filter: any;
-  notifInfo: FirebaseListObservable<any>;
+  allNotif: FirebaseListObservable<any>;
 
   itemList:any = [];
   loadeditemList:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public firebaseService: ProviderDagitProvider, public alertCtrl: AlertController) {
+    this.firebaseService.limit = 15;
     this.Filter = navParams.get('param1');
-    this.notifInfo = this.firebaseService.getTNotif();
-    this.notifInfo.forEach((itemList:any) => {
+    this.allNotif = this.firebaseService.getTNotif();
+    this.allNotif.forEach((itemList:any) => {
       let items:any = [];
       itemList.forEach( (item:any) => {
         items.push(item);
@@ -29,12 +30,15 @@ export class NotifCatlistPage {
       this.itemList = items;
       this.loadeditemList = items;
     });
+
+    console.log("contructor end");
   }
 
-  /*onInfiniteScroll(infiniteScroll) {
+  onInfiniteScroll(infiniteScroll) {
+    console.log("infinite scroll method start");
     this.firebaseService.limit += 15;
-    this.notifInfo = this.firebaseService.getTNotif();
-    this.notifInfo.forEach((itemList:any) => {
+    this.allNotif = this.firebaseService.getTNotif();
+    this.allNotif.forEach((itemList:any) => {
       let items:any = [];
       itemList.forEach( (item:any) => {
         items.push(item);
@@ -46,7 +50,8 @@ export class NotifCatlistPage {
   
       infiniteScroll.state = "closed";
     });
-  }*/
+    console.log("infinite scroll method end");
+  }
 
   scrollToTop() {
     this.content.scrollToTop(0);
