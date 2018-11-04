@@ -30,12 +30,9 @@ export class NotifCatlistPage {
       this.itemList = items;
       this.loadeditemList = items;
     });
-
-    console.log("contructor end");
   }
 
   onInfiniteScroll(infiniteScroll) {
-    console.log("infinite scroll method start");
     this.firebaseService.limit += 15;
     this.allNotif = this.firebaseService.getTNotif();
     this.allNotif.forEach((itemList:any) => {
@@ -50,7 +47,6 @@ export class NotifCatlistPage {
   
       infiniteScroll.state = "closed";
     });
-    console.log("infinite scroll method end");
   }
 
   scrollToTop() {
